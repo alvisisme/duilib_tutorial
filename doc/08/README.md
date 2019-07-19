@@ -1,116 +1,177 @@
-# 动态创建控件
+# 控件消息响应处理
 
-在实际业务场景中，并不是所有界面元素都可以通过 XML 预先定义好的，有时候我们需要根据数据库或者服务器返回的数据动态的在界面上创建一些控件。本文将介绍两种方式来动态创建控件的方法，一种是使用纯代码方式，另外一种是使用已经构建好的 XML 来动态创建控件。
-
-## 纯代码方式动态创建控件
-
-之前创建控件的方式都是在 XML 写好，设置好显示位置，运行程序后就自动显示出来了。实际一个控件对应的就是 DuiLib 中的一个类，我们只需要在代码中实例化一个控件类对象，设置好显示位置和控件的样式，并插入到指定的容器内就可以显示出来了。假设我们要在窗口内容区域插入一个按钮，那么首先要给窗口内容区域一个可识别的名称，我们要将窗口内容区域转化为可用的控件对象然后给它添加子控件。
-
-```
-<!-- 窗口内容区域 -->
-<HorizontalLayout name="main_wnd_content" bkcolor="#FF4D6082">
-</HorizontalLayout>
-```
-
-我们给内容区域的水平布局控件添加了一个 name 属性，并指定为 `main_wnd_content`，随后在 InitWindow 方法中，我们全新实例化一个按钮控件，给这个内容区域的容器插入进去。
+上一篇我们介绍了如何通过命名的 XML 控件转化为实际可操控的对象，实际上我们已经可以调用这些控件的一些方法来操作控件了，比如
 
 ```
 void MainWndFrame::InitWindow()
 {
-	// ..... 其他代码
+	m_pMinBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("btn_wnd_min")));
+	m_pMaxBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("btn_wnd_max")));
+	m_pRestoreBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("btn_wnd_restore")));
+	m_pCloseBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("btn_wnd_close")));
 
-	m_pMainWndContent = dynamic_cast<CHorizontalLayoutUI*>(m_PaintManager.FindControl(_T("main_wnd_content")));
-
-	CButtonUI* btn = new CButtonUI;
-	btn->SetText(_T("动态添加的按钮"));
-	btn->SetBkColor(0xFFFFFFFF);
-	btn->SetFixedHeight(60);
-	btn->SetFixedWidth(100);
-
-	m_pMainWndContent->Add(btn);
+	m_pMinBtn->SetVisible(false);
 }
 ```
 
-使用 m_PaintManager 的 FindControl 方法查找到了窗口内容区域的容器，然后将其转化为可用的控件对象，随后调用了它的 Add 方法，将 new 出来的 CButtonUI 对象添加到容器中。这样就运行程序，就可以看到通过代码动态添加的控件了。
+我们调用了 CButtonUI 的 SetVisible 方法，将最小化控件隐藏了。但实际这并没有什么作用，我们真正需要的是点击某个控件后执行某些操作。
 
-<img src="../images/2018-05-03_11-10-44.png" />
+<img src="../images/2018-05-02_11-08-33.png" />
 
-大家也注意到了，在 new 出这个新的 CButtonUI 对象后，我们调用了它的一系列修改控件状态的属性，修改了一下控件的外观和样式，才插入到容器中。如果这个样式比较复杂，代码可能要写很多，而且有些内容是需要随着视觉或者交互设计来变化的，这种情况下，我们可以把这个控件的样子单独写成一个 XML 模版文件，在创建控件的时候根据 XML 的模版来创建控件，就不需要在代码中写死那么多固定的样式了，后期修改也非常方便。
+## 基本的消息响应处理
 
-## 基于构建好的 XML 动态创建控件（CDialogBuilder）
+接下来我们希望实现更实用的功能，点击最小化按钮把窗口最小化、点击关闭按钮把窗口关闭等。这就要涉及到对控件消息的处理，同样父类 `WindowImplBase` 提供了 `Notify` 虚函数，可以提供我们覆写并处理消息。一下代码实现了点击最小化按钮将窗口最小化的功能。
 
-为了让示例更加生动有意义，我们仿照迅雷的下载任务列表。示例将创建一个列表，并在列表中插入我们自己自定义样式的控件，这个控件的样子写在 XML 中，代码通过动态创建控件的方式从 XML 中读取样式显示到程序界面上。大致的图形效果如下：
+```
+void MainWndFrame::Notify(TNotifyUI& msg)
+{
+	if (msg.sType == DUI_MSGTYPE_CLICK)
+	{
+		CDuiString strName = msg.pSender->GetName();
+		if (strName == _T("btn_wnd_min"))
+		{
+			SendMessage(WM_SYSCOMMAND, SC_MINIMIZE, 0);
+		}
+	}
 
-<img src="../images/2018-05-03_11-29-10.png" />
+	__super::Notify(msg);
+}
+```
 
-每一个下载任务我们把它归纳为一个整体的容器，这个容器中包含了任务图片、名称、进度、下载速度和右侧的控制按钮。详细分析一下这个容器中，可以总体分为三个部分，一个是图片、一个是任务进度和描述，一个是任务控制按钮。下面我们单独创建一个 XML 文件命名为 `list_item.xml`，来描述这个任务容器。
+首先我们在 `Notify` 函数中判断了一下消息的类型，如果是鼠标点击那么我们获取一下触发的控件名称，根据名称判断是不是 `btn_wnd_min` 然后执行指定操作。最后别忘记调用父类的 Notify 函数来继续其他消息的处理（其实父类什么都没做，）。
+
+## 仿 MFC 形式消息响应
+
+以上是一个基本的响应过程。另外还有一种类似 MFC 方式的响应方法，首先在 MainWndFrame.h 中添加一句 `DUI_DECLARE_MESSAGE_MAP()`
+
+<img src="../images/2018-05-02_11-47-46.png" />
+
+然后在 MainWndFrame.cpp 中添加如下代码
+
+```
+DUI_BEGIN_MESSAGE_MAP(MainWndFrame, CNotifyPump)
+	DUI_ON_MSGTYPE(DUI_MSGTYPE_CLICK, OnClick)
+DUI_END_MESSAGE_MAP()
+```
+
+这样我们就将 DUI_MSGTYPE_CLICK 类型的消息映射到了 OnClick 函数中，而 OnClick 函数在父类 WindowImplBase 中已经提供了一个虚函数了。
+
+```
+void WindowImplBase::OnClick(TNotifyUI& msg)
+{
+	CDuiString sCtrlName = msg.pSender->GetName();
+	if( sCtrlName == _T("closebtn") )
+	{
+		Close();
+		return; 
+	}
+	else if( sCtrlName == _T("minbtn"))
+	{ 
+		SendMessage(WM_SYSCOMMAND, SC_MINIMIZE, 0); 
+		return; 
+	}
+	else if( sCtrlName == _T("maxbtn"))
+	{ 
+		SendMessage(WM_SYSCOMMAND, SC_MAXIMIZE, 0); 
+		return; 
+	}
+	else if( sCtrlName == _T("restorebtn"))
+	{ 
+		SendMessage(WM_SYSCOMMAND, SC_RESTORE, 0); 
+		return; 
+	}
+	return;
+}
+```
+可以看出，DuiLib 已经默认帮我们实现了几个按钮的鼠标点击功能。我们只需要根据它设定的名字修改一下我们控件的 name 属性就可以实现几个功能了。当然如果我们要添加其他控件的处理，是需要覆写这个 OnClick 函数的。
+
+<img src="../images/2018-05-02_11-35-59.png" />
+
+修改完成后最小化、最大化、还原三个按钮都可以正常工作了，但是关闭按钮点击后并不能完全退出程序，而仅仅是把程序隐藏了，这主要原因是当我们点击关闭按钮时调用的是父类的 Close 函数，该函数发送了退出消息后，窗口接收到该消息的处理函数 OnClose 未做任何措施，如下所示：
+
+<img src="../images/2018-05-02_12-11-39.png" />
+
+要解决这个问题很简单，我们只需要覆写一下这个 OnClose 方法，然后执行退出操作就可以了。
+
+```
+LRESULT MainWndFrame::OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+{
+	if (uMsg == WM_CLOSE)
+	{
+		PostQuitMessage(0L);
+	}
+
+	return __super::OnClose(uMsg, wParam, lParam, bHandled);
+}
+```
+覆写完成后，我们三个功能按钮（哦不，是四个）就都可以正常使用了。另外我自己还发现了两个小问题，窗口的标题栏双击是无法最大化的，这个解决很简单，在 main 函数创建窗口的时候，将窗口的 `UI_WNDSTYLE_DIALOG` 属性修改为 `UI_WNDSTYLE_FRAME` 就可以了，至于两个参数什么意思，大家跟进去看一下就知道拉。
+
+```
+pMainWndFrame->Create(nullptr, MainWndFrame::kClassName, UI_WNDSTYLE_FRAME, 0);
+```
+
+另外一个问题是窗口是无法拖动放大缩小的，这个也很好解决，我们修改 XML，添加上窗口最小大小和可拖动范围就可以了。如下所示：
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<Window>
-	<ListContainerElement inset="20,10,20,10" height="68" bkcolor="#FFFFFFFF" padding="0,10,0,0">
-		<HorizontalLayout>
-			<Control bkimage="folder.png" width="48" height="48" padding="0,0,20,0"/>
-			<VerticalLayout inset="0,0,20,0">
-				<Label name="item_title" text="复仇者联盟3（无限战争）" />
-				<Progress min="0" max="100" value="50" height="12" bkimage="progress_back.png" foreimage="progress_fore.png" />
-				<Label name="item_tip" text="下载速度：10M/s" />
-			</VerticalLayout>
-			<HorizontalLayout childpadding="10" width="70" inset="0,17">
-				<Button width="16" height="16" name="btn_start" normalimage="btn_start_normal.png" hotimage="btn_start_hovered.ong" pushedimage="btn_start_pushed.png" />
-				<Button width="16" height="16" name="btn_folder" normalimage="btn_folder_normal.png" hotimage="btn_folder_hovered.ong" pushedimage="btn_folder_pushed.png" />
-				<Button width="16" height="16" name="btn_delete" normalimage="btn_delete_normal.png" hotimage="btn_delete_hovered.ong" pushedimage="btn_delete_pushed.png" />
-			</HorizontalLayout>
-		</HorizontalLayout>
-	</ListContainerElement>
+<Window size="640,480" mininfo="640,480" caption="0,0,0,35" sizebox="4,4,4,4">
+	......
 </Window>
 ```
 
- - 图片使用了 Control 控件来实现，设置其背景为 folder.png 当作下载任务的图片
- - 使用了一个垂直布局容纳了下载任务名称、进度条和下载速度
- - 使用了一个水平布局容纳了右侧的三个控制按钮，并给他们设置间距为 10
- - 按钮也设置了悬浮、按下的图片效果（各个图片素材均会随本次提交到 github 中）
+`mininfo` 属性决定了窗口最小大小，`sizebox` 属性是指定当鼠标移动到窗口边缘多少像素的时候显示拖放手势。这里指定的是 4 像素，这样指定后窗口就可以拖动了，而且最小不允许小于默认的 640x480。
 
-单个列表的 Item 制作好了，还要在窗体内容部分增加一个 List，来准备容纳这些 Item。
+## 事件委托
+
+除了以上两种方式外，我们还可以通过事件委托的方式来处理指定控件的消息。如下示例演示了事件委托的实现方式。
 
 ```
-...
-<!-- 窗口内容区域 -->
-<HorizontalLayout bkcolor="#FF4D6082">
-  <List name="main_wnd_list" header="hidden" padding="10,10,10,10" />
-</HorizontalLayout>
-...
-```
-
-其中 `header="hidden"` 设置不显示列表头，`padding="10,10,10,10"` 设置了 List 与父容器之间的边距。接下来代码中就要得到这个 List 的句柄，首先要在 MainWndFrame 类中增加一个 CListUI 的成员变量，然后在 InitWindow 中给它赋值。随后我们创建一个 CDialogBuilder 对象，使用其 Create 方法根据 XML 文件来构建一个控件，最后插入到 CListUI 中。代码如下：
-
 void MainWndFrame::InitWindow()
 {
-	//.....
-	m_pMainWndList = dynamic_cast<CListUI*>(m_PaintManager.FindControl(_T("main_wnd_list")));
+	m_pMinBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("minbtn")));
+	m_pMaxBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("maxbtn")));
+	m_pRestoreBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("restorebtn")));
+	m_pCloseBtn = dynamic_cast<CButtonUI*>(m_PaintManager.FindControl(_T("closebtn")));
 
-	CDialogBuilder builder;
-	CControlUI* pControl = builder.Create(_T("list_item.xml"), (UINT)0, this, &m_PaintManager);
-	m_pMainWndList->Add(pControl);
+	m_pMinBtn->OnNotify += MakeDelegate(this, &MainWndFrame::OnBtnTest);
 }
-
-这里你可以把 CDialogBuilder 的对象作为成员变量，但每次插入数据前你需要使用 CDialogBuilder 的 `GetMarkup()->IsValid()` 方法，来判断当前是否已经装载了一个 XML，如果装载了那么直接调用他的另一个 Create 重载方法即可构建一个控件，这样可以提高效率。类似如下代码演示:
-
-```
-CControlUI* pControl = nullptr;
-if (m_pBuilder.GetMarkup()->IsValid())
-{
-	pControl = m_pBuilder.Create(this, &m_PaintManager);
-}
-else
-{
-	pControl = m_pBuilder.Create(_T("list_item.xml"), (UINT)0, this, &m_PaintManager);
-}
-m_pMainWndList->Add(pControl);
 ```
 
-所有素材和 XML 都准备完成后，编译代码可得到如下效果：
+在 InitWindow 函数中，我们给最小化按钮委托了一个 OnBtnTest 的处理函数，当我们对最小化按钮做某些操作时，就会到达 OnBtnTest 处理函数中。OnBtnTest 的实现如下：
 
-<img src="../images/2018-05-03_14-52-01.png" />
+```
+bool MainWndFrame::OnBtnTest(void* param)
+{
+	TNotifyUI* msg = reinterpret_cast<TNotifyUI*>(param);
+	if (msg->sType == DUI_MSGTYPE_CLICK)
+	{
+		// ... do something
+	}
 
-到这里你可能发现了，如果列表中有一个 Item 还好，如果有几十个上百个，他们每个 Item 的消息响应就成了问题。其实这个问题是设计问题，与 DuiLib 没什么关系，你完全可以自己新建一个类，继承 CListContainerElementUI 让每个 Item 都是一个单独的对象，消息响应转义到每个单独对象中，这样就不会混乱了。这个课题就留给大家自己研究一下吧。
+	return true;
+}
+```
+
+这种方式同样可以实现处理控件的消息功能，如果对委托的函数指针加以改造，还可以使用 C++11 的 lambda 表达式来实现具体的处理函数功能。
+
+## 消息捕获（拦截）原生消息
+
+DuiLib 提供了虚函数 `HandleMessage`，可以提供我们覆写来捕获或者拦截原声的系统消息。比如我们希望监听剪切板的消息时，就可以像一下方法一样来实现。
+
+```
+LRESULT MainWndFrame::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	if (uMsg == WM_CHANGECBCHAIN)
+	{
+		// do something...
+	}
+	else if (uMsg == WM_DRAWCLIPBOARD)
+	{
+		// do something...
+	}
+
+	return __super::HandleMessage(uMsg, wParam, lParam);
+}
+```
+
+老版本的 DuiLib 中窗口创建完成后，按下 ESC 窗口会被关闭，如果想屏蔽掉 ESC 按下的消息，就可以通过这个函数来实现。

@@ -1,162 +1,121 @@
-# 了解 XML 使用 （布局）
+# 资源压缩打包
 
-本节主要介绍 DuiLib 中 XML 关键字的使用和一些特性，通过构建一个简单的带标题栏和简单结构的窗口，目的为了了解 XML 的布局系统、基本控件和一些全局属性。在介绍之前我们先改造一下程序，让程序在 Debug 模式下使用本地的 XML 文件，只有在发布为 Release 版本时才使用打包到程序中的 ZIP 资源文件。修改 GetSkinFolder 和 GetResourceType 两个方法，如下所示。
+现在市面上有很多基于 DuiLib 开发的程序，又或者是从 DuiLib 基础上延伸出来所开发的程序。不同的程序有不同的打包资源的方式，主要有以下几种。
+
+ - 资源存放在文件夹中
+ - 资源存放在 ZIP 压缩包中
+ - 资源打包到 EXE 中
+ - 使用 DLL 文件存放资源
+
+有的使用的就是执行程序目录下的文件夹，而有的使用的是一个压缩包（有可能加密），还有的就是一个单独的执行文件复制到任意位置运行同样可以有绚丽的界面。还有就是封装到一个 DLL 资源中，这种方式我也没有用到过，后面研究一下再做补充。第一种方式我们已经知道了，本章就介绍后面两种打包方式，一种是使用压缩包，一种是打包资源到执行文件中让一个文件横扫天下。
+
+
+## 使用压缩包
+
+使用压缩包的好处是资源被压缩到一个 ZIP 格式的包里面，可以减少一部分程序的体积，并且可以实现加密（本文不涉及）防止篡改，压缩包方式比较简单，修改 main 函数中将原来的
 
 ```
-DuiLib::CDuiString MainWndFrame::GetSkinFolder()
-{
-#if _DEBUG
-	return _T("theme");
-#else
-	return m_PaintManager.GetInstancePath();
+CPaintManagerUI::SetResourcePath(_T("theme"));
+```
+
+替换为
+
+```
+CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());
+CPaintManagerUI::SetResourceZip(_T("theme.zip"));
+```
+
+然后将我们主题文件夹中的 `main_wnd_frame.xml` 打包成一个 ZIP 文件。这里要注意，压缩包中不要再包含一个 `theme` 文件夹了，直接把 `main_wnd_frame.xml` 放在最外层就可以了。
+
+<img src="../images/2018-04-29_16-51-03.png" />
+
+这样我们就可以一个 EXE + 一个 ZIP 压缩包的形式发布程序了。这是其中一种方法，比较简单，还有其他的方法来实现同样的功能，类似下面即将介绍的方法，由于 DuiLib 对于资源的处置代码实现还是稍微有点小乱的。大家在实现这两种方法时候最好去实地看一下代码才知道怎么使用最适合你。
+
+## 使用压缩包资源
+
+与上面有什么区别呢？压缩包？资源？，其实就是把打包后的 ZIP 压缩包当作 VC 程序开发时的资源，一同打包到发布的 EXE 文件中。这样我们就仅需要发布一个 EXE 文件就可以了，而且对付一些小白还可以防止篡改资源文件。
+
+首先删除掉 main 函数中刚才我们修改的两行代码
+
+```
+CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());
+CPaintManagerUI::SetResourceZip(_T("theme.zip"));
+```
+
+随后我们要覆写基类的两个对资源处理的函数，这两个函数分别是 `GetResourceType` 和 `GetResourceID`，前者是设置资源类型，有以下几种：
+
+```
+UILIB_FILE=1,       // 来自磁盘文件
+UILIB_ZIP,          // 来自磁盘zip压缩包
+UILIB_RESOURCE,     // 来自资源
+UILIB_ZIPRESOURCE,  // 来自资源的zip压缩包
+```
+
+可以看到这里支持 4 种形式，包括我们之前提到的使用 ZIP 压缩包的方式，这次我们用覆写两个函数的方式来实现使用资源的 ZIP 压缩包形式。第二个函数 `GetResourceID` 就是我们要使用的资源 ID 了。首先我们要添加一个资源到项目中，资源的类型要固定为 `ZIPRES`，为什么？因为代码中写死了。我们看一下使用资源 ZIP 压缩包的内部实现代码。
+
+```
+case UILIB_ZIPRESOURCE:
+	{
+		HRSRC hResource = ::FindResource(m_PaintManager.GetResourceDll(), GetResourceID(), _T("ZIPRES"));
+		if( hResource == NULL )
+			return 0L;
+		DWORD dwSize = 0;
+		HGLOBAL hGlobal = ::LoadResource(m_PaintManager.GetResourceDll(), hResource);
+		if( hGlobal == NULL ) 
+		{
+#if defined(WIN32) && !defined(UNDER_CE)
+			::FreeResource(hResource);
 #endif
-}
-.....
-.....
+			return 0L;
+		}
+		dwSize = ::SizeofResource(m_PaintManager.GetResourceDll(), hResource);
+		if( dwSize == 0 )
+			return 0L;
+		m_lpResourceZIPBuffer = new BYTE[ dwSize ];
+		if (m_lpResourceZIPBuffer != NULL)
+		{
+			::CopyMemory(m_lpResourceZIPBuffer, (LPBYTE)::LockResource(hGlobal), dwSize);
+		}
+#if defined(WIN32) && !defined(UNDER_CE)
+		::FreeResource(hResource);
+#endif
+		m_PaintManager.SetResourceZip(m_lpResourceZIPBuffer, dwSize);
+	}
+	break;
+```
+
+实现方式就是查找名称为 `ZIPRES` 的资源，然后加载到内存中使用。那么我们动手开始添加吧。打开资源视图，在 EXE 的资源中右键->添加资源
+
+<img src="../images/2018-04-29_16-51-49.png" />
+
+然后点击 `导入` 按钮
+
+<img src="../images/2018-04-29_16-52-32.png" />
+
+在弹出的对话框中右下角选择所有文件，然后找到我们 EXE 目录下的 `theme.zip` 文件。然后确定，此时会让你输入资源的名称，这里我们按之前的约定输入 `ZIPRES`，然后确定。
+
+<img src="../images/2018-04-29_16-52-39.png" />
+
+导入完成后的样子如下
+
+<img src="../images/2018-04-29_16-52-52.png" />
+
+资源添加完毕了，我们得到了一个资源名为 `IDR_ZIPRES1` 的资源，此时我们开始覆写两个函数。如下所示：
+
+```
 DuiLib::UILIB_RESOURCETYPE MainWndFrame::GetResourceType() const
 {
-#if _DEBUG
-	return UILIB_FILE;
-#else
 	return UILIB_ZIPRESOURCE;
-#endif
+}
+
+LPCTSTR MainWndFrame::GetResourceID() const
+{
+	return MAKEINTRESOURCE(IDR_ZIPRES1);
 }
 ```
 
-这样我们程序在 Debug 模式下使用的就是本地的 theme 文件夹内的资源了，主要是方便我们进行更新即时查看。接下来我们先从主要的几个布局开始，DuiLib 中重要的几个布局分别如下
+此时编译一下程序，然后把编译后的 EXE 文件拿到一个空白文件夹，保证文件夹下没有你的资源文件，然后运行程序。同样程序也是可以运行的。并且如果我们用一些压缩软件打开我们的 EXE 文件（比如 7z、好压、360压缩等）你还可以看到我们的资源文件就在 EXE 里面。
 
- - HorizontalLayout 和 VerticalLayout
- - TabLayout
- - TileLayout
- - Container
- - ChildLayout
+<img src="../images/2018-04-29_16-55-36.png" />
 
-使用频率由上到下，下面我们分别介绍几种布局的特点。
-
-## HorizontalLayout 和 VerticalLayout
-
-DuiLib 的布局系统类似于 Qt 的布局系统， HorizontalLayout（水平布局） 和 VerticalLayout（垂直布局）来给界面划分整体区域。HorizontalLayout 顾名思义，就是让其包含的控件以水平位置排布。而 VerticalLayout 则是让起包含的控件以垂直方向进行排布。两种布局在界面中最终体现为什么样子？我们可以做一个实现来验证一下效果。但无论我们使用什么布局，最少要有一个最外部的布局。如下所示：
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="640,480" caption="0,0,0,35">
-	<VerticalLayout>
-		<!-- 窗口内容 -->
-	</VerticalLayout>
-</Window>
-```
-
-第一行是 xml 描述，这个必须要有的，不了解的同学可以搜索一些 XML 相关的介绍教程，十几分钟就看的差不多了。Window 标签也是必须要有的外部标签，size 属性决定了这个窗口的大小，caption 属性决定了这个窗口的标题栏有效范围是多大的，我们设置了 35 像素，也就是整个窗口最上方的 35 像素是可以用鼠标点击拖动的，更多的属性我们后面再来看 `属性列表.xml`，这里先不多介绍。
-
-DuiLib 通过这个 Window 标签来识别窗口。Window 里面的 VerticalLayout 是一个最外部的布局，我们要写窗体的内部构成，都是基于这个最基本的窗体布局系统来完成的。当然你并不一定必须用 VerticalLayout 来做最外部的布局，这要看你窗口的实际布局效果。如果窗体是从左到右的水平布局模式，那你应该用 HorizontalLayout。
-
-首先我们在这个基本的布局系统中添加三个子布局 HorizontalLayout 并设置成三种不同的颜色（通过 bkcolor 属性）来看一下效果是什么样子的。
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="640,480" caption="0,0,0,35">
-	<VerticalLayout>
-		<HorizontalLayout bkcolor="#FFD81E06"/>
-		<HorizontalLayout bkcolor="#FF1AFA29"/>
-		<HorizontalLayout bkcolor="#FF1296DB"/>
-	</VerticalLayout>
-</Window>
-```
-
-以上效果在程序运行后显示如下效果。
-
-<img src="../images/2018-04-29_17-23-43.png" />
-
-可以看出，三个 HorizontalLayout 被父控件规定为以垂直方式布局，从上到下依次排列，垂直布局不关心控件宽度，如果我们把外部的 VerticalLayout 修改为 HorizontalLayout。那么下面的三个控件应该是水平的从做到右以此排列。如下所示
-
-<img src="../images/2018-04-29_17-24-06.png" />
-
-如果我们在子布局中再添加一些其他的控件，我们就能看出，HorizontalLayout 下面的控件也是遵循它父级的规定来水平布局的。如下所示
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="640,480" caption="0,0,0,35">
-	<HorizontalLayout>
-		<HorizontalLayout bkcolor="#FFD81E06">
-			<Button text="1" height="30" bkcolor="#FFD81E06" />
-			<Button text="2" height="30" bkcolor="#FF1AFA29" />
-			<Button text="3" height="30" bkcolor="#FF1296DB" />
-		</HorizontalLayout>
-		<HorizontalLayout bkcolor="#FF1AFA29"/>
-		<HorizontalLayout bkcolor="#FF1296DB"/>
-	</HorizontalLayout>
-</Window>
-```
-
-控件的排布效果如下
-
-<img src="../images/2018-04-29_17-24-54.png" />
-
-这就是基本的水平和垂直布局系统的简单介绍，这两种布局是使用频率最高的了，基本上界面的布局需求都可以通过这两种布局来实现了。但是总会有个别的布局场景是需要个性化一点的，就像下面的 TabLayout。
-
-## TabLayout
-
-TabLayout 实现了一个 Tab 标签页方式的布局系统，其下包含的内容只能显示一个。如下所示，默认显示第一个红色的布局。
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="640,480" caption="0,0,0,35">
-	<TabLayout>
-		<HorizontalLayout bkcolor="#FFD81E06">
-			<Button text="1" height="30" bkcolor="#FFD81E06" />
-			<Button text="2" height="30" bkcolor="#FF1AFA29" />
-			<Button text="3" height="30" bkcolor="#FF1296DB" />
-		</HorizontalLayout>
-		<HorizontalLayout bkcolor="#FF1AFA29"/>
-		<HorizontalLayout bkcolor="#FF1296DB"/>
-	</TabLayout>
-</Window>
-```
-
-<img src="../images/2018-04-29_17-25-17.png" />
-
-而想显示另外的两个布局，我们需要通过代码来控制。这里大家只需要有一个概念，后面我们模仿其他 Demo 的时候会用到这个布局。
-
-## TileLayout
-
-TileLayout 是一个块级的布局，它下面的控件都会以块为单位，像麻将一样一排一排的组合，测试代码：
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="640,480" caption="0,0,0,35">
-	<TileLayout>
-		<Button text="1" height="30" bkcolor="#FFD81E06" />
-		<Button text="2" height="30" bkcolor="#FF1AFA29" />
-		<Button text="3" height="30" bkcolor="#FF1296DB" />
-		<Button text="1" height="30" bkcolor="#FFD81E06" />
-		<Button text="2" height="30" bkcolor="#FF1AFA29" />
-		<Button text="3" height="30" bkcolor="#FF1296DB" />
-		<Button text="1" height="30" bkcolor="#FFD81E06" />
-		<Button text="2" height="30" bkcolor="#FF1AFA29" />
-		<Button text="3" height="30" bkcolor="#FF1296DB" />
-		<Button text="1" height="30" bkcolor="#FFD81E06" />
-		<Button text="2" height="30" bkcolor="#FF1AFA29" />
-		<Button text="3" height="30" bkcolor="#FF1296DB" />
-	</TileLayout>
-</Window>
-```
-
-效果如下
-
-<img src="../images/2018-04-29_17-26-21.png" />
-
-TileLayout 有两个比较关键的属性，`itemsize` 和 `columns`，两者不能同时使用。前者决定 TileLayout 包含的子控件以多大尺寸来排列，后者决定了 TileLayout 有几列数据，我们先将 itemsize 指定为 "50,50"，就是告诉 TileLayout 让子控件以宽度和高度分别 50 的大小来进行排列。效果如下
-
-<img src="../images/2018-04-29_17-26-42.png" />
-
-如果我们指定了 `columns` 为 3，那么行只有 3 列数据。
-
-<img src="../images/2018-04-29_17-27-02.png" />
-
-## Container
-
-Container 本来是所有 Layout 的基类，之所以没提前介绍它主要是它使用的场景比较少，它下面的子空间都是默认扩充整个容器的，这也就会导致所有子控件重叠在一起，除非你想实现这种效果，否则可能真的用不到它。
-
-## ChildLayout
-
-ChildLayout 我基本没有用过，看过官方的一些例子和 Redrain 介绍，它的功能类似于 include 一个 XML。主要功能就是有些 XML 文件因为规划不合理代码写的又臭又长，使用这个布局可以将外部的 XML 引入到本 XML 文件中，指定它的 xmlfile 属性就可以了。
+到这里资源打包的几种方式我们都介绍的差不多了，有兴趣的可以自己摸索一下用资源文件而不是用资源 ZIP 压缩包的形式。

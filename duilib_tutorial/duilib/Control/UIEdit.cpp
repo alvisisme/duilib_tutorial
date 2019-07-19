@@ -185,7 +185,7 @@ namespace DuiLib
 		else if( uMsg == WM_PRINT ) {
 			if (m_pOwner->GetManager()->IsLayered()) {
 				lRes = CWindowWnd::HandleMessage(uMsg, wParam, lParam);
-				if( m_pOwner->IsEnabled() && m_bDrawCaret ) { // todo:�ж��Ƿ�enabled
+				if( m_pOwner->IsEnabled() && m_bDrawCaret ) { // todo:ÅÐ¶ÏÊÇ·ñenabled
 					RECT rcClient;
 					::GetClientRect(m_hWnd, &rcClient);
 					POINT ptCaret;

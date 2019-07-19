@@ -2,15 +2,15 @@
 class AboutFrameWnd : public WindowImplBase
 {
 protected:
-	virtual CDuiString GetSkinFolder() override;				// »ñÈ¡Æ¤·ôÎÄ¼şµÄÄ¿Â¼£¬Èç¹ûÓĞ¶à²ãÄ¿Â¼ÕâÀï¿ÉÒÔÉèÖÃ
-	virtual CDuiString GetSkinFile() override;					// ÉèÖÃÆ¤·ôÎÄ¼şÃû×Ö
-	virtual LPCTSTR GetWindowClassName(void) const override;	// ÉèÖÃµ±Ç°´°¿ÚµÄ class name
+	virtual CDuiString GetSkinFolder() override;				// è·å–çš®è‚¤æ–‡ä»¶çš„ç›®å½•ï¼Œå¦‚æœæœ‰å¤šå±‚ç›®å½•è¿™é‡Œå¯ä»¥è®¾ç½®
+	virtual CDuiString GetSkinFile() override;					// è®¾ç½®çš®è‚¤æ–‡ä»¶åå­—
+	virtual LPCTSTR GetWindowClassName(void) const override;	// è®¾ç½®å½“å‰çª—å£çš„ class name
 
-	virtual UILIB_RESOURCETYPE GetResourceType() const override;// ·µ»Ø×ÊÔ´ÀàĞÍ
-	virtual LPCTSTR GetResourceID() const override;				// Èç¹ûÊÇZIP×ÊÔ´£¬·µ»Ø×ÊÔ´ID
+	virtual UILIB_RESOURCETYPE GetResourceType() const override;// è¿”å›èµ„æºç±»å‹
+	virtual LPCTSTR GetResourceID() const override;				// å¦‚æœæ˜¯ZIPèµ„æºï¼Œè¿”å›èµ„æºID
 
-	virtual void InitWindow() override;							// ´°¿Ú³õÊ¼»¯º¯Êı
-	virtual void Notify(TNotifyUI& msg) override;				// Í¨ÖªÊÂ¼ş´¦Àíº¯Êı
+	virtual void InitWindow() override;							// çª—å£åˆå§‹åŒ–å‡½æ•°
+	virtual void Notify(TNotifyUI& msg) override;				// é€šçŸ¥äº‹ä»¶å¤„ç†å‡½æ•°
 
 public:
 	static const LPCTSTR	kClassName;

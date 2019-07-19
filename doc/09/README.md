@@ -1,115 +1,116 @@
-# 创建子窗口
+# 动态创建控件
 
-一个大规模的应用不可能只有一个窗口，之前我们的案例都是在一个窗口实现的，接下来我们实现一个关于窗口，来介绍如何通过 DuiLib 实现子窗口管理。
+在实际业务场景中，并不是所有界面元素都可以通过 XML 预先定义好的，有时候我们需要根据数据库或者服务器返回的数据动态的在界面上创建一些控件。本文将介绍两种方式来动态创建控件的方法，一种是使用纯代码方式，另外一种是使用已经构建好的 XML 来动态创建控件。
 
-## 创建子窗口 XML 配置文件
+## 纯代码方式动态创建控件
 
-前面我们已经做了很多 XML 的案例了，所以这里就不多说了，直接将写好的 XML 贴上来给大家做一下简单分析，然后直接使用。
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="480,360" caption="0,0,0,35">
-	<Font shared="true" id="1" name="微软雅黑" size="14" />
-	<VerticalLayout>
-		<!-- 标题栏 -->
-		<HorizontalLayout height="35" bkcolor="#FFD6DBE9" inset="8,8,8,0">
-			<HorizontalLayout width="185">
-				<Control bkimage="logo.png" height="18" width="18" />
-				<Label text="关于" height="18" padding="8" font="1"/>
-			</HorizontalLayout>
-			<Control />
-			<HorizontalLayout width="18">
-				<Button name="btn_close" height="18" width="18" normalimage="btn_close_normal.png" hotimage="btn_close_hovered.png" pushedimage="btn_close_pushed.png" />
-			</HorizontalLayout>
-		</HorizontalLayout>
-		<HorizontalLayout bkcolor="#FFFFFFFF">
-			<Label align="center" text="duilib tutorial, created by jiajia_deng" />
-		</HorizontalLayout>
-	</VerticalLayout>
-</Window>
-```
-
-窗口还是保留标题栏，但只有一个关闭按钮了，并且关闭按钮的名字我修改成了 btn_close，目的就是不想让窗口走默认的关闭流程。窗口中只有一个 Label 显示了一串文字（毕竟这不是重点）。然后我们需要新建一个类，与 MainWndFrame 窗口一样，继承 WindowImplBase 实现各个虚函数。如下所示：
+之前创建控件的方式都是在 XML 写好，设置好显示位置，运行程序后就自动显示出来了。实际一个控件对应的就是 DuiLib 中的一个类，我们只需要在代码中实例化一个控件类对象，设置好显示位置和控件的样式，并插入到指定的容器内就可以显示出来了。假设我们要在窗口内容区域插入一个按钮，那么首先要给窗口内容区域一个可识别的名称，我们要将窗口内容区域转化为可用的控件对象然后给它添加子控件。
 
 ```
-#pragma once
-class AboutWndFrame : public WindowImplBase
-{
-protected:
-	virtual CDuiString GetSkinFolder() override;                // 获取皮肤文件的目录，如果有多层目录这里可以设置
-	virtual CDuiString GetSkinFile() override;                  // 设置皮肤文件名字
-	virtual LPCTSTR GetWindowClassName(void) const override;    // 设置当前窗口的 class name
-
-	virtual UILIB_RESOURCETYPE GetResourceType() const override;// 返回资源类型
-	virtual LPCTSTR GetResourceID() const override;             // 如果是ZIP资源，返回资源ID
-
-	virtual void InitWindow() override;                         // 窗口初始化函数
-	virtual void Notify(TNotifyUI& msg) override;               // 通知事件处理函数
-
-public:
-	static const LPCTSTR	kClassName;
-	static const LPCTSTR	kAboutWndFrame;
-
-private:
-	CButtonUI*				m_pCloseBtn = nullptr;
-};
-```
-
-各个接口的实现我就不在这里贴代码了，大家可以看提交的 Demo 代码。随后在 main_wnd_frame.xml 中，增加一个关于按钮到最小化按钮左边。
-
-```
-<HorizontalLayout childpadding="3" width="81">
-  <Button name="aboutbtn" height="18" width="18" normalimage="btn_about_normal.png" hotimage="btn_about_hovered.png" pushedimage="btn_about_pushed.png" />
-  <Button name="minbtn" height="18" width="18" normalimage="btn_min_normal.png" hotimage="btn_min_hovered.png" pushedimage="btn_min_pushed.png" />
-  ....
+<!-- 窗口内容区域 -->
+<HorizontalLayout name="main_wnd_content" bkcolor="#FF4D6082">
 </HorizontalLayout>
 ```
 
-此时主窗口就会显示一个关于按钮了，注意我们也修改了父容器的宽度，因为比之前多了一个按钮，我们要算上按钮宽度和间距增大父容器的宽度。
-
-<img src="../images/2018-05-03_16-06-52.png" />
-
-接下来做关于按钮的响应，首先添加一个按钮的成员变量来接收关于按钮，然后再 inlucde 关于窗口的头文件 `AboutWndFrame.h`，并添加一个窗口的成员变量 `m_pAboutWndFrame`。重载 OnClick 方法判断当前点击的是否是关于按钮，如果是那么就显示关于窗口。代码如下：
+我们给内容区域的水平布局控件添加了一个 name 属性，并指定为 `main_wnd_content`，随后在 InitWindow 方法中，我们全新实例化一个按钮控件，给这个内容区域的容器插入进去。
 
 ```
-void MainWndFrame::OnClick(TNotifyUI& msg)
+void MainWndFrame::InitWindow()
 {
-	CDuiString strName = msg.pSender->GetName();
-	if (strName == _T("aboutbtn"))
-	{
-		if (m_pAboutWndFrame == nullptr)
-		{
-			m_pAboutWndFrame = new AboutWndFrame();
-			m_pAboutWndFrame->Create(this->GetHWND(), AboutWndFrame::kClassName, UI_WNDSTYLE_DIALOG, 0);
-		}
-		m_pAboutWndFrame->CenterWindow();
-		m_pAboutWndFrame->ShowWindow();
-	}
+	// ..... 其他代码
 
-	__super::OnClick(msg);
+	m_pMainWndContent = dynamic_cast<CHorizontalLayoutUI*>(m_PaintManager.FindControl(_T("main_wnd_content")));
+
+	CButtonUI* btn = new CButtonUI;
+	btn->SetText(_T("动态添加的按钮"));
+	btn->SetBkColor(0xFFFFFFFF);
+	btn->SetFixedHeight(60);
+	btn->SetFixedWidth(100);
+
+	m_pMainWndContent->Add(btn);
 }
 ```
 
-这里有个小技巧就是判断窗口是不是 nullptr，如果是 nullptr 就全新 new 一个 AboutWndFrame，如果是有效的指针则直接显示窗口。在 AboutWndFrame 中在关闭窗口时，只需要激活父窗口然后把自己隐藏掉就可以了。如下所示：
+使用 m_PaintManager 的 FindControl 方法查找到了窗口内容区域的容器，然后将其转化为可用的控件对象，随后调用了它的 Add 方法，将 new 出来的 CButtonUI 对象添加到容器中。这样就运行程序，就可以看到通过代码动态添加的控件了。
+
+<img src="../images/2018-05-03_11-10-44.png" />
+
+大家也注意到了，在 new 出这个新的 CButtonUI 对象后，我们调用了它的一系列修改控件状态的属性，修改了一下控件的外观和样式，才插入到容器中。如果这个样式比较复杂，代码可能要写很多，而且有些内容是需要随着视觉或者交互设计来变化的，这种情况下，我们可以把这个控件的样子单独写成一个 XML 模版文件，在创建控件的时候根据 XML 的模版来创建控件，就不需要在代码中写死那么多固定的样式了，后期修改也非常方便。
+
+## 基于构建好的 XML 动态创建控件（CDialogBuilder）
+
+为了让示例更加生动有意义，我们仿照迅雷的下载任务列表。示例将创建一个列表，并在列表中插入我们自己自定义样式的控件，这个控件的样子写在 XML 中，代码通过动态创建控件的方式从 XML 中读取样式显示到程序界面上。大致的图形效果如下：
+
+<img src="../images/2018-05-03_11-29-10.png" />
+
+每一个下载任务我们把它归纳为一个整体的容器，这个容器中包含了任务图片、名称、进度、下载速度和右侧的控制按钮。详细分析一下这个容器中，可以总体分为三个部分，一个是图片、一个是任务进度和描述，一个是任务控制按钮。下面我们单独创建一个 XML 文件命名为 `list_item.xml`，来描述这个任务容器。
 
 ```
-void AboutWndFrame::Notify(TNotifyUI& msg)
+<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<ListContainerElement inset="20,10,20,10" height="68" bkcolor="#FFFFFFFF" padding="0,10,0,0">
+		<HorizontalLayout>
+			<Control bkimage="folder.png" width="48" height="48" padding="0,0,20,0"/>
+			<VerticalLayout inset="0,0,20,0">
+				<Label name="item_title" text="复仇者联盟3（无限战争）" />
+				<Progress min="0" max="100" value="50" height="12" bkimage="progress_back.png" foreimage="progress_fore.png" />
+				<Label name="item_tip" text="下载速度：10M/s" />
+			</VerticalLayout>
+			<HorizontalLayout childpadding="10" width="70" inset="0,17">
+				<Button width="16" height="16" name="btn_start" normalimage="btn_start_normal.png" hotimage="btn_start_hovered.ong" pushedimage="btn_start_pushed.png" />
+				<Button width="16" height="16" name="btn_folder" normalimage="btn_folder_normal.png" hotimage="btn_folder_hovered.ong" pushedimage="btn_folder_pushed.png" />
+				<Button width="16" height="16" name="btn_delete" normalimage="btn_delete_normal.png" hotimage="btn_delete_hovered.ong" pushedimage="btn_delete_pushed.png" />
+			</HorizontalLayout>
+		</HorizontalLayout>
+	</ListContainerElement>
+</Window>
+```
+
+ - 图片使用了 Control 控件来实现，设置其背景为 folder.png 当作下载任务的图片
+ - 使用了一个垂直布局容纳了下载任务名称、进度条和下载速度
+ - 使用了一个水平布局容纳了右侧的三个控制按钮，并给他们设置间距为 10
+ - 按钮也设置了悬浮、按下的图片效果（各个图片素材均会随本次提交到 github 中）
+
+单个列表的 Item 制作好了，还要在窗体内容部分增加一个 List，来准备容纳这些 Item。
+
+```
+...
+<!-- 窗口内容区域 -->
+<HorizontalLayout bkcolor="#FF4D6082">
+  <List name="main_wnd_list" header="hidden" padding="10,10,10,10" />
+</HorizontalLayout>
+...
+```
+
+其中 `header="hidden"` 设置不显示列表头，`padding="10,10,10,10"` 设置了 List 与父容器之间的边距。接下来代码中就要得到这个 List 的句柄，首先要在 MainWndFrame 类中增加一个 CListUI 的成员变量，然后在 InitWindow 中给它赋值。随后我们创建一个 CDialogBuilder 对象，使用其 Create 方法根据 XML 文件来构建一个控件，最后插入到 CListUI 中。代码如下：
+
+void MainWndFrame::InitWindow()
 {
-	if (msg.sType == DUI_MSGTYPE_CLICK)
-	{
-		CDuiString strName = msg.pSender->GetName();
-		if (strName == _T("btn_close"))
-		{
-			HWND hWndParent = GetWindowOwner(m_hWnd);
-			if (hWndParent)
-			{
-				::EnableWindow(hWndParent, TRUE);
-				::SetFocus(hWndParent);
-			}
-			ShowWindow(false);
-		}
-	}
+	//.....
+	m_pMainWndList = dynamic_cast<CListUI*>(m_PaintManager.FindControl(_T("main_wnd_list")));
+
+	CDialogBuilder builder;
+	CControlUI* pControl = builder.Create(_T("list_item.xml"), (UINT)0, this, &m_PaintManager);
+	m_pMainWndList->Add(pControl);
 }
+
+这里你可以把 CDialogBuilder 的对象作为成员变量，但每次插入数据前你需要使用 CDialogBuilder 的 `GetMarkup()->IsValid()` 方法，来判断当前是否已经装载了一个 XML，如果装载了那么直接调用他的另一个 Create 重载方法即可构建一个控件，这样可以提高效率。类似如下代码演示:
+
+```
+CControlUI* pControl = nullptr;
+if (m_pBuilder.GetMarkup()->IsValid())
+{
+	pControl = m_pBuilder.Create(this, &m_PaintManager);
+}
+else
+{
+	pControl = m_pBuilder.Create(_T("list_item.xml"), (UINT)0, this, &m_PaintManager);
+}
+m_pMainWndList->Add(pControl);
 ```
 
-<img src="../images/2018-05-03_16-48-30.png" />
+所有素材和 XML 都准备完成后，编译代码可得到如下效果：
+
+<img src="../images/2018-05-03_14-52-01.png" />
+
+到这里你可能发现了，如果列表中有一个 Item 还好，如果有几十个上百个，他们每个 Item 的消息响应就成了问题。其实这个问题是设计问题，与 DuiLib 没什么关系，你完全可以自己新建一个类，继承 CListContainerElementUI 让每个 Item 都是一个单独的对象，消息响应转义到每个单独对象中，这样就不会混乱了。这个课题就留给大家自己研究一下吧。

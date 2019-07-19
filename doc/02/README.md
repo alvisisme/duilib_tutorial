@@ -1,184 +1,99 @@
-# 制作一个简单的界面
+# 编译 DuiLib 并创建简单窗口
 
-在实现这个基本窗口之前，我们首先根据自己的习惯设置一下 DuiLib 编译后生成的文件路径和项目依赖的头文件目录。你不一定要按着我的修改，符合你自己的使用习惯即可。要修改的位置主要有一下几个。修改过程比较繁琐，主要还是因为 DuiLib 是从 VC6 升级上来的，很多属性需要删除和修改，也有些属性是 DuiLib 团队自己的目录结构风格，改与不改不影响使用。
+## 准备 DuiLib 开发环境
 
- - 常规->输出路径
- - 常规->中间目录（DLL 和 LIB 不能有冲突）
- - 常规->输出文件名（32 位和 64 位不一样，Debug 和 Release 也不同）
- - C/C++->预编译头->预编译头输出文件
- - 连接器->常规 删除 DuiLib 项目原有的输出文件选项
- - 连接器->系统->子系统 设置子系统为窗口（负责构建过程中会有警告）
- - 连接器->高级->到入库 删除默认到入库
- - 常规->平台工具集 设置 EXE 的平台工具集与 DuiLib 一致为 VS2013（如果是 2017 需要改一些因新标准导致的编译错误）
- - VC++ 目录->包含目录 设置 EXE 依赖的头文件目录，如果使用静态库那么要设置附加库目录和附加库文件
- - C/C++->代码生成->运行库 设置 EXE 项目的C/C++代码生成->运行库为 /MTd 和 /MT 与 DuiLib 保持一致否则链接时报错
- - 连接器->输入 设置 EXE 项目依赖项
+注意，这里大部分准备工作都与 DuiLib 代码无关，更多的是开发人员的基础知识普及，并不会涉及更多的 DuiLib 代码相关的内容，如果你已经非常清楚如何编译一个 DuiLib 在自己项目中使用，那么请跳过这个步骤。
 
-DuiLib 的具体结构这里我们先不说，目前我们仅需要了解，如何使用动态库或静态库来创建一个基于 DuiLib 的简单界面就可以了，然后再循序渐进的往深入去挖一挖。DuiLib 实现了一个窗口基类，我们自己的窗口只需要继承这个类，实现三个必须要实现的纯虚函数，然后设置一下窗口使用的配置文件、窗口配置文件的路径和窗口的名称就可以了。
+首先我们打开 VS 创建一个自定义项目，这里你使用什么版本无所谓，因为 VS 项目都是可以升级降级的，除非官方代码中有个别代码在不同版本的 VS 编译器下没有指定的头文件支持。否则升级后都是可以正常编译通过的。
 
- - 继承 WindowImplBase 类（DuiLib 窗口管理的一个基类）
- - 实现 GetWindowClassName 接口（描述窗口唯一名称的方法）
- - 实现 GetSkinFile 接口（描述窗口样式的 xml 文件名称方法）
- - 实现 GetSkinFolder 接口（描述窗口样式文件路径的方法）
- - 创建一个窗口描述配置文件（描述窗口的 xml 样式文件）
+我这里使用 VS2017，创建项目时选择自定义项目，然后设置一下项目的路径
 
-根据上面的方法，我们把向导自动生成的项目代码删一删，修改 duilib_tutoral.cpp 文件，仅留下一个 main 函数，如下所示：
+<img src="../images/2018-04-29_14-28-52.png" />
+
+在自定义窗口中，选择使用 Windows 桌面程序，并勾选 ATL。若不勾选 ATL，则会出现 `“VARIANT”：未定义基类` 的错误。以前我写过的[正确编译 DuiLib 静态库](https://github.com/duilib/duilib/wiki/%E6%AD%A3%E7%A1%AE%E7%BC%96%E8%AF%91-Duilib-%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E6%96%B9%E6%B3%95)中也有介绍
+
+<img src="../images/2018-04-28_11-48-13.png" />
+
+然后我们克隆 DuiLib 官方 Github 维护的代码，命令行中执行如下命令，如果你没有安装 git 客户端，请先[安装 git](https://git-scm.com/)。
 
 ```
-//duilib_tutorial.cpp: 定义应用程序的入口点。
-//
-
-#include "stdafx.h"
-#include "duilib_tutorial.h"
-
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
-{
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
-
-    return 0;
-}
+git clone https://github.com/duilib/duilib.git
 ```
 
-打开 `stdafx.h` 添加 ATL 依赖（创建项目时选择了 ATL 支持，但是没有导入 ATL 的库文件，可能是 VS2017 的 Bug），再添加上 DuiLib 的统一入口头文件和引入整个命名空间（因为是做示例，大型项目不建议引入整个命名空间）
+为了方便学习和演示，我们复制 `DuiLib` 文件夹、`LICENSE` 授权文件、`属性列表.xml` DuiLib 控件的属性列表方便我们后期开发时查询，到刚才创建的项目目录下。
 
-```
-// stdafx.h : 标准系统包含文件的包含文件，
-// 或是经常使用但不常更改的
-// 特定于项目的包含文件
-//
+<img src="../images/2018-04-29_14-41-48.png" />
 
-#pragma once
+## 编译动态库
 
-#include "targetver.h"
+准备工作都做完了，下面我们正式开始编译 DuiLib，在我们刚才创建的项目中，将 DuiLib 工程导入。
 
-#define WIN32_LEAN_AND_MEAN             // 从 Windows 头中排除极少使用的资料
-// Windows 头文件: 
-#include <windows.h>
+<img src="../images/2018-04-29_14-43-28.png" />
+<br />
+<img src="../images/2018-04-29_14-42-46.png" />
 
-// C 运行时头文件
-#include <stdlib.h>
-#include <malloc.h>
-#include <memory.h>
-#include <tchar.h>
+为了保持统一的文件命名规则，我把项目名称改成小写了，这不会影响 duilib 的编译。导入后我们发现这个项目官方已经升级为 VS2013 WinXP 的编译环境了，所以如果你仅安装了 VS2017 还不够，你需要安装 VS2013 才能正确编译这个项目。或者更简单一点，你把项目改成 VS2017 WinXP，这样就不用再去安装一个 VS2013 了（VS2015 也可以同样处理）
 
-// ATL
-#define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
-#include <atlbase.h>
-#include <atlstr.h>
+<img src="../images/2018-04-28_12-04-23.png" />
 
-// TODO: 在此处引用程序需要的其他头文件
-#include "UIlib.h"
-using namespace DuiLib;
-```
+安装好 VS2013 或者修改好编译平台后，我们生成一下项目，即可生成成功了。
 
-然后我们在 duilib_tutoral.cpp 中创建一个自己的窗口，来继承 WindowImplBase，并实现 `GetSkinFolder` `GetSkinFile` `GetWindowClassName` 三个接口，代码如下：
+<img src="../images/2018-04-29_14-44-41.png" />
 
-```
-class MainWndFrame : public WindowImplBase
-{
-protected:
-	virtual CDuiString GetSkinFolder() override;							// 获取皮肤文件的目录，如果有多层目录这里可以设置
-	virtual CDuiString GetSkinFile() override;								// 设置皮肤文件名字
-	virtual LPCTSTR GetWindowClassName(void) const override;	// 设置当前窗口的 class name
+## 编译静态库
 
-public:
-	static const LPCTSTR kClassName;
-	static const LPCTSTR kMainWndFrame;
-};
+上面是动态库的编译方法，非常简单，基本上官方代码拿过来就能用了。静态库要自己手动改一些东西。官方的项目目录下有一个 `DuiLib_Static.vcxproj` 文件，这就是静态库的配置文件，但是其缺少一个 `DuiLib_Static.vcxproj.filters` 的描述文件。不过没关系，我们复制一份 `DuiLib.vcxproj.filters` 然后改名为 `DuiLib_Static.vcxproj.filters` 就可以用了，后缀为 `.filters` 的文件主要作用就是描述项目在 VS 开发环境中的目录结构信息，LIB 和 DLL 的目录结构是一样的，所以用一个文件不同名字即可。复制以后如下
 
-DuiLib::CDuiString MainWndFrame::GetSkinFolder()
-{
-	// GetInstancePath 接口返回默认的皮肤文件位置
-	// 在 main 函数中我们可以通过 SetResourcePath 来设置路径
-	return m_PaintManager.GetInstancePath();
-}
+<img src="../images/2018-04-28_13-22-54.png" />
 
-DuiLib::CDuiString MainWndFrame::GetSkinFile()
-{
-	// 成员变量定义的皮肤文件名
-	return kMainWndFrame;
-}
+然后切换到 VS 中，我们把 `DuiLib_Static` 这个项目导入到解决方案中。
 
-LPCTSTR MainWndFrame::GetWindowClassName(void) const
-{
-	// 成员变量定义的窗口 class name
-	return kClassName;
-}
+<img src="../images/2018-04-29_14-43-31.png" />
 
-const LPCTSTR MainWndFrame::kClassName = _T("main_wnd_frame");
-const LPCTSTR MainWndFrame::kMainWndFrame = _T("main_wnd_frame.xml");
-```
+同样为了保持命名习惯，我还是把项目名称改成了小写的 `duilib_lib`
 
-仔细分析代码，我们可以看到我们指定了这个窗口的皮肤路径是默认路径（取决于我们如何设置，稍后就能看到），并指定了这个窗口的皮肤文件 main_wnd_frame.xml，最后还指定了一下窗口的类名。这样这个窗口就创建好了，我们还需要在 mian 函数中把这个窗口 new 出来，其次还需要创建一个 xml 文件来描述一下这个窗口的样子。先来写 main 函数。
+<img src="../images/2018-04-29_14-47-19.png" />
 
-```
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
-{
-	UNREFERENCED_PARAMETER(hPrevInstance);
-	UNREFERENCED_PARAMETER(lpCmdLine);
+我们看到由于这个静态的项目已经很久没有更新了，还是 VS2012 创建的项目，所以根据你的需要改成 VS2013 还是 VS2017 都可以。同样是项目右键->属性，将所有配置的平台工具集修改为你需要的工具集即可。
 
-	// 设置窗口关联的实例
-	CPaintManagerUI::SetInstance(hInstance);
+<img src="../images/2018-04-28_13-26-49.png" />
 
-	// 设置皮肤的默认路径
-	CPaintManagerUI::SetCurrentPath(CPaintManagerUI::GetInstancePath());
-	CPaintManagerUI::SetResourcePath(_T("theme"));
+对比一下动态库的项目和静态库的项目，发现静态库的 Utils 缺少一个 WndShadow.h 和 WndShadow.cpp 文件，我们给静态库工程导入这两个文件就可以了。不然后面用到的时候会提示没有导出这里面的相关功能。
 
-	// 创建窗口
-	MainWndFrame* pMainWndFrame = new MainWndFrame;
-	pMainWndFrame->Create(nullptr, MainWndFrame::kClassName, UI_WNDSTYLE_DIALOG, 0);
-	pMainWndFrame->CenterWindow();
-	pMainWndFrame->ShowWindow();
+<img src="../images/2018-04-28_13-30-26.png" />
+<br />
+<img src="../images/2018-04-28_13-32-25.png" />
+<br />
+<img src="../images/2018-04-29_14-48-06.png" />
 
-	CPaintManagerUI::MessageLoop();
+导入成功后把 .h 文件和 .cpp 文件分别移动到 Utils 目录下即可。
 
-	if (nullptr != pMainWndFrame)
-	{
-		delete pMainWndFrame;
-	}
+<img src="../images/2018-04-28_13-34-36.png" />
 
-	return 0;
-}
-```
+此时生成一下即可生成出可用的静态库了。
 
-通过 `CPaintManagerUI` 的一些静态设置了当前关联的窗口实例、皮肤文件的路径，接下来 new 了一个我们继承 `WindowImplBase` 所产生的窗口。调用 `Create` 方法创建了窗口，使用 `CenterWindow` 让窗口居中显示，再调用 `ShowWindow` 显示窗口。最后我们使用了 `CPaintManagerUI` 的 `MessageLoop` 启动消息循环的监听，保证程序不被退出。并且在退出前我们要 delete 掉 new 出来的窗口。这样创建窗口的过程就完事儿了，但是现在还是不能运行的，我们还需要完善一下这个窗口的 xml 文件。
+<img src="../images/2018-04-28_13-37-05.png" />
 
-代码中设置了皮肤文件路径是 EXE 目录下的 theme 文件夹，所以要在 EXE 生成的文件夹创建一个 theme 文件夹，把 main_wnd_frame.xml 放到这个里面。
+## 编译 64 位库
 
-<img src="../images/2018-04-29_15-23-04.png" />
+官方没有提供 64 位的版本，但编译起来也很简单。点击上方的配置管理器。
 
-把如下代码添加到 xml 文件中（先暂时不需要关注 xml 的内容，后面会详细的讲解）
+<img src="../images/2018-04-28_13-42-52.png" />
 
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="640,480" caption="0,0,0,35">
-	<VerticalLayout>
-		<HorizontalLayout bkcolor="#FFFFFFFF"/>
-		<HorizontalLayout bkcolor="#FFFFFFFF">
-			<Button text="Hello DuiLib" bkcolor="#FF1296DB"/>
-		</HorizontalLayout>
-		<HorizontalLayout bkcolor="#FFFFFFFF"/>
-	</VerticalLayout>
-</Window>
-```
+给 4 种配置方案（Debug、Release、UnicodeDebug、UnicodeRelease）x64 解决方案平台中，都新增一个 x64 的配置，我这里已经新增好了。
 
-所有准备工作就绪，我们编译一下程序，但你会发现报了一大堆的错误，如下所示
+<img src="../images/2018-04-29_14-51-01.png" />
 
-<img src="../images/2018-04-29_15-21-30.png" />
+新建时记得不用再重新新建一个解决方案平台。其他几个也如法炮制。
 
-很明显，程序不知道到哪里去找我们用到的这些函数，换句话说还没告诉程序要用 DuiLib 的动态库还是静态库，这个好解决。如果你想使用动态库，那么首先保证 EXE 目录下有动态库的文件，其次在项目的 `属性->C/C++->预处理器` 中增加 `UILIB_EXPORTS` 的预定义宏，这是告诉 DuiLib 你需要把我们用到的接口按动态库的方式导出。其实搜索一下 `UILIB_EXPORTS` 就可以看到具体的定义了。
+<img src="../images/2018-04-28_13-45-43.png" />
 
-<img src="../images/2018-04-29_15-23-43.png" />
+如果你不需要多字节版本的 DuiLib，那么可以在属性管理器中，把默认的 Debug 和 Release 属性删除，然后把 UnicodeDebug 和 UnicodeRelease 修改为 Debug 和 Release。注意：删除完成后要保存一下，退出 VS 重新打开，再修改原来的 Unicode* 为正常的名字。如果直接修改会报错，这里可能是 VS 的 Bug，也可能是我使用不当。
 
-如果你想使用静态库，同样，定义一个 `UILIB_STATIC` 的预定义宏然后在项目 `属性->连接器->输入` 中，输入附加依赖库的 lib 文件名字就可以啦（在之前我们已经在项目`属性->VC++目录` 设置中添加了附加库的目录，所以直接添加附加库就可以了 ）。当你定义完预定义宏后再次编译就可以编译通过了，运行程序后窗口就显示出来了。如下所示
+<img src="../images/2018-04-28_13-49-24.png" />
 
-<img src="../images/2018-04-29_15-24-36.png" />
+修改完成后，再打开配置管理器，同样删除活动解决方案配置中的默认名字，并修改 Unicode* 为正常的名字。
 
-但看起来这个窗口有点简陋，只有中间一个蓝条，没有标题栏、没有状态栏，也不能关闭。先不着急，在接下来的教程中一点点循序渐进的往界面中添加内容。
+<img src="../images/2018-04-28_13-52-54.png" />
+
+这样整个项目的解决方案配置名称就统一了。接下来我们赶紧用编译好的动态库和静态库创建一个界面吧。

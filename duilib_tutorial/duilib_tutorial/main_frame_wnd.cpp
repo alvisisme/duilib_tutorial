@@ -17,13 +17,13 @@ CDuiString MainFrameWnd::GetSkinFolder()
 
 CDuiString MainFrameWnd::GetSkinFile()
 {
-	// ³ÉÔ±±äÁ¿¶¨ÒåµÄÆ¤·ôÎÄ¼şÃû
+	// æˆå‘˜å˜é‡å®šä¹‰çš„çš®è‚¤æ–‡ä»¶å
 	return kMainWndFrame;
 }
 
 LPCTSTR MainFrameWnd::GetWindowClassName(void) const
 {
-	// ³ÉÔ±±äÁ¿¶¨ÒåµÄ´°¿Ú class name
+	// æˆå‘˜å˜é‡å®šä¹‰çš„çª—å£ class name
 	return kClassName;
 }
 
@@ -51,9 +51,9 @@ void MainFrameWnd::InitWindow()
 	m_pMainWndList = dynamic_cast<CListUI*>(m_PaintManager.FindControl(_T("main_wnd_list")));
 
 #if 0
-	// Ê¹ÓÃ´úÂë·½Ê½´´½¨
+	// ä½¿ç”¨ä»£ç æ–¹å¼åˆ›å»º
 	CButtonUI* btn = new CButtonUI;
-	btn->SetText(_T("¶¯Ì¬Ìí¼ÓµÄ°´Å¥"));
+	btn->SetText(_T("åŠ¨æ€æ·»åŠ çš„æŒ‰é’®"));
 	btn->SetBkColor(0xFFFFFFFF);
 	btn->SetFixedHeight(60);
 	btn->SetFixedWidth(100);

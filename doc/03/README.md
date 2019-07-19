@@ -1,121 +1,184 @@
-# 资源压缩打包
+# 制作一个简单的界面
 
-现在市面上有很多基于 DuiLib 开发的程序，又或者是从 DuiLib 基础上延伸出来所开发的程序。不同的程序有不同的打包资源的方式，主要有以下几种。
+在实现这个基本窗口之前，我们首先根据自己的习惯设置一下 DuiLib 编译后生成的文件路径和项目依赖的头文件目录。你不一定要按着我的修改，符合你自己的使用习惯即可。要修改的位置主要有一下几个。修改过程比较繁琐，主要还是因为 DuiLib 是从 VC6 升级上来的，很多属性需要删除和修改，也有些属性是 DuiLib 团队自己的目录结构风格，改与不改不影响使用。
 
- - 资源存放在文件夹中
- - 资源存放在 ZIP 压缩包中
- - 资源打包到 EXE 中
- - 使用 DLL 文件存放资源
+ - 常规->输出路径
+ - 常规->中间目录（DLL 和 LIB 不能有冲突）
+ - 常规->输出文件名（32 位和 64 位不一样，Debug 和 Release 也不同）
+ - C/C++->预编译头->预编译头输出文件
+ - 连接器->常规 删除 DuiLib 项目原有的输出文件选项
+ - 连接器->系统->子系统 设置子系统为窗口（负责构建过程中会有警告）
+ - 连接器->高级->到入库 删除默认到入库
+ - 常规->平台工具集 设置 EXE 的平台工具集与 DuiLib 一致为 VS2013（如果是 2017 需要改一些因新标准导致的编译错误）
+ - VC++ 目录->包含目录 设置 EXE 依赖的头文件目录，如果使用静态库那么要设置附加库目录和附加库文件
+ - C/C++->代码生成->运行库 设置 EXE 项目的C/C++代码生成->运行库为 /MTd 和 /MT 与 DuiLib 保持一致否则链接时报错
+ - 连接器->输入 设置 EXE 项目依赖项
 
-有的使用的就是执行程序目录下的文件夹，而有的使用的是一个压缩包（有可能加密），还有的就是一个单独的执行文件复制到任意位置运行同样可以有绚丽的界面。还有就是封装到一个 DLL 资源中，这种方式我也没有用到过，后面研究一下再做补充。第一种方式我们已经知道了，本章就介绍后面两种打包方式，一种是使用压缩包，一种是打包资源到执行文件中让一个文件横扫天下。
+DuiLib 的具体结构这里我们先不说，目前我们仅需要了解，如何使用动态库或静态库来创建一个基于 DuiLib 的简单界面就可以了，然后再循序渐进的往深入去挖一挖。DuiLib 实现了一个窗口基类，我们自己的窗口只需要继承这个类，实现三个必须要实现的纯虚函数，然后设置一下窗口使用的配置文件、窗口配置文件的路径和窗口的名称就可以了。
 
+ - 继承 WindowImplBase 类（DuiLib 窗口管理的一个基类）
+ - 实现 GetWindowClassName 接口（描述窗口唯一名称的方法）
+ - 实现 GetSkinFile 接口（描述窗口样式的 xml 文件名称方法）
+ - 实现 GetSkinFolder 接口（描述窗口样式文件路径的方法）
+ - 创建一个窗口描述配置文件（描述窗口的 xml 样式文件）
 
-## 使用压缩包
-
-使用压缩包的好处是资源被压缩到一个 ZIP 格式的包里面，可以减少一部分程序的体积，并且可以实现加密（本文不涉及）防止篡改，压缩包方式比较简单，修改 main 函数中将原来的
-
-```
-CPaintManagerUI::SetResourcePath(_T("theme"));
-```
-
-替换为
-
-```
-CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());
-CPaintManagerUI::SetResourceZip(_T("theme.zip"));
-```
-
-然后将我们主题文件夹中的 `main_wnd_frame.xml` 打包成一个 ZIP 文件。这里要注意，压缩包中不要再包含一个 `theme` 文件夹了，直接把 `main_wnd_frame.xml` 放在最外层就可以了。
-
-<img src="../images/2018-04-29_16-51-03.png" />
-
-这样我们就可以一个 EXE + 一个 ZIP 压缩包的形式发布程序了。这是其中一种方法，比较简单，还有其他的方法来实现同样的功能，类似下面即将介绍的方法，由于 DuiLib 对于资源的处置代码实现还是稍微有点小乱的。大家在实现这两种方法时候最好去实地看一下代码才知道怎么使用最适合你。
-
-## 使用压缩包资源
-
-与上面有什么区别呢？压缩包？资源？，其实就是把打包后的 ZIP 压缩包当作 VC 程序开发时的资源，一同打包到发布的 EXE 文件中。这样我们就仅需要发布一个 EXE 文件就可以了，而且对付一些小白还可以防止篡改资源文件。
-
-首先删除掉 main 函数中刚才我们修改的两行代码
+根据上面的方法，我们把向导自动生成的项目代码删一删，修改 duilib_tutoral.cpp 文件，仅留下一个 main 函数，如下所示：
 
 ```
-CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());
-CPaintManagerUI::SetResourceZip(_T("theme.zip"));
+//duilib_tutorial.cpp: 定义应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include "duilib_tutorial.h"
+
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+                     _In_opt_ HINSTANCE hPrevInstance,
+                     _In_ LPWSTR    lpCmdLine,
+                     _In_ int       nCmdShow)
+{
+    UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(lpCmdLine);
+
+    return 0;
+}
 ```
 
-随后我们要覆写基类的两个对资源处理的函数，这两个函数分别是 `GetResourceType` 和 `GetResourceID`，前者是设置资源类型，有以下几种：
+打开 `stdafx.h` 添加 ATL 依赖（创建项目时选择了 ATL 支持，但是没有导入 ATL 的库文件，可能是 VS2017 的 Bug），再添加上 DuiLib 的统一入口头文件和引入整个命名空间（因为是做示例，大型项目不建议引入整个命名空间）
 
 ```
-UILIB_FILE=1,       // 来自磁盘文件
-UILIB_ZIP,          // 来自磁盘zip压缩包
-UILIB_RESOURCE,     // 来自资源
-UILIB_ZIPRESOURCE,  // 来自资源的zip压缩包
+// stdafx.h : 标准系统包含文件的包含文件，
+// 或是经常使用但不常更改的
+// 特定于项目的包含文件
+//
+
+#pragma once
+
+#include "targetver.h"
+
+#define WIN32_LEAN_AND_MEAN             // 从 Windows 头中排除极少使用的资料
+// Windows 头文件: 
+#include <windows.h>
+
+// C 运行时头文件
+#include <stdlib.h>
+#include <malloc.h>
+#include <memory.h>
+#include <tchar.h>
+
+// ATL
+#define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
+#include <atlbase.h>
+#include <atlstr.h>
+
+// TODO: 在此处引用程序需要的其他头文件
+#include "UIlib.h"
+using namespace DuiLib;
 ```
 
-可以看到这里支持 4 种形式，包括我们之前提到的使用 ZIP 压缩包的方式，这次我们用覆写两个函数的方式来实现使用资源的 ZIP 压缩包形式。第二个函数 `GetResourceID` 就是我们要使用的资源 ID 了。首先我们要添加一个资源到项目中，资源的类型要固定为 `ZIPRES`，为什么？因为代码中写死了。我们看一下使用资源 ZIP 压缩包的内部实现代码。
+然后我们在 duilib_tutoral.cpp 中创建一个自己的窗口，来继承 WindowImplBase，并实现 `GetSkinFolder` `GetSkinFile` `GetWindowClassName` 三个接口，代码如下：
 
 ```
-case UILIB_ZIPRESOURCE:
+class MainWndFrame : public WindowImplBase
+{
+protected:
+	virtual CDuiString GetSkinFolder() override;							// 获取皮肤文件的目录，如果有多层目录这里可以设置
+	virtual CDuiString GetSkinFile() override;								// 设置皮肤文件名字
+	virtual LPCTSTR GetWindowClassName(void) const override;	// 设置当前窗口的 class name
+
+public:
+	static const LPCTSTR kClassName;
+	static const LPCTSTR kMainWndFrame;
+};
+
+DuiLib::CDuiString MainWndFrame::GetSkinFolder()
+{
+	// GetInstancePath 接口返回默认的皮肤文件位置
+	// 在 main 函数中我们可以通过 SetResourcePath 来设置路径
+	return m_PaintManager.GetInstancePath();
+}
+
+DuiLib::CDuiString MainWndFrame::GetSkinFile()
+{
+	// 成员变量定义的皮肤文件名
+	return kMainWndFrame;
+}
+
+LPCTSTR MainWndFrame::GetWindowClassName(void) const
+{
+	// 成员变量定义的窗口 class name
+	return kClassName;
+}
+
+const LPCTSTR MainWndFrame::kClassName = _T("main_wnd_frame");
+const LPCTSTR MainWndFrame::kMainWndFrame = _T("main_wnd_frame.xml");
+```
+
+仔细分析代码，我们可以看到我们指定了这个窗口的皮肤路径是默认路径（取决于我们如何设置，稍后就能看到），并指定了这个窗口的皮肤文件 main_wnd_frame.xml，最后还指定了一下窗口的类名。这样这个窗口就创建好了，我们还需要在 mian 函数中把这个窗口 new 出来，其次还需要创建一个 xml 文件来描述一下这个窗口的样子。先来写 main 函数。
+
+```
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+                     _In_opt_ HINSTANCE hPrevInstance,
+                     _In_ LPWSTR    lpCmdLine,
+                     _In_ int       nCmdShow)
+{
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
+
+	// 设置窗口关联的实例
+	CPaintManagerUI::SetInstance(hInstance);
+
+	// 设置皮肤的默认路径
+	CPaintManagerUI::SetCurrentPath(CPaintManagerUI::GetInstancePath());
+	CPaintManagerUI::SetResourcePath(_T("theme"));
+
+	// 创建窗口
+	MainWndFrame* pMainWndFrame = new MainWndFrame;
+	pMainWndFrame->Create(nullptr, MainWndFrame::kClassName, UI_WNDSTYLE_DIALOG, 0);
+	pMainWndFrame->CenterWindow();
+	pMainWndFrame->ShowWindow();
+
+	CPaintManagerUI::MessageLoop();
+
+	if (nullptr != pMainWndFrame)
 	{
-		HRSRC hResource = ::FindResource(m_PaintManager.GetResourceDll(), GetResourceID(), _T("ZIPRES"));
-		if( hResource == NULL )
-			return 0L;
-		DWORD dwSize = 0;
-		HGLOBAL hGlobal = ::LoadResource(m_PaintManager.GetResourceDll(), hResource);
-		if( hGlobal == NULL ) 
-		{
-#if defined(WIN32) && !defined(UNDER_CE)
-			::FreeResource(hResource);
-#endif
-			return 0L;
-		}
-		dwSize = ::SizeofResource(m_PaintManager.GetResourceDll(), hResource);
-		if( dwSize == 0 )
-			return 0L;
-		m_lpResourceZIPBuffer = new BYTE[ dwSize ];
-		if (m_lpResourceZIPBuffer != NULL)
-		{
-			::CopyMemory(m_lpResourceZIPBuffer, (LPBYTE)::LockResource(hGlobal), dwSize);
-		}
-#if defined(WIN32) && !defined(UNDER_CE)
-		::FreeResource(hResource);
-#endif
-		m_PaintManager.SetResourceZip(m_lpResourceZIPBuffer, dwSize);
+		delete pMainWndFrame;
 	}
-	break;
-```
 
-实现方式就是查找名称为 `ZIPRES` 的资源，然后加载到内存中使用。那么我们动手开始添加吧。打开资源视图，在 EXE 的资源中右键->添加资源
-
-<img src="../images/2018-04-29_16-51-49.png" />
-
-然后点击 `导入` 按钮
-
-<img src="../images/2018-04-29_16-52-32.png" />
-
-在弹出的对话框中右下角选择所有文件，然后找到我们 EXE 目录下的 `theme.zip` 文件。然后确定，此时会让你输入资源的名称，这里我们按之前的约定输入 `ZIPRES`，然后确定。
-
-<img src="../images/2018-04-29_16-52-39.png" />
-
-导入完成后的样子如下
-
-<img src="../images/2018-04-29_16-52-52.png" />
-
-资源添加完毕了，我们得到了一个资源名为 `IDR_ZIPRES1` 的资源，此时我们开始覆写两个函数。如下所示：
-
-```
-DuiLib::UILIB_RESOURCETYPE MainWndFrame::GetResourceType() const
-{
-	return UILIB_ZIPRESOURCE;
-}
-
-LPCTSTR MainWndFrame::GetResourceID() const
-{
-	return MAKEINTRESOURCE(IDR_ZIPRES1);
+	return 0;
 }
 ```
 
-此时编译一下程序，然后把编译后的 EXE 文件拿到一个空白文件夹，保证文件夹下没有你的资源文件，然后运行程序。同样程序也是可以运行的。并且如果我们用一些压缩软件打开我们的 EXE 文件（比如 7z、好压、360压缩等）你还可以看到我们的资源文件就在 EXE 里面。
+通过 `CPaintManagerUI` 的一些静态设置了当前关联的窗口实例、皮肤文件的路径，接下来 new 了一个我们继承 `WindowImplBase` 所产生的窗口。调用 `Create` 方法创建了窗口，使用 `CenterWindow` 让窗口居中显示，再调用 `ShowWindow` 显示窗口。最后我们使用了 `CPaintManagerUI` 的 `MessageLoop` 启动消息循环的监听，保证程序不被退出。并且在退出前我们要 delete 掉 new 出来的窗口。这样创建窗口的过程就完事儿了，但是现在还是不能运行的，我们还需要完善一下这个窗口的 xml 文件。
 
-<img src="../images/2018-04-29_16-55-36.png" />
+代码中设置了皮肤文件路径是 EXE 目录下的 theme 文件夹，所以要在 EXE 生成的文件夹创建一个 theme 文件夹，把 main_wnd_frame.xml 放到这个里面。
 
-到这里资源打包的几种方式我们都介绍的差不多了，有兴趣的可以自己摸索一下用资源文件而不是用资源 ZIP 压缩包的形式。
+<img src="../images/2018-04-29_15-23-04.png" />
+
+把如下代码添加到 xml 文件中（先暂时不需要关注 xml 的内容，后面会详细的讲解）
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="640,480" caption="0,0,0,35">
+	<VerticalLayout>
+		<HorizontalLayout bkcolor="#FFFFFFFF"/>
+		<HorizontalLayout bkcolor="#FFFFFFFF">
+			<Button text="Hello DuiLib" bkcolor="#FF1296DB"/>
+		</HorizontalLayout>
+		<HorizontalLayout bkcolor="#FFFFFFFF"/>
+	</VerticalLayout>
+</Window>
+```
+
+所有准备工作就绪，我们编译一下程序，但你会发现报了一大堆的错误，如下所示
+
+<img src="../images/2018-04-29_15-21-30.png" />
+
+很明显，程序不知道到哪里去找我们用到的这些函数，换句话说还没告诉程序要用 DuiLib 的动态库还是静态库，这个好解决。如果你想使用动态库，那么首先保证 EXE 目录下有动态库的文件，其次在项目的 `属性->C/C++->预处理器` 中增加 `UILIB_EXPORTS` 的预定义宏，这是告诉 DuiLib 你需要把我们用到的接口按动态库的方式导出。其实搜索一下 `UILIB_EXPORTS` 就可以看到具体的定义了。
+
+<img src="../images/2018-04-29_15-23-43.png" />
+
+如果你想使用静态库，同样，定义一个 `UILIB_STATIC` 的预定义宏然后在项目 `属性->连接器->输入` 中，输入附加依赖库的 lib 文件名字就可以啦（在之前我们已经在项目`属性->VC++目录` 设置中添加了附加库的目录，所以直接添加附加库就可以了 ）。当你定义完预定义宏后再次编译就可以编译通过了，运行程序后窗口就显示出来了。如下所示
+
+<img src="../images/2018-04-29_15-24-36.png" />
+
+但看起来这个窗口有点简陋，只有中间一个蓝条，没有标题栏、没有状态栏，也不能关闭。先不着急，在接下来的教程中一点点循序渐进的往界面中添加内容。

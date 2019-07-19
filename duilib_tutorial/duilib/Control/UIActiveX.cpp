@@ -779,7 +779,7 @@ LPCTSTR CActiveXWnd::GetWindowClassName() const
 void CActiveXWnd::OnFinalMessage(HWND hWnd)
 {
 	m_pOwner->m_pOwner->GetManager()->RemoveNativeWindow(hWnd);
-    //delete this; // 这里不需要清理，CActiveXUI会清理的
+    //delete this; // 锟斤拷锟斤不锟斤拷要锟斤拷锟斤拷锟斤拷CActiveXUI锟斤拷锟斤拷锟斤拷锟斤拷
 }
 
 void CActiveXWnd::DoVerb(LONG iVerb)

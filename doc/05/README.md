@@ -1,292 +1,162 @@
-# 了解 XML 使用 （布局控制）
+# 了解 XML 使用 （布局）
 
-通过上一篇的学习我们可以制作一个简单的布局了，但是没有控件的窗口做再好的布局有什么用呀。赶紧找些素材，我们来做一个标准的 Windows 窗口。并通过这个窗口我们来了解一下布局中一些细微细节的控制。
-
-一个常规的 Windows 窗口应该有一个像样的标题栏，标题栏左侧包含窗口的 Logo 和窗口的名称，右侧有最小化、最大化和关闭按钮，还有一些窗口可能会有设置啊等等类似的按钮。我们到网络上找一些素材，亲自动手制作一个窗口。素材我们可以到 [Iconfont-阿里巴巴矢量图标库](http://www.iconfont.cn) 去自己下载。通过搜索功能搜索一个你喜欢的图片，比如我搜索一个 Logo，会出来很多可用的图形，随便点击一个进去后，可以设置图形的颜色：
-
-<img src="../images/2018-04-29_17-59-03.png" />
-
-我下载了一个 PNG 小图片，大小是 18x18 像素，蓝色。将图片保存到项目的 theme 文件夹下。
-
-<img src="../images/2018-04-29_18-01-03.png" />
-
-然后我们编辑 main_wnd_frame.xml，删除掉原来的 TileLayout 中所有内容，重新做一个布局，如下所示：
-
-<img src="../images/2018-04-29_18-14-45.png" />
-
-通过分析我们可以判断，最外部应该使用一个垂直布局 `VerticalLayout`，因为标题栏和下面窗口内容区域是一个从上到下的垂直布局。而标题栏里面是从左到右的一个水平布局 `VerticalLayout`。至于下方内容区域，我们暂时先不用关心，先把这个标题栏做好，所以我们还是使用一个水平布局。那么根据思路你可以先不看下面代码，自己试着写一个窗口的布局，算是对自己的一个锻炼。记得标题栏是有固定高度的，可以通过 `height` 属性指定 `HorizontalLayout` 的高度。
+本节主要介绍 DuiLib 中 XML 关键字的使用和一些特性，通过构建一个简单的带标题栏和简单结构的窗口，目的为了了解 XML 的布局系统、基本控件和一些全局属性。在介绍之前我们先改造一下程序，让程序在 Debug 模式下使用本地的 XML 文件，只有在发布为 Release 版本时才使用打包到程序中的 ZIP 资源文件。修改 GetSkinFolder 和 GetResourceType 两个方法，如下所示。
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
-<Window size="640,480" caption="0,0,0,35">
-	<VerticalLayout>
-		<!-- 标题栏 -->
-		<HorizontalLayout height="35" bkcolor="#FFD6DBE9">
-			<Control bkimage="Logo.png" height="18" width="18"/>
-			<Label text="duilib tutorial" />
-		</HorizontalLayout>
-		<!-- 窗口内容区域 -->
-		<HorizontalLayout bkcolor="#FF4D6082">
-		</HorizontalLayout>
-	</VerticalLayout>
-</Window>
-```
-
-以上代码运行后，效果如下：
-
-<img src="../images/2018-04-29_18-27-37.png" />
-
-可以看到，我们给窗口分割了两个区域，一个标题栏，一个窗口内容区域，内容区域现在还没有任何内容。但是标题栏已经增加了一个 Logo。其中标题栏我们用水平布局 `HorizontalLayout` 来实现，用 `height="35"` 指定了标题栏的高度，用 `bkcolor` 属性指定了标题栏的背景色。接着标题栏内部我们使用 `Control` 控件包装的 Logo 图像，使用 `bkimage="Logo.png"` 指定了图片文件的位置，并同样使用 `height`、`width` 设置了宽度和高度。这些属性在 DuiLib 属性列表.xml 中都是可以找到的。大家可以翻一番。
-
-但是大家可能发现了，Logo 的位置不是很好，他仅仅的挨在窗口的左上角，我们应该调整一下它的位置，让它居中显示。不过很不幸 DuiLib 好像并没有居中功能，想实现居中功能要通过布局来功能来实现，代码远远比指定一个属性要多的多。我们不通过布局方法实现难道就没有方法了吗？
-
-## 内外边距
-
-标题栏高度是 35，而 Logo 的高度是 18，我们让 Logo 图像的上方和左侧分别向下和向右移动 7~9 像素，这样 Logo 就可以居中显示了。通过 padding 属性可以指定容器的外边距，这里要注意，不像 Web 前端一样使用的是 `margin`，刚切换过来的朋友可能容易出错，所以要尤其注意。我们通过指定 padding="8,8,0,0" 的方式，指定了 Logo 文件左边和上边分别有 4 个像素的边距，代码如下：
-
-```
+DuiLib::CDuiString MainWndFrame::GetSkinFolder()
+{
+#if _DEBUG
+	return _T("theme");
+#else
+	return m_PaintManager.GetInstancePath();
+#endif
+}
 .....
-<Control bkimage="Logo.png" height="18" width="18" padding="8,8,0,0"/>
 .....
+DuiLib::UILIB_RESOURCETYPE MainWndFrame::GetResourceType() const
+{
+#if _DEBUG
+	return UILIB_FILE;
+#else
+	return UILIB_ZIPRESOURCE;
+#endif
+}
 ```
 
-此时再看一下效果基本上是上下居中显示了，而且左侧也与边缘有了写距离，看上去好看一些了。要注意，`padding` 的 4 个参数顺序分别是 左、上、右、下。与 Web 前端 CSS 还不一样，所以大家千万不要弄混了。
+这样我们程序在 Debug 模式下使用的就是本地的 theme 文件夹内的资源了，主要是方便我们进行更新即时查看。接下来我们先从主要的几个布局开始，DuiLib 中重要的几个布局分别如下
 
-<img src="../images/2018-04-29_18-38-05.png" />
+ - HorizontalLayout 和 VerticalLayout
+ - TabLayout
+ - TileLayout
+ - Container
+ - ChildLayout
 
-再注意 Logo 和标题文字是不是挨的有点近？那么我们再给 Logo 指定一个右侧的边距，让标题“离她远点”。
+使用频率由上到下，下面我们分别介绍几种布局的特点。
 
-```
-.....
-<Control bkimage="Logo.png" height="18" width="18" padding="8,8,8,0"/>
-.....
-```
+## HorizontalLayout 和 VerticalLayout
 
-<img src="../images/2018-04-29_18-40-25.png" />
-
-可以看到通过 padding 的设置我们可以实现让容器具有外边距效果，同样有外边距也会有内边距，我们设置标题栏容器的内边距同样可以实现让内容居中的方法。内容如下：
-
-```
-<!-- 标题栏 -->
-<HorizontalLayout height="35" bkcolor="#FFD6DBE9" inset="8,8,8,0">
-	<Control bkimage="Logo.png" height="18" width="18" />
-	<Label text="duilib tutorial" height="18" padding="8"/>
-</HorizontalLayout>
-```
-
-我们使用 `inset` 属性给外部的水平布局容器设置了左侧、上方、右侧分别 8 个像素的内边距，由于 Label 默认是填满整个容器的，所以我们要给他设置一个高度，否则会被挤下来，而且我们删除掉了 Logo 的 `padding` 属性，Logo 与标题之间的间距也不在了。所以这次换个方式，我们给标题文字指定了一个 `padding="8"` 的属性，你会发现，如果我们不需要指定上、右、下的其他几个属性，我们仅指定填写第一个左侧的数据就可以了。这样可以让代码比较简练。效果如下：
-
-<img src="../images/2018-04-29_18-51-51.png" />
-
-## 浮动
-
-除了上面的内外边距可以实现这个效果以外，我们还可以通过让控件 `浮动起来` 的方式，通过指定一个 pos 属性让它想在哪里就在哪里。但前提是你要通过 float 属性指定控件是一个浮动的控件。代码如下：
-
-```
-<!-- 标题栏 -->
-<HorizontalLayout height="35" bkcolor="#FFD6DBE9">
-	<Control bkimage="logo.png" height="18" width="18" float="true" pos="8,8,26,26" />
-	<Label text="duilib tutorial" height="18" float="true" pos="35,8,185,26"/>
-</HorizontalLayout>
-```
-
-去掉了外部水平布局容器的内边距后，我们让 `Control` 控件和 `Label` 控件都成为浮动控件，并指定他们的具体坐标。注意 pos 的第三个和第四个参数，他们决定了控件的右上角位置和右下角位置。要算上控件本身的大小，比如例子中的 Label 控件第三个参数 185，是算上了控件左侧的 35 + 控件自身宽度的总和，如下图所示：
-
-<img src="../images/2018-04-29_19-07-12.png" />
-
-这种方式虽然能实现功能，但是代码写起来繁琐，不容易维护，要调整一个位置要修改好多地方，非常容易出错。所以除非必要，还是建议大家少用这个浮动的功能。
-
-接下来我们来把右侧的几个功能按钮也做一下，我们还是去找一下素材。在 [Iconfont-阿里巴巴矢量图标库](http://www.iconfont.cn/collections/detail?cid=618) 搜索 min、max、close 等关键字就可以搜索到相关素材。在找素材的时候大家请注意，由于我们按钮需要三种状态的图片，一个是普通样式的，一个是鼠标悬浮状态的图片，一个是鼠标按下时的效果，三种效果我们都要找，为了区别不同效果，我使用了不同的颜色。你们也可以根据自己的需要设置不同的颜色，我分别给普通、悬浮状态和按下状态的图片命名为 `btn_*_normal.png`、`btn_*_hovered.png`、`btn_*_pushed.png`，如下图：
-
-<img src="../images/2018-04-29_19-32-47.png" />
-
-由于实在没有找到还原窗口的合适图片，所以临时找个了带了两个箭头的图片顶替了（论身边有个视觉是多么美妙的事情），4 种按钮默认只显示最小化、最大化和关闭，还原按钮只有在最大化的情况下才显示，所以默认我们让他不显示，最终代码如下：
+DuiLib 的布局系统类似于 Qt 的布局系统， HorizontalLayout（水平布局） 和 VerticalLayout（垂直布局）来给界面划分整体区域。HorizontalLayout 顾名思义，就是让其包含的控件以水平位置排布。而 VerticalLayout 则是让起包含的控件以垂直方向进行排布。两种布局在界面中最终体现为什么样子？我们可以做一个实现来验证一下效果。但无论我们使用什么布局，最少要有一个最外部的布局。如下所示：
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <Window size="640,480" caption="0,0,0,35">
 	<VerticalLayout>
-		<!-- 标题栏 -->
-		<HorizontalLayout height="35" bkcolor="#FFD6DBE9" inset="8,8,8,0">
-			<Control bkimage="logo.png" height="18" width="18" />
-			<Label text="duilib tutorial" height="18" padding="8"/>
-			<HorizontalLayout childpadding="3" width="60">
-				<Button height="18" width="18" normalimage="btn_min_normal.png" hotimage="btn_min_hovered.png" pushedimage="btn_min_pushed.png" />
-				<Button height="18" width="18" normalimage="btn_max_normal.png" hotimage="btn_max_hovered.png" pushedimage="btn_max_pushed.png" />
-				<Button height="18" width="18" normalimage="btn_restore_normal.png" hotimage="btn_restore_hovered.png" pushedimage="btn_restore_pushed.png" visible="false"/>
-				<Button height="18" width="18" normalimage="btn_close_normal.png" hotimage="btn_close_hovered.png" pushedimage="btn_close_pushed.png" />
-			</HorizontalLayout>
-		</HorizontalLayout>
-		<!-- 窗口内容区域 -->
-		<HorizontalLayout bkcolor="#FF4D6082">
-		</HorizontalLayout>
+		<!-- 窗口内容 -->
 	</VerticalLayout>
 </Window>
 ```
 
- - 使用 `childpadding` 属性指定了右侧三个按钮水平布局的子控件左右间距（如果是垂直布局那么就是上下间距）
- - 使用 `normalimage` 属性设置控件的默认图片样式
- - 使用 `hotimage` 属性设置控件的鼠标悬浮状态图片
- - 使用 `pushedimage` 属性设置鼠标按下状态图片
- - 使用 `visible` 属性设置还原控件的默认显示状态（见还原按钮的最后一个属性）
+第一行是 xml 描述，这个必须要有的，不了解的同学可以搜索一些 XML 相关的介绍教程，十几分钟就看的差不多了。Window 标签也是必须要有的外部标签，size 属性决定了这个窗口的大小，caption 属性决定了这个窗口的标题栏有效范围是多大的，我们设置了 35 像素，也就是整个窗口最上方的 35 像素是可以用鼠标点击拖动的，更多的属性我们后面再来看 `属性列表.xml`，这里先不多介绍。
 
-重新运行一下程序，我们可以看到三个按钮已经在右上角了。
+DuiLib 通过这个 Window 标签来识别窗口。Window 里面的 VerticalLayout 是一个最外部的布局，我们要写窗体的内部构成，都是基于这个最基本的窗体布局系统来完成的。当然你并不一定必须用 VerticalLayout 来做最外部的布局，这要看你窗口的实际布局效果。如果窗体是从左到右的水平布局模式，那你应该用 HorizontalLayout。
 
-<img src="../images/2018-04-29_19-38-55.png" />
-
-当我们鼠标按下关闭按钮时，颜色会变为红色
-
-<img src="../images/2018-04-29_19-38-59.png" />
-
-## 占位符
-
-因为我们给右侧三个按钮的水平布局容器设置了固定宽度，并且他们左边的 Label 控件是默认拉伸占满整个容器的状态，所以三个按钮的容器默认就被 “挤” 到最右侧去了。如果左边我们也设置了一个默认宽度的容器，右侧关闭按钮也被设置为固定宽度。那么布局就不是这样了，如下所示：
+首先我们在这个基本的布局系统中添加三个子布局 HorizontalLayout 并设置成三种不同的颜色（通过 bkcolor 属性）来看一下效果是什么样子的。
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <Window size="640,480" caption="0,0,0,35">
 	<VerticalLayout>
-		<!-- 标题栏 -->
-		<HorizontalLayout height="35" bkcolor="#FFD6DBE9" inset="8,8,8,0">
-			<HorizontalLayout width="185">
-				<Control bkimage="logo.png" height="18" width="18" />
-				<Label text="duilib tutorial" height="18" padding="8"/>
-			</HorizontalLayout>
-			<HorizontalLayout childpadding="3" width="60">
-				<Button height="18" width="18" normalimage="btn_min_normal.png" hotimage="btn_min_hovered.png" pushedimage="btn_min_pushed.png" />
-				<Button height="18" width="18" normalimage="btn_max_normal.png" hotimage="btn_max_hovered.png" pushedimage="btn_max_pushed.png" />
-				<Button height="18" width="18" normalimage="btn_restore_normal.png" hotimage="btn_restore_hovered.png" pushedimage="btn_restore_pushed.png" visible="false"/>
-				<Button height="18" width="18" normalimage="btn_close_normal.png" hotimage="btn_close_hovered.png" pushedimage="btn_close_pushed.png" />
-			</HorizontalLayout>
-		</HorizontalLayout>
-		<!-- 窗口内容区域 -->
-		<HorizontalLayout bkcolor="#FF4D6082">
-		</HorizontalLayout>
+		<HorizontalLayout bkcolor="#FFD81E06"/>
+		<HorizontalLayout bkcolor="#FF1AFA29"/>
+		<HorizontalLayout bkcolor="#FF1296DB"/>
 	</VerticalLayout>
 </Window>
 ```
 
-<img src="../images/2018-04-29_19-42-38.png" />
+以上效果在程序运行后显示如下效果。
 
-此时如果想让三个按钮靠右显示，我们可以使用 *占位符*
+<img src="../images/2018-04-29_17-23-43.png" />
+
+可以看出，三个 HorizontalLayout 被父控件规定为以垂直方式布局，从上到下依次排列，垂直布局不关心控件宽度，如果我们把外部的 VerticalLayout 修改为 HorizontalLayout。那么下面的三个控件应该是水平的从做到右以此排列。如下所示
+
+<img src="../images/2018-04-29_17-24-06.png" />
+
+如果我们在子布局中再添加一些其他的控件，我们就能看出，HorizontalLayout 下面的控件也是遵循它父级的规定来水平布局的。如下所示
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <Window size="640,480" caption="0,0,0,35">
-	<VerticalLayout>
-		<!-- 标题栏 -->
-		<HorizontalLayout height="35" bkcolor="#FFD6DBE9" inset="8,8,8,0">
-			<HorizontalLayout width="185">
-				<Control bkimage="logo.png" height="18" width="18" />
-				<Label text="duilib tutorial" height="18" padding="8"/>
-			</HorizontalLayout>
-			<Control />
-			<HorizontalLayout childpadding="3" width="60">
-				<Button height="18" width="18" normalimage="btn_min_normal.png" hotimage="btn_min_hovered.png" pushedimage="btn_min_pushed.png" />
-				<Button height="18" width="18" normalimage="btn_max_normal.png" hotimage="btn_max_hovered.png" pushedimage="btn_max_pushed.png" />
-				<Button height="18" width="18" normalimage="btn_restore_normal.png" hotimage="btn_restore_hovered.png" pushedimage="btn_restore_pushed.png" visible="false"/>
-				<Button height="18" width="18" normalimage="btn_close_normal.png" hotimage="btn_close_hovered.png" pushedimage="btn_close_pushed.png" />
-			</HorizontalLayout>
+	<HorizontalLayout>
+		<HorizontalLayout bkcolor="#FFD81E06">
+			<Button text="1" height="30" bkcolor="#FFD81E06" />
+			<Button text="2" height="30" bkcolor="#FF1AFA29" />
+			<Button text="3" height="30" bkcolor="#FF1296DB" />
 		</HorizontalLayout>
-		<!-- 窗口内容区域 -->
-		<HorizontalLayout bkcolor="#FF4D6082">
-		</HorizontalLayout>
-	</VerticalLayout>
+		<HorizontalLayout bkcolor="#FF1AFA29"/>
+		<HorizontalLayout bkcolor="#FF1296DB"/>
+	</HorizontalLayout>
 </Window>
 ```
 
-<img src="../images/2018-04-29_19-43-34.png" />
+控件的排布效果如下
 
-同样的代码我们只是在两个水平布局中间增加了一个空的 Control 控件，它会根据父容器的宽度无限拉伸，由于两侧的两个水平布局容器已经设置了固定宽度，那么它会 “野蛮” 的把剩下所有控件都占掉。这就是所谓的 *占位符*。如果你需要实现一个紧贴顶部和紧贴底部的容器，那么你可以使用垂直布局方式，中间同样增加一个占位符来实现需求。
+<img src="../images/2018-04-29_17-24-54.png" />
 
-到这里我们已经基本上把所有布局相关的内容都说的差不多了，如果还有更重要的内容我会一点点在补充。大家发现，除了之前我们构建窗口时写了一部分代码，剩下的内容都是我们通过 XML 来实现的，并没有敲一行多余的代码。这就是 DuiLib，界面和业务有很大的分离性。接下来我们该看看怎么响应按钮的点击事件了。
+这就是基本的水平和垂直布局系统的简单介绍，这两种布局是使用频率最高的了，基本上界面的布局需求都可以通过这两种布局来实现了。但是总会有个别的布局场景是需要个性化一点的，就像下面的 TabLayout。
 
-## 默认样式
+## TabLayout
 
-DuiLib 在 XML 语法中提供了一些默认样式功能，我们可以给指定控件预设一些默认的样式，当创建这种控件的时候，默认样式就会在其上面展现。比如我们希望所有按钮都有一个边框。那么可以像下面这样来编写 XML
+TabLayout 实现了一个 Tab 标签页方式的布局系统，其下包含的内容只能显示一个。如下所示，默认显示第一个红色的布局。
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <Window size="640,480" caption="0,0,0,35">
-	<Default name="Button" value="bordersize=&quot;1&quot; bordercolor=&quot;#FF222222&quot;" />
-	<VerticalLayout>
-		<!-- 标题栏 -->
-		<HorizontalLayout height="35" bkcolor="#FFD6DBE9" inset="8,8,8,0">
-			<HorizontalLayout width="185">
-				<Control bkimage="logo.png" height="18" width="18" />
-				<Label text="duilib tutorial" height="18" padding="8"/>
-			</HorizontalLayout>
-			<Control />
-			<HorizontalLayout childpadding="3" width="60">
-				<Button name="minbtn" height="18" width="18" normalimage="btn_min_normal.png" hotimage="btn_min_hovered.png" pushedimage="btn_min_pushed.png" />
-				<Button name="maxbtn" height="18" width="18" normalimage="btn_max_normal.png" hotimage="btn_max_hovered.png" pushedimage="btn_max_pushed.png" />
-				<Button name="restorebtn" height="18" width="18" normalimage="btn_restore_normal.png" hotimage="btn_restore_hovered.png" pushedimage="btn_restore_pushed.png" visible="false"/>
-				<Button name="closebtn" height="18" width="18" normalimage="btn_close_normal.png" hotimage="btn_close_hovered.png" pushedimage="btn_close_pushed.png" />
-			</HorizontalLayout>
+	<TabLayout>
+		<HorizontalLayout bkcolor="#FFD81E06">
+			<Button text="1" height="30" bkcolor="#FFD81E06" />
+			<Button text="2" height="30" bkcolor="#FF1AFA29" />
+			<Button text="3" height="30" bkcolor="#FF1296DB" />
 		</HorizontalLayout>
-		<!-- 窗口内容区域 -->
-		<HorizontalLayout bkcolor="#FF4D6082">
-		</HorizontalLayout>
-	</VerticalLayout>
+		<HorizontalLayout bkcolor="#FF1AFA29"/>
+		<HorizontalLayout bkcolor="#FF1296DB"/>
+	</TabLayout>
 </Window>
 ```
 
-我们增加了一行
+<img src="../images/2018-04-29_17-25-17.png" />
 
-```
-<Default name="Button" value="bordersize=&quot;1&quot; bordercolor=&quot;#FF222222&quot;" />
-```
+而想显示另外的两个布局，我们需要通过代码来控制。这里大家只需要有一个概念，后面我们模仿其他 Demo 的时候会用到这个布局。
 
-设置其 name 属性为 “Button”，value 属性为样式描述，因为是作为 XML 的值来使用，所以双引号等要做一下转义。这也操作后，所有按钮都具备了 `"bordersize="1" bordercolor="#FF222222"`  两个属性。如下所示：
+## TileLayout
 
-<img src="../images/2018-05-02_14-19-46.png" />
-
-## 全局字体
-
-像默认属性一样，全局字体也是可以让多个控件使用的一个属性，不过控件可以决定是否使用这个属性，而上面介绍的默认属性是强制的。使用方法如下：
+TileLayout 是一个块级的布局，它下面的控件都会以块为单位，像麻将一样一排一排的组合，测试代码：
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <Window size="640,480" caption="0,0,0,35">
-	<Font shared="true" id="1" name="微软雅黑" size="18" />
-	<VerticalLayout>
-		<!-- 标题栏 -->
-		<HorizontalLayout height="35" bkcolor="#FFD6DBE9" inset="8,8,8,0">
-			<HorizontalLayout width="185">
-				<Control bkimage="logo.png" height="18" width="18" />
-				<Label text="duilib tutorial" height="18" padding="8" font="1"/>
-			</HorizontalLayout>
-			<Control />
-			<HorizontalLayout childpadding="3" width="60">
-				<Button name="minbtn" height="18" width="18" normalimage="btn_min_normal.png" hotimage="btn_min_hovered.png" pushedimage="btn_min_pushed.png" />
-				<Button name="maxbtn" height="18" width="18" normalimage="btn_max_normal.png" hotimage="btn_max_hovered.png" pushedimage="btn_max_pushed.png" />
-				<Button name="restorebtn" height="18" width="18" normalimage="btn_restore_normal.png" hotimage="btn_restore_hovered.png" pushedimage="btn_restore_pushed.png" visible="false"/>
-				<Button name="closebtn" height="18" width="18" normalimage="btn_close_normal.png" hotimage="btn_close_hovered.png" pushedimage="btn_close_pushed.png" />
-			</HorizontalLayout>
-		</HorizontalLayout>
-		<!-- 窗口内容区域 -->
-		<HorizontalLayout bkcolor="#FF4D6082">
-		</HorizontalLayout>
-	</VerticalLayout>
+	<TileLayout>
+		<Button text="1" height="30" bkcolor="#FFD81E06" />
+		<Button text="2" height="30" bkcolor="#FF1AFA29" />
+		<Button text="3" height="30" bkcolor="#FF1296DB" />
+		<Button text="1" height="30" bkcolor="#FFD81E06" />
+		<Button text="2" height="30" bkcolor="#FF1AFA29" />
+		<Button text="3" height="30" bkcolor="#FF1296DB" />
+		<Button text="1" height="30" bkcolor="#FFD81E06" />
+		<Button text="2" height="30" bkcolor="#FF1AFA29" />
+		<Button text="3" height="30" bkcolor="#FF1296DB" />
+		<Button text="1" height="30" bkcolor="#FFD81E06" />
+		<Button text="2" height="30" bkcolor="#FF1AFA29" />
+		<Button text="3" height="30" bkcolor="#FF1296DB" />
+	</TileLayout>
 </Window>
 ```
 
-我们添加了一行 
+效果如下
 
-```
-<Font shared="true" id="1" name="微软雅黑" size="18" />
-```
+<img src="../images/2018-04-29_17-26-21.png" />
 
-并在标题的 Label 中增加了一个 `Font="1"` 的属性，用意就是让这个 Label 使用 Font 编号为 1 的字体。而 Font 通过 id 属性指定了编号。这样再运行程序后，窗体标题就变成了微软雅黑 18 大小的字体。
+TileLayout 有两个比较关键的属性，`itemsize` 和 `columns`，两者不能同时使用。前者决定 TileLayout 包含的子控件以多大尺寸来排列，后者决定了 TileLayout 有几列数据，我们先将 itemsize 指定为 "50,50"，就是告诉 TileLayout 让子控件以宽度和高度分别 50 的大小来进行排列。效果如下
 
-<img src="../images/2018-05-02_14-24-41.png" />
+<img src="../images/2018-04-29_17-26-42.png" />
 
-Font 有如下属性可以使用
+如果我们指定了 `columns` 为 3，那么行只有 3 列数据。
 
- - name：字体名称
- - size：字体大小
- - bold：粗体
- - italic：斜体
- - underline：下划线
- - id：字体的编号
- - shared：是否共享
+<img src="../images/2018-04-29_17-27-02.png" />
+
+## Container
+
+Container 本来是所有 Layout 的基类，之所以没提前介绍它主要是它使用的场景比较少，它下面的子空间都是默认扩充整个容器的，这也就会导致所有子控件重叠在一起，除非你想实现这种效果，否则可能真的用不到它。
+
+## ChildLayout
+
+ChildLayout 我基本没有用过，看过官方的一些例子和 Redrain 介绍，它的功能类似于 include 一个 XML。主要功能就是有些 XML 文件因为规划不合理代码写的又臭又长，使用这个布局可以将外部的 XML 引入到本 XML 文件中，指定它的 xmlfile 属性就可以了。
