@@ -1,4 +1,4 @@
-#ifndef __UIMANAGER_H__
+﻿#ifndef __UIMANAGER_H__
 #define __UIMANAGER_H__
 
 #pragma once
@@ -186,7 +186,14 @@ public:
 //
 typedef CControlUI* (*LPCREATECONTROL)(LPCTSTR pstrType);
 
-
+/**
+ * @brief 窗口消息及图形绘制管理器类
+ * 
+ * 与窗口绑定，主要作用：
+ *　1)        绘制控件。
+ *　2)        消息管理。
+ *　3)        事件通知。
+ */
 class DUILIB_API CPaintManagerUI
 {
 public:

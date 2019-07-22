@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+﻿#include "stdafx.h"
 #include "UILabel.h"
 
 namespace DuiLib
@@ -430,7 +430,7 @@ namespace DuiLib
 
 				FontFamily ftFamily;
 				nFont.GetFamily(&ftFamily);
-				int iLen = wcslen(m_pWideText);
+				int iLen = static_cast<int>(wcslen(m_pWideText));
 				g1.DrawString(m_pWideText,iLen,&nFont,nRc,&format,&nLineGrBrushB);
 
 				g2.DrawImage(&Bit1, 0, 0, (int)iFuzzyWidth, (int)iFuzzyHeight);

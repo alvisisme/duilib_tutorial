@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+﻿#include "stdafx.h"
 #include <zmouse.h>
 #include <stdlib.h>
 

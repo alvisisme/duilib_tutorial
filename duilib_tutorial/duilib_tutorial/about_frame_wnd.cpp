@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "about_frame_wnd.h"
 #include "Resource.h"
 

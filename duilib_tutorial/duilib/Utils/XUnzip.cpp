@@ -1,4 +1,4 @@
-// XUnzip.cpp  Version 1.3
+﻿// XUnzip.cpp  Version 1.3
 //
 // Authors:      Mark Adler et al. (see below)
 //
@@ -940,7 +940,6 @@ const inflate_huft fixed_tl[] = {
     {{{0,8}},12}, {{{0,8}},140}, {{{0,8}},76}, {{{0,9}},248},
     {{{80,7}},3}, {{{0,8}},82}, {{{0,8}},18}, {{{85,8}},163},
     {{{83,7}},35}, {{{0,8}},114}, {{{0,8}},50}, {{{0,9}},196},
-    {{{81,7}},11}, {{{0,8}},98}, {{{0,8}},34}, {{{0,9}},164},
     {{{0,8}},2}, {{{0,8}},130}, {{{0,8}},66}, {{{0,9}},228},
     {{{80,7}},7}, {{{0,8}},90}, {{{0,8}},26}, {{{0,9}},148},
     {{{84,7}},67}, {{{0,8}},122}, {{{0,8}},58}, {{{0,9}},212},
@@ -3455,7 +3454,7 @@ int unzLocateFile (unzFile file, const TCHAR *szFileName, int iCaseSensitivity)
 #endif
 
 	// support Windows subdirectory by:daviyang35
-	int iLen=strlen(szFileNameA);
+	int iLen= static_cast<int>(strlen(szFileNameA));
 	for (int i=0;i<iLen;i++)
 	{
 		if (szFileNameA[i]=='\\')

@@ -1,4 +1,4 @@
-#ifndef __UIBASE_H__
+﻿#ifndef __UIBASE_H__
 #define __UIBASE_H__
 
 
@@ -58,6 +58,10 @@ private:
 	CDuiStringPtrMap m_VirtualWndMap;
 };
 
+/**
+ * @brief 窗口类
+ * 
+ */
 class DUILIB_API CWindowWnd
 {
 public:

@@ -1,4 +1,4 @@
-#ifndef GifAnimUI_h__
+﻿#ifndef GifAnimUI_h__
 #define GifAnimUI_h__
 
 #pragma once

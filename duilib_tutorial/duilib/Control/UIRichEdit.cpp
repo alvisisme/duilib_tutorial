@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #ifdef _USEIMM
 #include <imm.h>
 #pragma comment(lib, "imm32.lib")

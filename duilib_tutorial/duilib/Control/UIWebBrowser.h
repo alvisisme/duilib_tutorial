@@ -1,4 +1,4 @@
-#ifndef __UIWEBBROWSER_H__
+﻿#ifndef __UIWEBBROWSER_H__
 #define __UIWEBBROWSER_H__
 
 #pragma once

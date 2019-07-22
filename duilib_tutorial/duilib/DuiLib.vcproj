@@ -664,7 +664,7 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
-				RelativePath=".\StdAfx.h"
+				RelativePath=".\stdafx.h"
 				>
 			</File>
 			<File

@@ -1,4 +1,4 @@
-#ifndef __UIRICHEDIT_H__
+﻿#ifndef __UIRICHEDIT_H__
 #define __UIRICHEDIT_H__
 
 #pragma once

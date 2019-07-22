@@ -1,6 +1,9 @@
-#pragma once
+﻿#pragma once
 #include "about_frame_wnd.h"
 
+/**
+ * @
+ */
 class MainFrameWnd : public WindowImplBase
 {
 protected:

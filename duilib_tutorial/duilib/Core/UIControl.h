@@ -1,4 +1,4 @@
-#ifndef __UICONTROL_H__
+﻿#ifndef __UICONTROL_H__
 #define __UICONTROL_H__
 
 #pragma once

@@ -328,7 +328,7 @@
     <ClCompile Include="Control\UIWebBrowser.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="UIlib.h" />
     <ClInclude Include="Utils\downloadmgr.h" />
     <ClInclude Include="Utils\FlashEventHandler.h" />
