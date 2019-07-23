@@ -20,7 +20,12 @@ enum DuiSig
 
 class CControlUI;
 
-// Structure for notifications to the outside world
+/**
+ * \typedef TNotifyUI
+ * 
+ * @brief 和外部通信的通知结构体
+ * 
+ */
 typedef struct tagTNotifyUI 
 {
 	CDuiString sType;
@@ -96,13 +101,28 @@ struct DUI_MSGMAP
 	const DUI_MSGMAP_ENTRY* lpEntries;
 };
 
-//结构定义
-struct DUI_MSGMAP_ENTRY //定义一个结构体，来存放消息信息
+/**
+ * @brief 存放消息信息的结构体
+ * 
+ */
+struct DUI_MSGMAP_ENTRY
 {
-	CDuiString sMsgType;          // DUI消息类型
-	CDuiString sCtrlName;         // 控件名称
-	UINT       nSig;              // 标记函数指针类型
-	DUI_PMSG   pfn;               // 指向函数的指针
+	/**
+	 * @brief DUI消息类型
+	 */
+	CDuiString sMsgType;
+	/**
+	 * @brief 控件名称
+	 */
+	CDuiString sCtrlName;
+	/**
+	 * @brief 标记函数指针类型
+	 */
+	UINT       nSig;
+	/**
+	 * @brief 指向函数的指针
+	 */
+	DUI_PMSG   pfn;
 };
 
 //定义

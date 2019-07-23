@@ -121,11 +121,11 @@ static const DUI_MSGMAP_ENTRY* DuiFindMessageEntry(const DUI_MSGMAP_ENTRY* lpEnt
 	return pMsgTypeEntry;
 }
 
-bool CNotifyPump::AddVirtualWnd(CDuiString strName,CNotifyPump* pObject)
+bool CNotifyPump::AddVirtualWnd(CDuiString strName, CNotifyPump* pObject)
 {
 	if( m_VirtualWndMap.Find(strName) == NULL )
 	{
-		m_VirtualWndMap.Insert(strName.GetData(),(LPVOID)pObject);
+		m_VirtualWndMap.Insert(strName.GetData(), (LPVOID)pObject);
 		return true;
 	}
 	return false;
@@ -234,7 +234,7 @@ CWindowWnd::operator HWND() const
     return m_hWnd;
 }
 
-HWND CWindowWnd::CreateDuiWindow( HWND hwndParent, LPCTSTR pstrWindowName,DWORD dwStyle /*=0*/, DWORD dwExStyle /*=0*/ )
+HWND CWindowWnd::CreateDuiWindow( HWND hwndParent, LPCTSTR pstrWindowName, DWORD dwStyle /*=0*/, DWORD dwExStyle /*=0*/ )
 {
 	return Create(hwndParent,pstrWindowName,dwStyle,dwExStyle,0,0,0,0,NULL);
 }

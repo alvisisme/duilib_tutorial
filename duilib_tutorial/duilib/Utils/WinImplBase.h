@@ -17,7 +17,7 @@ namespace DuiLib
 	};
 
 	/**
-	 * @brief 窗口基础类
+	 * @brief 基础窗口类
 	 * 
 	 */
 	class DUILIB_API WindowImplBase

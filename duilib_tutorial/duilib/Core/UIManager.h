@@ -161,14 +161,26 @@ typedef struct DUILIB_API tagTEventUI
     LPARAM lParam;
 } TEventUI;
 
-// Listener interface
+/**
+ * @brief 监听接口
+ * 
+ */
 class DUILIB_API INotifyUI
 {
 public:
+    /**
+     * @brief 接收通知消息
+     * 
+     * @param msg 接收到的通知消息
+     */
     virtual void Notify(TNotifyUI& msg) = 0;
 };
 
 // MessageFilter interface
+/**
+ * @brief 
+ * 
+ */
 class DUILIB_API IMessageFilterUI
 {
 public:
