@@ -38,24 +38,24 @@ clone_depth: 1                      # clone entire repository history if not def
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
   allow_failures:
-    - platform: x86
-      configuration: Debug
     - platform: x64
       configuration: Release
+    # - platform: x86
+    #   configuration: Debug
 
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
 
 # build platform, i.e. x86, x64, Any CPU. This setting is optional.
-platform: 
-  - x86
+platform:
   - x64
+  # - x86
 
 # build Configuration, i.e. Debug, Release, etc.
 configuration:
-  - Debug
   - Release
+  # - Debug
 
 # Build settings, not to be confused with "before_build" and "after_build".
 # "project" is relative to the original build directory and not influenced by directory changes in "before_build".

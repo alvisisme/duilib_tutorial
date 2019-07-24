@@ -178,7 +178,7 @@ public:
 
 // MessageFilter interface
 /**
- * @brief 
+ * @brief 消息过滤器接口
  * 
  */
 class DUILIB_API IMessageFilterUI
