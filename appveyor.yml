@@ -16,5 +16,5 @@ configuration:
   
 build:
   parallel: true
-  project: duilib_tutorial/duilib_tutorial.sln
+  project: duilib_tutorial.sln
   verbosity: minimal
