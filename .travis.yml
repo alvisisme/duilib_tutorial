@@ -1,0 +1,7 @@
+dist: xenial
+sudo: required
+script:
+  - ./travis-doxygen.sh
+branches:
+  only:
+  - master
