@@ -1,7 +1,7 @@
 dist: xenial
 sudo: required
 script:
-  - ./travis-doxygen.sh
+  - bash travis-doxygen.sh
 branches:
   only:
   - master
