@@ -126,7 +126,6 @@ INPUT                  = doc/README.md \
                          doc/dynamic_control.md \
                          doc/child_windows.md \
                          doc/reference.md
-                    
 
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \

@@ -1,6 +1,5 @@
 #!/bin/bash
 # Update Doxygen documentation after push to 'master'.
-# Author: @pah
 
 set -e
 
@@ -76,18 +75,8 @@ gh_pages_prepare()
 
 gh_pages_commit() {
 	cd "${TRAVIS_BUILD_DIR}/html";
-	echo "rapidjson.org" > CNAME
 	git add --all;
 	git diff-index --quiet HEAD || git commit -m "Automatic doxygen build";
-}
-
-gh_setup_askpass() {
-	cat > ${GIT_ASKPASS} <<EOF
-#!/bin/bash
-echo
-exit 0
-EOF
-	chmod a+x "$GIT_ASKPASS"
 }
 
 gh_pages_push() {
