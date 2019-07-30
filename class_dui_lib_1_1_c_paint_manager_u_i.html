@@ -1,0 +1,623 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>duilib自学教程: DuiLib::CPaintManagerUI类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">duilib自学教程
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_dui_lib.html">DuiLib</a></li><li class="navelem"><a class="el" href="class_dui_lib_1_1_c_paint_manager_u_i.html">CPaintManagerUI</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="class_dui_lib_1_1_c_paint_manager_u_i-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">DuiLib::CPaintManagerUI类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>窗口消息及图形绘制管理器类  
+ <a href="class_dui_lib_1_1_c_paint_manager_u_i.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_u_i_manager_8h_source.html">UIManager.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a74d65cf3c67a79cb6ae6960a7227f1c4"><td class="memItemLeft" align="right" valign="top"><a id="a74d65cf3c67a79cb6ae6960a7227f1c4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> (HWND hWnd, LPCTSTR pstrName=NULL)</td></tr>
+<tr class="separator:a74d65cf3c67a79cb6ae6960a7227f1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe54a26b736968271c08e54b6b03468"><td class="memItemLeft" align="right" valign="top"><a id="a6fe54a26b736968271c08e54b6b03468"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsUpdateNeeded</b> () const</td></tr>
+<tr class="separator:a6fe54a26b736968271c08e54b6b03468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd3617dee0ac245a75b0c77d13f84762"><td class="memItemLeft" align="right" valign="top"><a id="acd3617dee0ac245a75b0c77d13f84762"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>NeedUpdate</b> ()</td></tr>
+<tr class="separator:acd3617dee0ac245a75b0c77d13f84762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a231e8939b5095f1d97b9c46196d94f"><td class="memItemLeft" align="right" valign="top"><a id="a6a231e8939b5095f1d97b9c46196d94f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Invalidate</b> ()</td></tr>
+<tr class="separator:a6a231e8939b5095f1d97b9c46196d94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b8b77748be56051d65a2b32f6e36357"><td class="memItemLeft" align="right" valign="top"><a id="a6b8b77748be56051d65a2b32f6e36357"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Invalidate</b> (RECT &amp;rcItem)</td></tr>
+<tr class="separator:a6b8b77748be56051d65a2b32f6e36357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4151955d08c4a6e8b2a4c80751449f70"><td class="memItemLeft" align="right" valign="top"><a id="a4151955d08c4a6e8b2a4c80751449f70"></a>
+LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetName</b> () const</td></tr>
+<tr class="separator:a4151955d08c4a6e8b2a4c80751449f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af465c97f6d0f0e5e8a68a9c82baefbce"><td class="memItemLeft" align="right" valign="top"><a id="af465c97f6d0f0e5e8a68a9c82baefbce"></a>
+HDC&#160;</td><td class="memItemRight" valign="bottom"><b>GetPaintDC</b> () const</td></tr>
+<tr class="separator:af465c97f6d0f0e5e8a68a9c82baefbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6dd93d19fe1c6fb8967f4c1f1b8b00c"><td class="memItemLeft" align="right" valign="top"><a id="ab6dd93d19fe1c6fb8967f4c1f1b8b00c"></a>
+HBITMAP&#160;</td><td class="memItemRight" valign="bottom"><b>GetPaintOffscreenBitmap</b> ()</td></tr>
+<tr class="separator:ab6dd93d19fe1c6fb8967f4c1f1b8b00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf02fb60e7b97e7373f035a3ea3ad0b7"><td class="memItemLeft" align="right" valign="top"><a id="acf02fb60e7b97e7373f035a3ea3ad0b7"></a>
+HWND&#160;</td><td class="memItemRight" valign="bottom"><b>GetPaintWindow</b> () const</td></tr>
+<tr class="separator:acf02fb60e7b97e7373f035a3ea3ad0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a2d1e2a803015dabdcbb7e9a2f4ffe"><td class="memItemLeft" align="right" valign="top"><a id="a44a2d1e2a803015dabdcbb7e9a2f4ffe"></a>
+HWND&#160;</td><td class="memItemRight" valign="bottom"><b>GetTooltipWindow</b> () const</td></tr>
+<tr class="separator:a44a2d1e2a803015dabdcbb7e9a2f4ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc862286eca27eeb83221a7441d02fae"><td class="memItemLeft" align="right" valign="top"><a id="acc862286eca27eeb83221a7441d02fae"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetTooltipWindowWidth</b> () const</td></tr>
+<tr class="separator:acc862286eca27eeb83221a7441d02fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f82975da65de8fadb39ab7962a47fa4"><td class="memItemLeft" align="right" valign="top"><a id="a2f82975da65de8fadb39ab7962a47fa4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTooltipWindowWidth</b> (int iWidth)</td></tr>
+<tr class="separator:a2f82975da65de8fadb39ab7962a47fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad756726fe38688ce296cf852c1ed881d"><td class="memItemLeft" align="right" valign="top"><a id="ad756726fe38688ce296cf852c1ed881d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetHoverTime</b> () const</td></tr>
+<tr class="separator:ad756726fe38688ce296cf852c1ed881d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cc3c0a287f563870b61d96f06b87656"><td class="memItemLeft" align="right" valign="top"><a id="a7cc3c0a287f563870b61d96f06b87656"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHoverTime</b> (int iTime)</td></tr>
+<tr class="separator:a7cc3c0a287f563870b61d96f06b87656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44b1a72b7bcdfe16092b9e80a477cfb7"><td class="memItemLeft" align="right" valign="top"><a id="a44b1a72b7bcdfe16092b9e80a477cfb7"></a>
+POINT&#160;</td><td class="memItemRight" valign="bottom"><b>GetMousePos</b> () const</td></tr>
+<tr class="separator:a44b1a72b7bcdfe16092b9e80a477cfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d3d4f90137e536ab4d15a0f656edce"><td class="memItemLeft" align="right" valign="top"><a id="aa5d3d4f90137e536ab4d15a0f656edce"></a>
+SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>GetClientSize</b> () const</td></tr>
+<tr class="separator:aa5d3d4f90137e536ab4d15a0f656edce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae280c847acfc29dbf50d7632ee16d05d"><td class="memItemLeft" align="right" valign="top"><a id="ae280c847acfc29dbf50d7632ee16d05d"></a>
+SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>GetInitSize</b> ()</td></tr>
+<tr class="separator:ae280c847acfc29dbf50d7632ee16d05d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a4e0335ccccbbf09b1e01462bd9e8a8"><td class="memItemLeft" align="right" valign="top"><a id="a7a4e0335ccccbbf09b1e01462bd9e8a8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetInitSize</b> (int cx, int cy)</td></tr>
+<tr class="separator:a7a4e0335ccccbbf09b1e01462bd9e8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa08a536305026420b0bfd05764a15729"><td class="memItemLeft" align="right" valign="top"><a id="aa08a536305026420b0bfd05764a15729"></a>
+RECT &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetSizeBox</b> ()</td></tr>
+<tr class="separator:aa08a536305026420b0bfd05764a15729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf909a912b94237610a78ae2d84d19b"><td class="memItemLeft" align="right" valign="top"><a id="adcf909a912b94237610a78ae2d84d19b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetSizeBox</b> (RECT &amp;rcSizeBox)</td></tr>
+<tr class="separator:adcf909a912b94237610a78ae2d84d19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4299bfd3321cb79b9e51a6e04d80bd10"><td class="memItemLeft" align="right" valign="top"><a id="a4299bfd3321cb79b9e51a6e04d80bd10"></a>
+RECT &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetCaptionRect</b> ()</td></tr>
+<tr class="separator:a4299bfd3321cb79b9e51a6e04d80bd10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80ee9c201956a6691450521e7fda16a7"><td class="memItemLeft" align="right" valign="top"><a id="a80ee9c201956a6691450521e7fda16a7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCaptionRect</b> (RECT &amp;rcCaption)</td></tr>
+<tr class="separator:a80ee9c201956a6691450521e7fda16a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6507eedfcf5b55b1e5472c7ccfa467"><td class="memItemLeft" align="right" valign="top"><a id="a3d6507eedfcf5b55b1e5472c7ccfa467"></a>
+SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>GetRoundCorner</b> () const</td></tr>
+<tr class="separator:a3d6507eedfcf5b55b1e5472c7ccfa467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7be8cecee1dc267569b26ba45dedd95"><td class="memItemLeft" align="right" valign="top"><a id="ab7be8cecee1dc267569b26ba45dedd95"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRoundCorner</b> (int cx, int cy)</td></tr>
+<tr class="separator:ab7be8cecee1dc267569b26ba45dedd95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2b1277d0f8c9f4772b282deeca3307a"><td class="memItemLeft" align="right" valign="top"><a id="ae2b1277d0f8c9f4772b282deeca3307a"></a>
+SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>GetMinInfo</b> () const</td></tr>
+<tr class="separator:ae2b1277d0f8c9f4772b282deeca3307a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27a1a2308a811c779f733f7bf69e7855"><td class="memItemLeft" align="right" valign="top"><a id="a27a1a2308a811c779f733f7bf69e7855"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMinInfo</b> (int cx, int cy)</td></tr>
+<tr class="separator:a27a1a2308a811c779f733f7bf69e7855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd859c20e4542adbc06ecaaca3ed294c"><td class="memItemLeft" align="right" valign="top"><a id="abd859c20e4542adbc06ecaaca3ed294c"></a>
+SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>GetMaxInfo</b> () const</td></tr>
+<tr class="separator:abd859c20e4542adbc06ecaaca3ed294c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a9e4965ca0e104ab75036e96b5e184"><td class="memItemLeft" align="right" valign="top"><a id="a08a9e4965ca0e104ab75036e96b5e184"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMaxInfo</b> (int cx, int cy)</td></tr>
+<tr class="separator:a08a9e4965ca0e104ab75036e96b5e184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cf307edae6c6a3a726d54d595e834ed"><td class="memItemLeft" align="right" valign="top"><a id="a5cf307edae6c6a3a726d54d595e834ed"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsShowUpdateRect</b> () const</td></tr>
+<tr class="separator:a5cf307edae6c6a3a726d54d595e834ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c24e61fc86a6960cbb9b8d035b1266e"><td class="memItemLeft" align="right" valign="top"><a id="a8c24e61fc86a6960cbb9b8d035b1266e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetShowUpdateRect</b> (bool show)</td></tr>
+<tr class="separator:a8c24e61fc86a6960cbb9b8d035b1266e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aeb49d046b67d9ebe88d942232ae9da"><td class="memItemLeft" align="right" valign="top"><a id="a3aeb49d046b67d9ebe88d942232ae9da"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsNoActivate</b> ()</td></tr>
+<tr class="separator:a3aeb49d046b67d9ebe88d942232ae9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37fc5c167c6fabcca6d821738e71ba45"><td class="memItemLeft" align="right" valign="top"><a id="a37fc5c167c6fabcca6d821738e71ba45"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNoActivate</b> (bool bNoActivate)</td></tr>
+<tr class="separator:a37fc5c167c6fabcca6d821738e71ba45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991c7726eb20891976041fcefc23a7c8"><td class="memItemLeft" align="right" valign="top"><a id="a991c7726eb20891976041fcefc23a7c8"></a>
+BYTE&#160;</td><td class="memItemRight" valign="bottom"><b>GetOpacity</b> () const</td></tr>
+<tr class="separator:a991c7726eb20891976041fcefc23a7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3693dcf393b1d9a8460acb54c66a6ce2"><td class="memItemLeft" align="right" valign="top"><a id="a3693dcf393b1d9a8460acb54c66a6ce2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOpacity</b> (BYTE nOpacity)</td></tr>
+<tr class="separator:a3693dcf393b1d9a8460acb54c66a6ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa50b0e1d17c47c4289ac8341b16c309c"><td class="memItemLeft" align="right" valign="top"><a id="aa50b0e1d17c47c4289ac8341b16c309c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsLayered</b> ()</td></tr>
+<tr class="separator:aa50b0e1d17c47c4289ac8341b16c309c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5be077c346b622a63e315992ca6655d9"><td class="memItemLeft" align="right" valign="top"><a id="a5be077c346b622a63e315992ca6655d9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLayered</b> (bool bLayered)</td></tr>
+<tr class="separator:a5be077c346b622a63e315992ca6655d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07e0b15f44b9faa379b9b60a307ce9a"><td class="memItemLeft" align="right" valign="top"><a id="ac07e0b15f44b9faa379b9b60a307ce9a"></a>
+RECT &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetLayeredInset</b> ()</td></tr>
+<tr class="separator:ac07e0b15f44b9faa379b9b60a307ce9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a77b4dcc11794573bb15990a7b99bf9"><td class="memItemLeft" align="right" valign="top"><a id="a1a77b4dcc11794573bb15990a7b99bf9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLayeredInset</b> (RECT &amp;rcLayeredInset)</td></tr>
+<tr class="separator:a1a77b4dcc11794573bb15990a7b99bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf638e803783b5f22d4f41e08452e336"><td class="memItemLeft" align="right" valign="top"><a id="aaf638e803783b5f22d4f41e08452e336"></a>
+BYTE&#160;</td><td class="memItemRight" valign="bottom"><b>GetLayeredOpacity</b> ()</td></tr>
+<tr class="separator:aaf638e803783b5f22d4f41e08452e336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3074c2251aed9cb4f0927888536e4fa4"><td class="memItemLeft" align="right" valign="top"><a id="a3074c2251aed9cb4f0927888536e4fa4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLayeredOpacity</b> (BYTE nOpacity)</td></tr>
+<tr class="separator:a3074c2251aed9cb4f0927888536e4fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf73a826ac6f51e9ee845b1055d813ae"><td class="memItemLeft" align="right" valign="top"><a id="acf73a826ac6f51e9ee845b1055d813ae"></a>
+LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetLayeredImage</b> ()</td></tr>
+<tr class="separator:acf73a826ac6f51e9ee845b1055d813ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa833b787f4866734e41c6ca5a6c500c1"><td class="memItemLeft" align="right" valign="top"><a id="aa833b787f4866734e41c6ca5a6c500c1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLayeredImage</b> (LPCTSTR pstrImage)</td></tr>
+<tr class="separator:aa833b787f4866734e41c6ca5a6c500c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aa70c86b247044c004a3210724f09ba"><td class="memItemLeft" align="right" valign="top"><a id="a5aa70c86b247044c004a3210724f09ba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsForceUseSharedRes</b> () const</td></tr>
+<tr class="separator:a5aa70c86b247044c004a3210724f09ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e92b151b37a137649b02daa95227f1b"><td class="memItemLeft" align="right" valign="top"><a id="a0e92b151b37a137649b02daa95227f1b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetForceUseSharedRes</b> (bool bForce)</td></tr>
+<tr class="separator:a0e92b151b37a137649b02daa95227f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a329f21e65b1b1af653bdc5d80560f8d3"><td class="memItemLeft" align="right" valign="top"><a id="a329f21e65b1b1af653bdc5d80560f8d3"></a>
+DWORD&#160;</td><td class="memItemRight" valign="bottom"><b>GetDefaultDisabledColor</b> () const</td></tr>
+<tr class="separator:a329f21e65b1b1af653bdc5d80560f8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22071618129419aabe5274c79510d45c"><td class="memItemLeft" align="right" valign="top"><a id="a22071618129419aabe5274c79510d45c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDefaultDisabledColor</b> (DWORD dwColor, bool bShared=false)</td></tr>
+<tr class="separator:a22071618129419aabe5274c79510d45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef200407defe34007c5edb958d0461ea"><td class="memItemLeft" align="right" valign="top"><a id="aef200407defe34007c5edb958d0461ea"></a>
+DWORD&#160;</td><td class="memItemRight" valign="bottom"><b>GetDefaultFontColor</b> () const</td></tr>
+<tr class="separator:aef200407defe34007c5edb958d0461ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28c46991e72b7f94612e2188484117d"><td class="memItemLeft" align="right" valign="top"><a id="ad28c46991e72b7f94612e2188484117d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDefaultFontColor</b> (DWORD dwColor, bool bShared=false)</td></tr>
+<tr class="separator:ad28c46991e72b7f94612e2188484117d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54097d58d16798b9f46e9ebe0c434d36"><td class="memItemLeft" align="right" valign="top"><a id="a54097d58d16798b9f46e9ebe0c434d36"></a>
+DWORD&#160;</td><td class="memItemRight" valign="bottom"><b>GetDefaultLinkFontColor</b> () const</td></tr>
+<tr class="separator:a54097d58d16798b9f46e9ebe0c434d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73b9ad3aa3d0c2bc9df742adf3334e96"><td class="memItemLeft" align="right" valign="top"><a id="a73b9ad3aa3d0c2bc9df742adf3334e96"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDefaultLinkFontColor</b> (DWORD dwColor, bool bShared=false)</td></tr>
+<tr class="separator:a73b9ad3aa3d0c2bc9df742adf3334e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10eae05f81b6e2195bb7d0efc2b63692"><td class="memItemLeft" align="right" valign="top"><a id="a10eae05f81b6e2195bb7d0efc2b63692"></a>
+DWORD&#160;</td><td class="memItemRight" valign="bottom"><b>GetDefaultLinkHoverFontColor</b> () const</td></tr>
+<tr class="separator:a10eae05f81b6e2195bb7d0efc2b63692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5e1f3213a1a24e641123f4a29185391"><td class="memItemLeft" align="right" valign="top"><a id="ac5e1f3213a1a24e641123f4a29185391"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDefaultLinkHoverFontColor</b> (DWORD dwColor, bool bShared=false)</td></tr>
+<tr class="separator:ac5e1f3213a1a24e641123f4a29185391"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e46f62de1a084776bc79a286457acb1"><td class="memItemLeft" align="right" valign="top"><a id="a6e46f62de1a084776bc79a286457acb1"></a>
+DWORD&#160;</td><td class="memItemRight" valign="bottom"><b>GetDefaultSelectedBkColor</b> () const</td></tr>
+<tr class="separator:a6e46f62de1a084776bc79a286457acb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6f2f4fec26f2f8a278e7370b2e44191"><td class="memItemLeft" align="right" valign="top"><a id="ab6f2f4fec26f2f8a278e7370b2e44191"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDefaultSelectedBkColor</b> (DWORD dwColor, bool bShared=false)</td></tr>
+<tr class="separator:ab6f2f4fec26f2f8a278e7370b2e44191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b99a35c0eba99fc1c6c4192f14f1624"><td class="memItemLeft" align="right" valign="top"><a id="a5b99a35c0eba99fc1c6c4192f14f1624"></a>
+TFontInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>GetDefaultFontInfo</b> ()</td></tr>
+<tr class="separator:a5b99a35c0eba99fc1c6c4192f14f1624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a345caf5b19b10b822fc2129ba6cec19c"><td class="memItemLeft" align="right" valign="top"><a id="a345caf5b19b10b822fc2129ba6cec19c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDefaultFont</b> (LPCTSTR pStrFontName, int nSize, bool bBold, bool bUnderline, bool bItalic, bool bShared=false)</td></tr>
+<tr class="separator:a345caf5b19b10b822fc2129ba6cec19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65318601e60ae87ac4754f164f24c8a8"><td class="memItemLeft" align="right" valign="top"><a id="a65318601e60ae87ac4754f164f24c8a8"></a>
+DWORD&#160;</td><td class="memItemRight" valign="bottom"><b>GetCustomFontCount</b> (bool bShared=false) const</td></tr>
+<tr class="separator:a65318601e60ae87ac4754f164f24c8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c21fdb4e2a25234300cf639147fd50d"><td class="memItemLeft" align="right" valign="top"><a id="a5c21fdb4e2a25234300cf639147fd50d"></a>
+HFONT&#160;</td><td class="memItemRight" valign="bottom"><b>AddFont</b> (int id, LPCTSTR pStrFontName, int nSize, bool bBold, bool bUnderline, bool bItalic, bool bShared=false)</td></tr>
+<tr class="separator:a5c21fdb4e2a25234300cf639147fd50d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6cbdd12aec412425dca8ba06aa5ff01"><td class="memItemLeft" align="right" valign="top"><a id="ac6cbdd12aec412425dca8ba06aa5ff01"></a>
+HFONT&#160;</td><td class="memItemRight" valign="bottom"><b>GetFont</b> (int id)</td></tr>
+<tr class="separator:ac6cbdd12aec412425dca8ba06aa5ff01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2bb254122b1a6f623ce130d0f2ebfeb"><td class="memItemLeft" align="right" valign="top"><a id="ac2bb254122b1a6f623ce130d0f2ebfeb"></a>
+HFONT&#160;</td><td class="memItemRight" valign="bottom"><b>GetFont</b> (LPCTSTR pStrFontName, int nSize, bool bBold, bool bUnderline, bool bItalic)</td></tr>
+<tr class="separator:ac2bb254122b1a6f623ce130d0f2ebfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0b8b9f8f2c32d5f271a54d045c06e0"><td class="memItemLeft" align="right" valign="top"><a id="aad0b8b9f8f2c32d5f271a54d045c06e0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetFontIndex</b> (HFONT hFont, bool bShared=false)</td></tr>
+<tr class="separator:aad0b8b9f8f2c32d5f271a54d045c06e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585c2931fe490b5814b423439621f9c5"><td class="memItemLeft" align="right" valign="top"><a id="a585c2931fe490b5814b423439621f9c5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetFontIndex</b> (LPCTSTR pStrFontName, int nSize, bool bBold, bool bUnderline, bool bItalic, bool bShared=false)</td></tr>
+<tr class="separator:a585c2931fe490b5814b423439621f9c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1274930eb465c0fefceeaab30423f551"><td class="memItemLeft" align="right" valign="top"><a id="a1274930eb465c0fefceeaab30423f551"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveFont</b> (HFONT hFont, bool bShared=false)</td></tr>
+<tr class="separator:a1274930eb465c0fefceeaab30423f551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9af99427477b01ec8a89618fe03b77d"><td class="memItemLeft" align="right" valign="top"><a id="ab9af99427477b01ec8a89618fe03b77d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveFont</b> (int id, bool bShared=false)</td></tr>
+<tr class="separator:ab9af99427477b01ec8a89618fe03b77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e44e1dc4a59f607eaf3ce053edff204"><td class="memItemLeft" align="right" valign="top"><a id="a7e44e1dc4a59f607eaf3ce053edff204"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAllFonts</b> (bool bShared=false)</td></tr>
+<tr class="separator:a7e44e1dc4a59f607eaf3ce053edff204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa3b784c2cf3084575a3b5bd16264682"><td class="memItemLeft" align="right" valign="top"><a id="afa3b784c2cf3084575a3b5bd16264682"></a>
+TFontInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>GetFontInfo</b> (int id)</td></tr>
+<tr class="separator:afa3b784c2cf3084575a3b5bd16264682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b63294c905d2435f45422c1171bfd41"><td class="memItemLeft" align="right" valign="top"><a id="a4b63294c905d2435f45422c1171bfd41"></a>
+TFontInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>GetFontInfo</b> (HFONT hFont)</td></tr>
+<tr class="separator:a4b63294c905d2435f45422c1171bfd41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfcc0ab31e40087544607bda2ba26f22"><td class="memItemLeft" align="right" valign="top"><a id="abfcc0ab31e40087544607bda2ba26f22"></a>
+const TImageInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>GetImage</b> (LPCTSTR bitmap)</td></tr>
+<tr class="separator:abfcc0ab31e40087544607bda2ba26f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dc8b500723f3d1cabacd00618d2daec"><td class="memItemLeft" align="right" valign="top"><a id="a5dc8b500723f3d1cabacd00618d2daec"></a>
+const TImageInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>GetImageEx</b> (LPCTSTR bitmap, LPCTSTR type=NULL, DWORD mask=0, bool bUseHSL=false)</td></tr>
+<tr class="separator:a5dc8b500723f3d1cabacd00618d2daec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7acbc4b5feddd8e635b86b69fb454093"><td class="memItemLeft" align="right" valign="top"><a id="a7acbc4b5feddd8e635b86b69fb454093"></a>
+const TImageInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>AddImage</b> (LPCTSTR bitmap, LPCTSTR type=NULL, DWORD mask=0, bool bUseHSL=false, bool bShared=false)</td></tr>
+<tr class="separator:a7acbc4b5feddd8e635b86b69fb454093"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb6757af02f0f728e470a999fb42e0de"><td class="memItemLeft" align="right" valign="top"><a id="acb6757af02f0f728e470a999fb42e0de"></a>
+const TImageInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>AddImage</b> (LPCTSTR bitmap, HBITMAP hBitmap, int iWidth, int iHeight, bool bAlpha, bool bShared=false)</td></tr>
+<tr class="separator:acb6757af02f0f728e470a999fb42e0de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58638821d64868d0658cbabb98b55cb6"><td class="memItemLeft" align="right" valign="top"><a id="a58638821d64868d0658cbabb98b55cb6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveImage</b> (LPCTSTR bitmap, bool bShared=false)</td></tr>
+<tr class="separator:a58638821d64868d0658cbabb98b55cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab546135a49a671234130a9d6851e02db"><td class="memItemLeft" align="right" valign="top"><a id="ab546135a49a671234130a9d6851e02db"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAllImages</b> (bool bShared=false)</td></tr>
+<tr class="separator:ab546135a49a671234130a9d6851e02db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ee2ff3af1e63ced811d96b618f7091"><td class="memItemLeft" align="right" valign="top"><a id="a35ee2ff3af1e63ced811d96b618f7091"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ReloadImages</b> ()</td></tr>
+<tr class="separator:a35ee2ff3af1e63ced811d96b618f7091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af994e331e22ed998743481d16ad43722"><td class="memItemLeft" align="right" valign="top"><a id="af994e331e22ed998743481d16ad43722"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddDefaultAttributeList</b> (LPCTSTR pStrControlName, LPCTSTR pStrControlAttrList, bool bShared=false)</td></tr>
+<tr class="separator:af994e331e22ed998743481d16ad43722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1d99e0f95e44c2f9834005b010e00c"><td class="memItemLeft" align="right" valign="top"><a id="acf1d99e0f95e44c2f9834005b010e00c"></a>
+LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetDefaultAttributeList</b> (LPCTSTR pStrControlName) const</td></tr>
+<tr class="separator:acf1d99e0f95e44c2f9834005b010e00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a5c6660e901721cd3412d1d7889c89"><td class="memItemLeft" align="right" valign="top"><a id="a91a5c6660e901721cd3412d1d7889c89"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveDefaultAttributeList</b> (LPCTSTR pStrControlName, bool bShared=false)</td></tr>
+<tr class="separator:a91a5c6660e901721cd3412d1d7889c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbe87f82224ba90d28e36858c9373690"><td class="memItemLeft" align="right" valign="top"><a id="acbe87f82224ba90d28e36858c9373690"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAllDefaultAttributeList</b> (bool bShared=false)</td></tr>
+<tr class="separator:acbe87f82224ba90d28e36858c9373690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedddaf39c1868c41d7e4661ba8d9573c"><td class="memItemLeft" align="right" valign="top"><a id="aedddaf39c1868c41d7e4661ba8d9573c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddWindowCustomAttribute</b> (LPCTSTR pstrName, LPCTSTR pstrAttr)</td></tr>
+<tr class="separator:aedddaf39c1868c41d7e4661ba8d9573c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3be26add5566237405ff207fedc61080"><td class="memItemLeft" align="right" valign="top"><a id="a3be26add5566237405ff207fedc61080"></a>
+LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetWindowCustomAttribute</b> (LPCTSTR pstrName) const</td></tr>
+<tr class="separator:a3be26add5566237405ff207fedc61080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f47f14ab3890526bcb2a9c86c60a2e6"><td class="memItemLeft" align="right" valign="top"><a id="a5f47f14ab3890526bcb2a9c86c60a2e6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveWindowCustomAttribute</b> (LPCTSTR pstrName)</td></tr>
+<tr class="separator:a5f47f14ab3890526bcb2a9c86c60a2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad92c4fc2cbd7e45f2227b90e767d3020"><td class="memItemLeft" align="right" valign="top"><a id="ad92c4fc2cbd7e45f2227b90e767d3020"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAllWindowCustomAttribute</b> ()</td></tr>
+<tr class="separator:ad92c4fc2cbd7e45f2227b90e767d3020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a882079e0e8df222233362fb43dfb1e37"><td class="memItemLeft" align="right" valign="top"><a id="a882079e0e8df222233362fb43dfb1e37"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetWindowAttribute</b> (LPCTSTR pstrName)</td></tr>
+<tr class="separator:a882079e0e8df222233362fb43dfb1e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e44abb8f1a78ec695cc69ef04c4f25"><td class="memItemLeft" align="right" valign="top"><a id="a72e44abb8f1a78ec695cc69ef04c4f25"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetWindowAttribute</b> (LPCTSTR pstrName, LPCTSTR pstrValue)</td></tr>
+<tr class="separator:a72e44abb8f1a78ec695cc69ef04c4f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd69f27dfed8ae78b4f5cb08315e7c5e"><td class="memItemLeft" align="right" valign="top"><a id="acd69f27dfed8ae78b4f5cb08315e7c5e"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetWindowAttributeList</b> (bool bIgnoreDefault=true)</td></tr>
+<tr class="separator:acd69f27dfed8ae78b4f5cb08315e7c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1030d1e3d9a4959986fc0aabf44a32"><td class="memItemLeft" align="right" valign="top"><a id="a5d1030d1e3d9a4959986fc0aabf44a32"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetWindowAttributeList</b> (LPCTSTR pstrList)</td></tr>
+<tr class="separator:a5d1030d1e3d9a4959986fc0aabf44a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c5598274912253e406e3371e7285d2"><td class="memItemLeft" align="right" valign="top"><a id="a99c5598274912253e406e3371e7285d2"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveWindowAttribute</b> (LPCTSTR pstrName)</td></tr>
+<tr class="separator:a99c5598274912253e406e3371e7285d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40bbbd87cdc2f8581118ccf285dea6eb"><td class="memItemLeft" align="right" valign="top"><a id="a40bbbd87cdc2f8581118ccf285dea6eb"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetWindowXML</b> ()</td></tr>
+<tr class="separator:a40bbbd87cdc2f8581118ccf285dea6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a3b1e8e5b95a47028ca39eabe1379b"><td class="memItemLeft" align="right" valign="top"><a id="a57a3b1e8e5b95a47028ca39eabe1379b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AttachDialog</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a57a3b1e8e5b95a47028ca39eabe1379b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a376b96a6d9ac079d0200a718cb211ca8"><td class="memItemLeft" align="right" valign="top"><a id="a376b96a6d9ac079d0200a718cb211ca8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>InitControls</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, <a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pParent=NULL)</td></tr>
+<tr class="separator:a376b96a6d9ac079d0200a718cb211ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14fd973339a9ac08f82df37020935960"><td class="memItemLeft" align="right" valign="top"><a id="a14fd973339a9ac08f82df37020935960"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RenameControl</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, LPCTSTR pstrName)</td></tr>
+<tr class="separator:a14fd973339a9ac08f82df37020935960"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e80b9abfe79d695c2eab2be766f53d3"><td class="memItemLeft" align="right" valign="top"><a id="a2e80b9abfe79d695c2eab2be766f53d3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ReapObjects</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a2e80b9abfe79d695c2eab2be766f53d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0828e343aa5413e63409fff95b13a149"><td class="memItemLeft" align="right" valign="top"><a id="a0828e343aa5413e63409fff95b13a149"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddOptionGroup</b> (LPCTSTR pStrGroupName, <a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a0828e343aa5413e63409fff95b13a149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e109a0db2d3c14401519ac246025d13"><td class="memItemLeft" align="right" valign="top"><a id="a9e109a0db2d3c14401519ac246025d13"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_ptr_array.html">CDuiPtrArray</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetOptionGroup</b> (LPCTSTR pStrGroupName)</td></tr>
+<tr class="separator:a9e109a0db2d3c14401519ac246025d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe27c9b3f4ddbaf1a9b8fface4122b99"><td class="memItemLeft" align="right" valign="top"><a id="afe27c9b3f4ddbaf1a9b8fface4122b99"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveOptionGroup</b> (LPCTSTR pStrGroupName, <a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:afe27c9b3f4ddbaf1a9b8fface4122b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adef510d471ccc53b696bbba4bf2ebe51"><td class="memItemLeft" align="right" valign="top"><a id="adef510d471ccc53b696bbba4bf2ebe51"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAllOptionGroups</b> ()</td></tr>
+<tr class="separator:adef510d471ccc53b696bbba4bf2ebe51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a74af98539f4fc580627b89c8848e94"><td class="memItemLeft" align="right" valign="top"><a id="a7a74af98539f4fc580627b89c8848e94"></a>
+<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetFocus</b> () const</td></tr>
+<tr class="separator:a7a74af98539f4fc580627b89c8848e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b975998118b98e4c4457cb4c40b5f8a"><td class="memItemLeft" align="right" valign="top"><a id="a7b975998118b98e4c4457cb4c40b5f8a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFocus</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, bool bFocusWnd=true)</td></tr>
+<tr class="separator:a7b975998118b98e4c4457cb4c40b5f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f4fdafa762180cc28e42d4e466a5d47"><td class="memItemLeft" align="right" valign="top"><a id="a5f4fdafa762180cc28e42d4e466a5d47"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFocusNeeded</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a5f4fdafa762180cc28e42d4e466a5d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad03aca2aee1e8ab0df694adf67744b87"><td class="memItemLeft" align="right" valign="top"><a id="ad03aca2aee1e8ab0df694adf67744b87"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SetNextTabControl</b> (bool bForward=true)</td></tr>
+<tr class="separator:ad03aca2aee1e8ab0df694adf67744b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2da1f850fb06351dbc49f982a15f113"><td class="memItemLeft" align="right" valign="top"><a id="af2da1f850fb06351dbc49f982a15f113"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SetTimer</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, UINT nTimerID, UINT uElapse)</td></tr>
+<tr class="separator:af2da1f850fb06351dbc49f982a15f113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7302af5e07a61969c44e513a62623e58"><td class="memItemLeft" align="right" valign="top"><a id="a7302af5e07a61969c44e513a62623e58"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>KillTimer</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, UINT nTimerID)</td></tr>
+<tr class="separator:a7302af5e07a61969c44e513a62623e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c458fd7f16fe16621a81519bcc16895"><td class="memItemLeft" align="right" valign="top"><a id="a0c458fd7f16fe16621a81519bcc16895"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>KillTimer</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a0c458fd7f16fe16621a81519bcc16895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a086f31910ed29083cf212f018541958c"><td class="memItemLeft" align="right" valign="top"><a id="a086f31910ed29083cf212f018541958c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAllTimers</b> ()</td></tr>
+<tr class="separator:a086f31910ed29083cf212f018541958c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a550cf9b064f2aaa32213a01ef888d11a"><td class="memItemLeft" align="right" valign="top"><a id="a550cf9b064f2aaa32213a01ef888d11a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCapture</b> ()</td></tr>
+<tr class="separator:a550cf9b064f2aaa32213a01ef888d11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3688280c02b3587dd935ebbb234d55"><td class="memItemLeft" align="right" valign="top"><a id="a6e3688280c02b3587dd935ebbb234d55"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ReleaseCapture</b> ()</td></tr>
+<tr class="separator:a6e3688280c02b3587dd935ebbb234d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a689f7e63f96f2e9dd6a0759f5b0ccdbb"><td class="memItemLeft" align="right" valign="top"><a id="a689f7e63f96f2e9dd6a0759f5b0ccdbb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsCaptured</b> ()</td></tr>
+<tr class="separator:a689f7e63f96f2e9dd6a0759f5b0ccdbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0093b4f453e949eefd2f482ce0849f5f"><td class="memItemLeft" align="right" valign="top"><a id="a0093b4f453e949eefd2f482ce0849f5f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsPainting</b> ()</td></tr>
+<tr class="separator:a0093b4f453e949eefd2f482ce0849f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1af21bc0cc634dc14d58a8557095434c"><td class="memItemLeft" align="right" valign="top"><a id="a1af21bc0cc634dc14d58a8557095434c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPainting</b> (bool bIsPainting)</td></tr>
+<tr class="separator:a1af21bc0cc634dc14d58a8557095434c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0888578116327536dd4dfb47db8a70e"><td class="memItemLeft" align="right" valign="top"><a id="ac0888578116327536dd4dfb47db8a70e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddNotifier</b> (<a class="el" href="class_dui_lib_1_1_i_notify_u_i.html">INotifyUI</a> *pControl)</td></tr>
+<tr class="separator:ac0888578116327536dd4dfb47db8a70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bdcefc9a6921be6bab8496b8dd2ec91"><td class="memItemLeft" align="right" valign="top"><a id="a5bdcefc9a6921be6bab8496b8dd2ec91"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveNotifier</b> (<a class="el" href="class_dui_lib_1_1_i_notify_u_i.html">INotifyUI</a> *pControl)</td></tr>
+<tr class="separator:a5bdcefc9a6921be6bab8496b8dd2ec91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef58233d02e9cb262ce5101d7526504"><td class="memItemLeft" align="right" valign="top"><a id="a5ef58233d02e9cb262ce5101d7526504"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SendNotify</b> (<a class="el" href="namespace_dui_lib.html#aee80a6687459a1ce1cadcfb168a6a2b5">TNotifyUI</a> &amp;Msg, bool bAsync=false, bool bEnableRepeat=true)</td></tr>
+<tr class="separator:a5ef58233d02e9cb262ce5101d7526504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdac924413ad8b23db556280d678078e"><td class="memItemLeft" align="right" valign="top"><a id="abdac924413ad8b23db556280d678078e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SendNotify</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, LPCTSTR pstrMessage, WPARAM wParam=0, LPARAM lParam=0, bool bAsync=false, bool bEnableRepeat=true)</td></tr>
+<tr class="separator:abdac924413ad8b23db556280d678078e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59537c339b13ec66a02833f16981879f"><td class="memItemLeft" align="right" valign="top"><a id="a59537c339b13ec66a02833f16981879f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddPreMessageFilter</b> (<a class="el" href="class_dui_lib_1_1_i_message_filter_u_i.html">IMessageFilterUI</a> *pFilter)</td></tr>
+<tr class="separator:a59537c339b13ec66a02833f16981879f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72bacbdece2a35925f46ee223e294d4"><td class="memItemLeft" align="right" valign="top"><a id="af72bacbdece2a35925f46ee223e294d4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemovePreMessageFilter</b> (<a class="el" href="class_dui_lib_1_1_i_message_filter_u_i.html">IMessageFilterUI</a> *pFilter)</td></tr>
+<tr class="separator:af72bacbdece2a35925f46ee223e294d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74390c8e70d459b6cd9e91f631313c24"><td class="memItemLeft" align="right" valign="top"><a id="a74390c8e70d459b6cd9e91f631313c24"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddMessageFilter</b> (<a class="el" href="class_dui_lib_1_1_i_message_filter_u_i.html">IMessageFilterUI</a> *pFilter)</td></tr>
+<tr class="separator:a74390c8e70d459b6cd9e91f631313c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe8c6b4c7b2d247ffbd80ff19c73667f"><td class="memItemLeft" align="right" valign="top"><a id="afe8c6b4c7b2d247ffbd80ff19c73667f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveMessageFilter</b> (<a class="el" href="class_dui_lib_1_1_i_message_filter_u_i.html">IMessageFilterUI</a> *pFilter)</td></tr>
+<tr class="separator:afe8c6b4c7b2d247ffbd80ff19c73667f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb5c97728f7156457cb21b8368173b72"><td class="memItemLeft" align="right" valign="top"><a id="acb5c97728f7156457cb21b8368173b72"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetPostPaintCount</b> () const</td></tr>
+<tr class="separator:acb5c97728f7156457cb21b8368173b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46684f018a5f7863f16b42d8bbf58729"><td class="memItemLeft" align="right" valign="top"><a id="a46684f018a5f7863f16b42d8bbf58729"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddPostPaint</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a46684f018a5f7863f16b42d8bbf58729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d00a41d802a113eae0567f90090563b"><td class="memItemLeft" align="right" valign="top"><a id="a5d00a41d802a113eae0567f90090563b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemovePostPaint</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a5d00a41d802a113eae0567f90090563b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b0df79b131832e44fc06313ca72665"><td class="memItemLeft" align="right" valign="top"><a id="a92b0df79b131832e44fc06313ca72665"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SetPostPaintIndex</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, int iIndex)</td></tr>
+<tr class="separator:a92b0df79b131832e44fc06313ca72665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94fb7e7d6621d7f6a31bf7ea9ae19d82"><td class="memItemLeft" align="right" valign="top"><a id="a94fb7e7d6621d7f6a31bf7ea9ae19d82"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetNativeWindowCount</b> () const</td></tr>
+<tr class="separator:a94fb7e7d6621d7f6a31bf7ea9ae19d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcd78537a5b75a616ed7cd8b8761f99b"><td class="memItemLeft" align="right" valign="top"><a id="abcd78537a5b75a616ed7cd8b8761f99b"></a>
+RECT&#160;</td><td class="memItemRight" valign="bottom"><b>GetNativeWindowRect</b> (HWND hChildWnd)</td></tr>
+<tr class="separator:abcd78537a5b75a616ed7cd8b8761f99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab893ca4543a9cc664cc42a28ca9199b2"><td class="memItemLeft" align="right" valign="top"><a id="ab893ca4543a9cc664cc42a28ca9199b2"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddNativeWindow</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl, HWND hChildWnd)</td></tr>
+<tr class="separator:ab893ca4543a9cc664cc42a28ca9199b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e9c00bef66a6372b1b760129f940bf"><td class="memItemLeft" align="right" valign="top"><a id="a64e9c00bef66a6372b1b760129f940bf"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveNativeWindow</b> (HWND hChildWnd)</td></tr>
+<tr class="separator:a64e9c00bef66a6372b1b760129f940bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4855be83189170d562f4a5acd349ae"><td class="memItemLeft" align="right" valign="top"><a id="a4f4855be83189170d562f4a5acd349ae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddDelayedCleanup</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a4f4855be83189170d562f4a5acd349ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4fb1940ab254a3b4e614b0f02228ed"><td class="memItemLeft" align="right" valign="top"><a id="a7d4fb1940ab254a3b4e614b0f02228ed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddMouseLeaveNeeded</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a7d4fb1940ab254a3b4e614b0f02228ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ca5a50475b3a23f3f617f968358d09e"><td class="memItemLeft" align="right" valign="top"><a id="a9ca5a50475b3a23f3f617f968358d09e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveMouseLeaveNeeded</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pControl)</td></tr>
+<tr class="separator:a9ca5a50475b3a23f3f617f968358d09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47dace832522d7466330acd83f3eb3b"><td class="memItemLeft" align="right" valign="top"><a id="af47dace832522d7466330acd83f3eb3b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>AddTranslateAccelerator</b> (<a class="el" href="class_dui_lib_1_1_i_translate_accelerator.html">ITranslateAccelerator</a> *pTranslateAccelerator)</td></tr>
+<tr class="separator:af47dace832522d7466330acd83f3eb3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bc82c7af97c1b2c2ebd1d382d7fd4d0"><td class="memItemLeft" align="right" valign="top"><a id="a6bc82c7af97c1b2c2ebd1d382d7fd4d0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveTranslateAccelerator</b> (<a class="el" href="class_dui_lib_1_1_i_translate_accelerator.html">ITranslateAccelerator</a> *pTranslateAccelerator)</td></tr>
+<tr class="separator:a6bc82c7af97c1b2c2ebd1d382d7fd4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8799ec2656fc2eb032b609be865b55c3"><td class="memItemLeft" align="right" valign="top"><a id="a8799ec2656fc2eb032b609be865b55c3"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>TranslateAccelerator</b> (LPMSG pMsg)</td></tr>
+<tr class="separator:a8799ec2656fc2eb032b609be865b55c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9e3dd7e8c024dd3383564fcba892674"><td class="memItemLeft" align="right" valign="top"><a id="af9e3dd7e8c024dd3383564fcba892674"></a>
+<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetRoot</b> () const</td></tr>
+<tr class="separator:af9e3dd7e8c024dd3383564fcba892674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5380ee638b70ee141062a1153c1a31"><td class="memItemLeft" align="right" valign="top"><a id="abc5380ee638b70ee141062a1153c1a31"></a>
+<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>FindControl</b> (POINT pt) const</td></tr>
+<tr class="separator:abc5380ee638b70ee141062a1153c1a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1dcb905085cddb3e8e745f1b955b3d0"><td class="memItemLeft" align="right" valign="top"><a id="af1dcb905085cddb3e8e745f1b955b3d0"></a>
+<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>FindControl</b> (LPCTSTR pstrName) const</td></tr>
+<tr class="separator:af1dcb905085cddb3e8e745f1b955b3d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af428591f3a79b2e2f02487d997254bd0"><td class="memItemLeft" align="right" valign="top"><a id="af428591f3a79b2e2f02487d997254bd0"></a>
+<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>FindSubControlByPoint</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pParent, POINT pt) const</td></tr>
+<tr class="separator:af428591f3a79b2e2f02487d997254bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3820df07251702b5aef3d69289187276"><td class="memItemLeft" align="right" valign="top"><a id="a3820df07251702b5aef3d69289187276"></a>
+<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>FindSubControlByName</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pParent, LPCTSTR pstrName) const</td></tr>
+<tr class="separator:a3820df07251702b5aef3d69289187276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eaa4ca3b3ca7537a93b1e942c00b958"><td class="memItemLeft" align="right" valign="top"><a id="a9eaa4ca3b3ca7537a93b1e942c00b958"></a>
+<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>FindSubControlByClass</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pParent, LPCTSTR pstrClass, int iIndex=0)</td></tr>
+<tr class="separator:a9eaa4ca3b3ca7537a93b1e942c00b958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e34503c3bfdd2c4852f6f4773c8cd66"><td class="memItemLeft" align="right" valign="top"><a id="a8e34503c3bfdd2c4852f6f4773c8cd66"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_ptr_array.html">CDuiPtrArray</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>FindSubControlsByClass</b> (<a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a> *pParent, LPCTSTR pstrClass)</td></tr>
+<tr class="separator:a8e34503c3bfdd2c4852f6f4773c8cd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97f224a9498638adc0fb394442e65738"><td class="memItemLeft" align="right" valign="top"><a id="a97f224a9498638adc0fb394442e65738"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>MessageHandler</b> (UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT &amp;lRes)</td></tr>
+<tr class="separator:a97f224a9498638adc0fb394442e65738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad883782b2eaa7edfe43956d6d51d95eb"><td class="memItemLeft" align="right" valign="top"><a id="ad883782b2eaa7edfe43956d6d51d95eb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>PreMessageHandler</b> (UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT &amp;lRes)</td></tr>
+<tr class="separator:ad883782b2eaa7edfe43956d6d51d95eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a100c903a3870f3ecfebbb221bdc59f8e"><td class="memItemLeft" align="right" valign="top"><a id="a100c903a3870f3ecfebbb221bdc59f8e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UsedVirtualWnd</b> (bool bUsed)</td></tr>
+<tr class="separator:a100c903a3870f3ecfebbb221bdc59f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:af9cfc1af2a6b8a35d8a1fd81ca145d35"><td class="memItemLeft" align="right" valign="top"><a id="af9cfc1af2a6b8a35d8a1fd81ca145d35"></a>
+static HINSTANCE&#160;</td><td class="memItemRight" valign="bottom"><b>GetInstance</b> ()</td></tr>
+<tr class="separator:af9cfc1af2a6b8a35d8a1fd81ca145d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a4815be9b883c5c21b0537c0f0c047c"><td class="memItemLeft" align="right" valign="top"><a id="a5a4815be9b883c5c21b0537c0f0c047c"></a>
+static <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetInstancePath</b> ()</td></tr>
+<tr class="separator:a5a4815be9b883c5c21b0537c0f0c047c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d3e26b108b3e8f1e15d853ca2491d38"><td class="memItemLeft" align="right" valign="top"><a id="a3d3e26b108b3e8f1e15d853ca2491d38"></a>
+static <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetCurrentPath</b> ()</td></tr>
+<tr class="separator:a3d3e26b108b3e8f1e15d853ca2491d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24085b0668cba8dc1693f517403daa32"><td class="memItemLeft" align="right" valign="top"><a id="a24085b0668cba8dc1693f517403daa32"></a>
+static HINSTANCE&#160;</td><td class="memItemRight" valign="bottom"><b>GetResourceDll</b> ()</td></tr>
+<tr class="separator:a24085b0668cba8dc1693f517403daa32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81ed294ec12f9d8842de585f4c00049"><td class="memItemLeft" align="right" valign="top"><a id="ab81ed294ec12f9d8842de585f4c00049"></a>
+static const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetResourcePath</b> ()</td></tr>
+<tr class="separator:ab81ed294ec12f9d8842de585f4c00049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb03cbc5fecb88225c965470aa2165c5"><td class="memItemLeft" align="right" valign="top"><a id="aeb03cbc5fecb88225c965470aa2165c5"></a>
+static const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetResourceZip</b> ()</td></tr>
+<tr class="separator:aeb03cbc5fecb88225c965470aa2165c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0b3989b492bc683793dc2dc40a671d"><td class="memItemLeft" align="right" valign="top"><a id="a8f0b3989b492bc683793dc2dc40a671d"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsCachedResourceZip</b> ()</td></tr>
+<tr class="separator:a8f0b3989b492bc683793dc2dc40a671d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f615ab084427769adc6b305d997b4aa"><td class="memItemLeft" align="right" valign="top"><a id="a2f615ab084427769adc6b305d997b4aa"></a>
+static HANDLE&#160;</td><td class="memItemRight" valign="bottom"><b>GetResourceZipHandle</b> ()</td></tr>
+<tr class="separator:a2f615ab084427769adc6b305d997b4aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8e1b86fa3f3944e069e6db34922b29"><td class="memItemLeft" align="right" valign="top"><a id="a8c8e1b86fa3f3944e069e6db34922b29"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetInstance</b> (HINSTANCE hInst)</td></tr>
+<tr class="separator:a8c8e1b86fa3f3944e069e6db34922b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af12b197e2c5789b08909318058d6d8be"><td class="memItemLeft" align="right" valign="top"><a id="af12b197e2c5789b08909318058d6d8be"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCurrentPath</b> (LPCTSTR pStrPath)</td></tr>
+<tr class="separator:af12b197e2c5789b08909318058d6d8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b3509f62f131c7943dee1f93544188c"><td class="memItemLeft" align="right" valign="top"><a id="a1b3509f62f131c7943dee1f93544188c"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetResourceDll</b> (HINSTANCE hInst)</td></tr>
+<tr class="separator:a1b3509f62f131c7943dee1f93544188c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e566df33bf7e1ee18f29a4fd4bc860"><td class="memItemLeft" align="right" valign="top"><a id="a04e566df33bf7e1ee18f29a4fd4bc860"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetResourcePath</b> (LPCTSTR pStrPath)</td></tr>
+<tr class="separator:a04e566df33bf7e1ee18f29a4fd4bc860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1865b4d337b7bc6af5200c659930c39c"><td class="memItemLeft" align="right" valign="top"><a id="a1865b4d337b7bc6af5200c659930c39c"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetResourceZip</b> (LPVOID pVoid, unsigned int len)</td></tr>
+<tr class="separator:a1865b4d337b7bc6af5200c659930c39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e47a6d6ce63086109f2993e59eb574a"><td class="memItemLeft" align="right" valign="top"><a id="a7e47a6d6ce63086109f2993e59eb574a"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetResourceZip</b> (LPCTSTR pstrZip, bool bCachedResourceZip=false)</td></tr>
+<tr class="separator:a7e47a6d6ce63086109f2993e59eb574a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7daa5e24619209f1f7d35c62de904bd2"><td class="memItemLeft" align="right" valign="top"><a id="a7daa5e24619209f1f7d35c62de904bd2"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetHSL</b> (short *H, short *S, short *L)</td></tr>
+<tr class="separator:a7daa5e24619209f1f7d35c62de904bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55431b87bb9036dca20909b682a2a5fd"><td class="memItemLeft" align="right" valign="top"><a id="a55431b87bb9036dca20909b682a2a5fd"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHSL</b> (bool bUseHSL, short H, short S, short L)</td></tr>
+<tr class="separator:a55431b87bb9036dca20909b682a2a5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bf10a6ecc5697bf1df809765d6eaf57"><td class="memItemLeft" align="right" valign="top"><a id="a1bf10a6ecc5697bf1df809765d6eaf57"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>ReloadSkin</b> ()</td></tr>
+<tr class="separator:a1bf10a6ecc5697bf1df809765d6eaf57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff5301320c760ca4751143b45a27cefa"><td class="memItemLeft" align="right" valign="top"><a id="aff5301320c760ca4751143b45a27cefa"></a>
+static <a class="el" href="class_dui_lib_1_1_c_paint_manager_u_i.html">CPaintManagerUI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetPaintManager</b> (LPCTSTR pstrName)</td></tr>
+<tr class="separator:aff5301320c760ca4751143b45a27cefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa03ca0442d5ca8cfe40452ff6ae9bcbc"><td class="memItemLeft" align="right" valign="top"><a id="aa03ca0442d5ca8cfe40452ff6ae9bcbc"></a>
+static <a class="el" href="class_dui_lib_1_1_c_dui_ptr_array.html">CDuiPtrArray</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetPaintManagers</b> ()</td></tr>
+<tr class="separator:aa03ca0442d5ca8cfe40452ff6ae9bcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a021c816e461614f9d1d4d7ad01d9d5"><td class="memItemLeft" align="right" valign="top"><a id="a6a021c816e461614f9d1d4d7ad01d9d5"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>LoadPlugin</b> (LPCTSTR pstrModuleName)</td></tr>
+<tr class="separator:a6a021c816e461614f9d1d4d7ad01d9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d5aed0df9190a68520274897521b27"><td class="memItemLeft" align="right" valign="top"><a id="ad6d5aed0df9190a68520274897521b27"></a>
+static <a class="el" href="class_dui_lib_1_1_c_dui_ptr_array.html">CDuiPtrArray</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetPlugins</b> ()</td></tr>
+<tr class="separator:ad6d5aed0df9190a68520274897521b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7ffb78024bd47c80d35ede5bdc22c7"><td class="memItemLeft" align="right" valign="top"><a id="a4c7ffb78024bd47c80d35ede5bdc22c7"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>ReloadSharedImages</b> ()</td></tr>
+<tr class="separator:a4c7ffb78024bd47c80d35ede5bdc22c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2773d6a106fc8a26256492bfc1c20599"><td class="memItemLeft" align="right" valign="top"><a id="a2773d6a106fc8a26256492bfc1c20599"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>AddMultiLanguageString</b> (int id, LPCTSTR pStrMultiLanguage)</td></tr>
+<tr class="separator:a2773d6a106fc8a26256492bfc1c20599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80802d2e2078cab499667736de14c54c"><td class="memItemLeft" align="right" valign="top"><a id="a80802d2e2078cab499667736de14c54c"></a>
+static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetMultiLanguageString</b> (int id)</td></tr>
+<tr class="separator:a80802d2e2078cab499667736de14c54c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaab46e874ce45d9b1ad6c7a13b6911c8"><td class="memItemLeft" align="right" valign="top"><a id="aaab46e874ce45d9b1ad6c7a13b6911c8"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveMultiLanguageString</b> (int id)</td></tr>
+<tr class="separator:aaab46e874ce45d9b1ad6c7a13b6911c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2df685ec74b890eba135d71e1e7913a"><td class="memItemLeft" align="right" valign="top"><a id="ad2df685ec74b890eba135d71e1e7913a"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveAllMultiLanguageString</b> ()</td></tr>
+<tr class="separator:ad2df685ec74b890eba135d71e1e7913a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16cab25d983a417ca0f293d4e372d047"><td class="memItemLeft" align="right" valign="top"><a id="a16cab25d983a417ca0f293d4e372d047"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessMultiLanguageTokens</b> (<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;pStrMultiLanguage)</td></tr>
+<tr class="separator:a16cab25d983a417ca0f293d4e372d047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb25ce62fde3171eb210cb560deaa72"><td class="memItemLeft" align="right" valign="top"><a id="a5cb25ce62fde3171eb210cb560deaa72"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>MessageLoop</b> ()</td></tr>
+<tr class="separator:a5cb25ce62fde3171eb210cb560deaa72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af16b742bd8c82a05252f0d1467d6745a"><td class="memItemLeft" align="right" valign="top"><a id="af16b742bd8c82a05252f0d1467d6745a"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>TranslateMessage</b> (const LPMSG pMsg)</td></tr>
+<tr class="separator:af16b742bd8c82a05252f0d1467d6745a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59117004e3ede9f39b64fb2a99ba81d0"><td class="memItemLeft" align="right" valign="top"><a id="a59117004e3ede9f39b64fb2a99ba81d0"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>Term</b> ()</td></tr>
+<tr class="separator:a59117004e3ede9f39b64fb2a99ba81d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a3c46a0c4004c4199b3b306d453e48b8d"><td class="memItemLeft" align="right" valign="top"><a id="a3c46a0c4004c4199b3b306d453e48b8d"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_ptr_array.html">CDuiPtrArray</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_aTranslateAccelerator</b></td></tr>
+<tr class="separator:a3c46a0c4004c4199b3b306d453e48b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>窗口消息及图形绘制管理器类 </p>
+<p>与窗口绑定，主要作用： 　1) 绘制控件。 　2) 消息管理。 　3) 事件通知。 </p>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li>duilib/Core/<a class="el" href="_u_i_manager_8h_source.html">UIManager.h</a></li>
+<li>duilib/Core/UIManager.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>

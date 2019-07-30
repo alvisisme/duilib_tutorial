@@ -62,21 +62,21 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">编译 DuiLib 并创建简单窗口 </div>  </div>
+<div class="title">编译 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 并创建简单窗口 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>准备 DuiLib 开发环境</h2>
-<p>注意，这里大部分准备工作都与 DuiLib 代码无关，更多的是开发人员的基础知识普及，并不会涉及更多的 DuiLib 代码相关的内容，如果你已经非常清楚如何编译一个 DuiLib 在自己项目中使用，那么请跳过这个步骤。</p>
+<div class="textblock"><h2>准备 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 开发环境</h2>
+<p>注意，这里大部分准备工作都与 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 代码无关，更多的是开发人员的基础知识普及，并不会涉及更多的 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 代码相关的内容，如果你已经非常清楚如何编译一个 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 在自己项目中使用，那么请跳过这个步骤。</p>
 <p>首先我们打开 VS 创建一个自定义项目，这里你使用什么版本无所谓，因为 VS 项目都是可以升级降级的，除非官方代码中有个别代码在不同版本的 VS 编译器下没有指定的头文件支持。否则升级后都是可以正常编译通过的。</p>
 <p>我这里使用 VS2017，创建项目时选择自定义项目，然后设置一下项目的路径</p>
 <img src="2018-04-29_14-28-52.png" alt="" class="inline"/>
 <p>在自定义窗口中，选择使用 Windows 桌面程序，并勾选 ATL。若不勾选 ATL，则会出现 <code>“VARIANT”：未定义基类</code> 的错误。以前我写过的<a href="https://github.com/duilib/duilib/wiki/%E6%AD%A3%E7%A1%AE%E7%BC%96%E8%AF%91-Duilib-%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E6%96%B9%E6%B3%95">正确编译 DuiLib 静态库</a>中也有介绍</p>
 <img src="2018-04-28_11-48-13.png" alt="" class="inline"/>
-<p>然后我们克隆 DuiLib 官方 Github 维护的代码，命令行中执行如下命令，如果你没有安装 git 客户端，请先<a href="https://git-scm.com/">安装 git</a>。</p>
-<div class="fragment"><div class="line">git clone https://github.com/duilib/duilib.git</div></div><!-- fragment --><p>为了方便学习和演示，我们复制 <code>DuiLib</code> 文件夹、<code>LICENSE</code> 授权文件、<code>属性列表.xml</code> DuiLib 控件的属性列表方便我们后期开发时查询，到刚才创建的项目目录下。</p>
+<p>然后我们克隆 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 官方 Github 维护的代码，命令行中执行如下命令，如果你没有安装 git 客户端，请先<a href="https://git-scm.com/">安装 git</a>。</p>
+<div class="fragment"><div class="line">git clone https://github.com/duilib/duilib.git</div></div><!-- fragment --><p>为了方便学习和演示，我们复制 <code><a class="el" href="namespace_dui_lib.html">DuiLib</a></code> 文件夹、<code>LICENSE</code> 授权文件、<code>属性列表.xml</code> <a class="el" href="namespace_dui_lib.html">DuiLib</a> 控件的属性列表方便我们后期开发时查询，到刚才创建的项目目录下。</p>
 <img src="2018-04-29_14-41-48.png" alt="" class="inline"/>
 <h2>编译动态库</h2>
-<p>准备工作都做完了，下面我们正式开始编译 DuiLib，在我们刚才创建的项目中，将 DuiLib 工程导入。</p>
+<p>准备工作都做完了，下面我们正式开始编译 DuiLib，在我们刚才创建的项目中，将 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 工程导入。</p>
 <img src="2018-04-29_14-43-28.png" alt="" class="inline"/>
  <br />
  <img src="2018-04-29_14-42-46.png" alt="" class="inline"/>
@@ -93,7 +93,7 @@ $(function() {
 <img src="2018-04-29_14-47-19.png" alt="" class="inline"/>
 <p>我们看到由于这个静态的项目已经很久没有更新了，还是 VS2012 创建的项目，所以根据你的需要改成 VS2013 还是 VS2017 都可以。同样是项目右键-&gt;属性，将所有配置的平台工具集修改为你需要的工具集即可。</p>
 <img src="2018-04-28_13-26-49.png" alt="" class="inline"/>
-<p>对比一下动态库的项目和静态库的项目，发现静态库的 Utils 缺少一个 WndShadow.h 和 WndShadow.cpp 文件，我们给静态库工程导入这两个文件就可以了。不然后面用到的时候会提示没有导出这里面的相关功能。</p>
+<p>对比一下动态库的项目和静态库的项目，发现静态库的 Utils 缺少一个 <a class="el" href="_wnd_shadow_8h_source.html">WndShadow.h</a> 和 WndShadow.cpp 文件，我们给静态库工程导入这两个文件就可以了。不然后面用到的时候会提示没有导出这里面的相关功能。</p>
 <img src="2018-04-28_13-30-26.png" alt="" class="inline"/>
  <br />
  <img src="2018-04-28_13-32-25.png" alt="" class="inline"/>

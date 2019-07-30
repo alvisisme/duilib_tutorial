@@ -67,7 +67,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p>在实际业务场景中，并不是所有界面元素都可以通过 XML 预先定义好的，有时候我们需要根据数据库或者服务器返回的数据动态的在界面上创建一些控件。本文将介绍两种方式来动态创建控件的方法，一种是使用纯代码方式，另外一种是使用已经构建好的 XML 来动态创建控件。</p>
 <h2>纯代码方式动态创建控件</h2>
-<p>之前创建控件的方式都是在 XML 写好，设置好显示位置，运行程序后就自动显示出来了。实际一个控件对应的就是 DuiLib 中的一个类，我们只需要在代码中实例化一个控件类对象，设置好显示位置和控件的样式，并插入到指定的容器内就可以显示出来了。假设我们要在窗口内容区域插入一个按钮，那么首先要给窗口内容区域一个可识别的名称，我们要将窗口内容区域转化为可用的控件对象然后给它添加子控件。</p>
+<p>之前创建控件的方式都是在 XML 写好，设置好显示位置，运行程序后就自动显示出来了。实际一个控件对应的就是 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 中的一个类，我们只需要在代码中实例化一个控件类对象，设置好显示位置和控件的样式，并插入到指定的容器内就可以显示出来了。假设我们要在窗口内容区域插入一个按钮，那么首先要给窗口内容区域一个可识别的名称，我们要将窗口内容区域转化为可用的控件对象然后给它添加子控件。</p>
 <div class="fragment"><div class="line">&lt;!-- 窗口内容区域 --&gt;</div><div class="line">&lt;HorizontalLayout name=&quot;main_wnd_content&quot; bkcolor=&quot;#FF4D6082&quot;&gt;</div><div class="line">&lt;/HorizontalLayout&gt;</div></div><!-- fragment --><p>我们给内容区域的水平布局控件添加了一个 name 属性，并指定为 <code>main_wnd_content</code>，随后在 InitWindow 方法中，我们全新实例化一个按钮控件，给这个内容区域的容器插入进去。</p>
 <div class="fragment"><div class="line">void MainWndFrame::InitWindow()</div><div class="line">{</div><div class="line">    // ..... 其他代码</div><div class="line"></div><div class="line">    m_pMainWndContent = dynamic_cast&lt;CHorizontalLayoutUI*&gt;(m_PaintManager.FindControl(_T(&quot;main_wnd_content&quot;)));</div><div class="line"></div><div class="line">    CButtonUI* btn = new CButtonUI;</div><div class="line">    btn-&gt;SetText(_T(&quot;动态添加的按钮&quot;));</div><div class="line">    btn-&gt;SetBkColor(0xFFFFFFFF);</div><div class="line">    btn-&gt;SetFixedHeight(60);</div><div class="line">    btn-&gt;SetFixedWidth(100);</div><div class="line"></div><div class="line">    m_pMainWndContent-&gt;Add(btn);</div><div class="line">}</div></div><!-- fragment --><p>使用 m_PaintManager 的 FindControl 方法查找到了窗口内容区域的容器，然后将其转化为可用的控件对象，随后调用了它的 Add 方法，将 new 出来的 CButtonUI 对象添加到容器中。这样就运行程序，就可以看到通过代码动态添加的控件了。</p>
 <img src="../images/2018-05-03_11-10-44.png" alt="" class="inline"/>
@@ -89,7 +89,7 @@ $(function() {
 <p>这里你可以把 CDialogBuilder 的对象作为成员变量，但每次插入数据前你需要使用 CDialogBuilder 的 <code>GetMarkup()-&gt;IsValid()</code> 方法，来判断当前是否已经装载了一个 XML，如果装载了那么直接调用他的另一个 Create 重载方法即可构建一个控件，这样可以提高效率。类似如下代码演示:</p>
 <div class="fragment"><div class="line">CControlUI* pControl = nullptr;</div><div class="line">if (m_pBuilder.GetMarkup()-&gt;IsValid())</div><div class="line">{</div><div class="line">    pControl = m_pBuilder.Create(this, &amp;m_PaintManager);</div><div class="line">}</div><div class="line">else</div><div class="line">{</div><div class="line">    pControl = m_pBuilder.Create(_T(&quot;list_item.xml&quot;), (UINT)0, this, &amp;m_PaintManager);</div><div class="line">}</div><div class="line">m_pMainWndList-&gt;Add(pControl);</div></div><!-- fragment --><p>所有素材和 XML 都准备完成后，编译代码可得到如下效果：</p>
 <img src="../images/2018-05-03_14-52-01.png" alt="" class="inline"/>
-<p>到这里你可能发现了，如果列表中有一个 Item 还好，如果有几十个上百个，他们每个 Item 的消息响应就成了问题。其实这个问题是设计问题，与 DuiLib 没什么关系，你完全可以自己新建一个类，继承 CListContainerElementUI 让每个 Item 都是一个单独的对象，消息响应转义到每个单独对象中，这样就不会混乱了。这个课题就留给大家自己研究一下吧。 </p>
+<p>到这里你可能发现了，如果列表中有一个 Item 还好，如果有几十个上百个，他们每个 Item 的消息响应就成了问题。其实这个问题是设计问题，与 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 没什么关系，你完全可以自己新建一个类，继承 CListContainerElementUI 让每个 Item 都是一个单独的对象，消息响应转义到每个单独对象中，这样就不会混乱了。这个课题就留给大家自己研究一下吧。 </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

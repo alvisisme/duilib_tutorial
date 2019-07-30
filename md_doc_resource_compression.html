@@ -65,7 +65,7 @@ $(function() {
 <div class="title">资源压缩打包 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>现在市面上有很多基于 DuiLib 开发的程序，又或者是从 DuiLib 基础上延伸出来所开发的程序。不同的程序有不同的打包资源的方式，主要有以下几种。</p>
+<div class="textblock"><p>现在市面上有很多基于 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 开发的程序，又或者是从 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 基础上延伸出来所开发的程序。不同的程序有不同的打包资源的方式，主要有以下几种。</p>
 <ul>
 <li>资源存放在文件夹中</li>
 <li>资源存放在 ZIP 压缩包中</li>
@@ -78,7 +78,7 @@ $(function() {
 <div class="fragment"><div class="line">CPaintManagerUI::SetResourcePath(_T(&quot;theme&quot;));</div></div><!-- fragment --><p>替换为</p>
 <div class="fragment"><div class="line">CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());</div><div class="line">CPaintManagerUI::SetResourceZip(_T(&quot;theme.zip&quot;));</div></div><!-- fragment --><p>然后将我们主题文件夹中的 <code>main_wnd_frame.xml</code> 打包成一个 ZIP 文件。这里要注意，压缩包中不要再包含一个 <code>theme</code> 文件夹了，直接把 <code>main_wnd_frame.xml</code> 放在最外层就可以了。</p>
 <img src="../images/2018-04-29_16-51-03.png" alt="" class="inline"/>
-<p>这样我们就可以一个 EXE + 一个 ZIP 压缩包的形式发布程序了。这是其中一种方法，比较简单，还有其他的方法来实现同样的功能，类似下面即将介绍的方法，由于 DuiLib 对于资源的处置代码实现还是稍微有点小乱的。大家在实现这两种方法时候最好去实地看一下代码才知道怎么使用最适合你。</p>
+<p>这样我们就可以一个 EXE + 一个 ZIP 压缩包的形式发布程序了。这是其中一种方法，比较简单，还有其他的方法来实现同样的功能，类似下面即将介绍的方法，由于 <a class="el" href="namespace_dui_lib.html">DuiLib</a> 对于资源的处置代码实现还是稍微有点小乱的。大家在实现这两种方法时候最好去实地看一下代码才知道怎么使用最适合你。</p>
 <h2>使用压缩包资源</h2>
 <p>与上面有什么区别呢？压缩包？资源？，其实就是把打包后的 ZIP 压缩包当作 VC 程序开发时的资源，一同打包到发布的 EXE 文件中。这样我们就仅需要发布一个 EXE 文件就可以了，而且对付一些小白还可以防止篡改资源文件。</p>
 <p>首先删除掉 main 函数中刚才我们修改的两行代码</p>

@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>duilib自学教程: DuiLib::CDuiString类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">duilib自学教程
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_dui_lib.html">DuiLib</a></li><li class="navelem"><a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="class_dui_lib_1_1_c_dui_string-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">DuiLib::CDuiString类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ae7b69f428bd47bbc4f3b5c5c84c0b9e9"><td class="memItemLeft" align="right" valign="top"><a id="ae7b69f428bd47bbc4f3b5c5c84c0b9e9"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>MAX_LOCAL_STRING_LEN</b> = 63
+ }</td></tr>
+<tr class="separator:ae7b69f428bd47bbc4f3b5c5c84c0b9e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a9323dce70b18f9346a17eaadbb701856"><td class="memItemLeft" align="right" valign="top"><a id="a9323dce70b18f9346a17eaadbb701856"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CDuiString</b> (const TCHAR ch)</td></tr>
+<tr class="separator:a9323dce70b18f9346a17eaadbb701856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91e5c00a01cde4e1a942871cd55f803a"><td class="memItemLeft" align="right" valign="top"><a id="a91e5c00a01cde4e1a942871cd55f803a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CDuiString</b> (const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;src)</td></tr>
+<tr class="separator:a91e5c00a01cde4e1a942871cd55f803a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a786b935b99c70bf8425c3b0c9982b2af"><td class="memItemLeft" align="right" valign="top"><a id="a786b935b99c70bf8425c3b0c9982b2af"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CDuiString</b> (LPCTSTR lpsz, int nLen=-1)</td></tr>
+<tr class="separator:a786b935b99c70bf8425c3b0c9982b2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e385626d1d00573697f70be6880b333"><td class="memItemLeft" align="right" valign="top"><a id="a5e385626d1d00573697f70be6880b333"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ToString</b> ()</td></tr>
+<tr class="separator:a5e385626d1d00573697f70be6880b333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f5b3b2eb90c8bfcec2cfd7c818e8a30"><td class="memItemLeft" align="right" valign="top"><a id="a1f5b3b2eb90c8bfcec2cfd7c818e8a30"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Empty</b> ()</td></tr>
+<tr class="separator:a1f5b3b2eb90c8bfcec2cfd7c818e8a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8496d3bd603cc38d8b7e6f8ce4fc3785"><td class="memItemLeft" align="right" valign="top"><a id="a8496d3bd603cc38d8b7e6f8ce4fc3785"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetLength</b> () const</td></tr>
+<tr class="separator:a8496d3bd603cc38d8b7e6f8ce4fc3785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3022bc5a4ee0b109c816bcb07b32cb7a"><td class="memItemLeft" align="right" valign="top"><a id="a3022bc5a4ee0b109c816bcb07b32cb7a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsEmpty</b> () const</td></tr>
+<tr class="separator:a3022bc5a4ee0b109c816bcb07b32cb7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad45a09753c302c9335ecd887a54a9c72"><td class="memItemLeft" align="right" valign="top"><a id="ad45a09753c302c9335ecd887a54a9c72"></a>
+TCHAR&#160;</td><td class="memItemRight" valign="bottom"><b>GetAt</b> (int nIndex) const</td></tr>
+<tr class="separator:ad45a09753c302c9335ecd887a54a9c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69d4d3a2515591838fcd890e0e462630"><td class="memItemLeft" align="right" valign="top"><a id="a69d4d3a2515591838fcd890e0e462630"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Append</b> (LPCTSTR pstr)</td></tr>
+<tr class="separator:a69d4d3a2515591838fcd890e0e462630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b59a6e47ad6bce39ed61ed4e654291d"><td class="memItemLeft" align="right" valign="top"><a id="a1b59a6e47ad6bce39ed61ed4e654291d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Assign</b> (LPCTSTR pstr, int nLength=-1)</td></tr>
+<tr class="separator:a1b59a6e47ad6bce39ed61ed4e654291d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f012ad52a73a243b5c8e7de3650df98"><td class="memItemLeft" align="right" valign="top"><a id="a5f012ad52a73a243b5c8e7de3650df98"></a>
+LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetData</b> () const</td></tr>
+<tr class="separator:a5f012ad52a73a243b5c8e7de3650df98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80f4e5e68066d9b1dc55998b1de97650"><td class="memItemLeft" align="right" valign="top"><a id="a80f4e5e68066d9b1dc55998b1de97650"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetAt</b> (int nIndex, TCHAR ch)</td></tr>
+<tr class="separator:a80f4e5e68066d9b1dc55998b1de97650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0c2596dacc857c6b5e11c9ffa2542fd"><td class="memItemLeft" align="right" valign="top"><a id="ae0c2596dacc857c6b5e11c9ffa2542fd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>operator LPCTSTR</b> () const</td></tr>
+<tr class="separator:ae0c2596dacc857c6b5e11c9ffa2542fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3316a2918b0e4ad93d306a489a25666"><td class="memItemLeft" align="right" valign="top"><a id="aa3316a2918b0e4ad93d306a489a25666"></a>
+TCHAR&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int nIndex) const</td></tr>
+<tr class="separator:aa3316a2918b0e4ad93d306a489a25666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245628fe8cee7d2cf750ae4faad08799"><td class="memItemLeft" align="right" valign="top"><a id="a245628fe8cee7d2cf750ae4faad08799"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;src)</td></tr>
+<tr class="separator:a245628fe8cee7d2cf750ae4faad08799"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9b66bc9614dcbaca43ec5f593a814ae"><td class="memItemLeft" align="right" valign="top"><a id="ad9b66bc9614dcbaca43ec5f593a814ae"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const TCHAR ch)</td></tr>
+<tr class="separator:ad9b66bc9614dcbaca43ec5f593a814ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7697c2a6166a4c2350227bbb2f2b593d"><td class="memItemLeft" align="right" valign="top"><a id="a7697c2a6166a4c2350227bbb2f2b593d"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (LPCTSTR pstr)</td></tr>
+<tr class="separator:a7697c2a6166a4c2350227bbb2f2b593d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71b9ba04a388a174dceaee6e081d713b"><td class="memItemLeft" align="right" valign="top"><a id="a71b9ba04a388a174dceaee6e081d713b"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (LPCWSTR lpwStr)</td></tr>
+<tr class="separator:a71b9ba04a388a174dceaee6e081d713b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9deb52373e541c8381551ab4a06c381"><td class="memItemLeft" align="right" valign="top"><a id="ae9deb52373e541c8381551ab4a06c381"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (LPCWSTR lpwStr)</td></tr>
+<tr class="separator:ae9deb52373e541c8381551ab4a06c381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a775d54a7f2f704192532b969f2165877"><td class="memItemLeft" align="right" valign="top"><a id="a775d54a7f2f704192532b969f2165877"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;src) const</td></tr>
+<tr class="separator:a775d54a7f2f704192532b969f2165877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1109a8e03a7d05147314925b96d036b"><td class="memItemLeft" align="right" valign="top"><a id="ad1109a8e03a7d05147314925b96d036b"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (LPCTSTR pstr) const</td></tr>
+<tr class="separator:ad1109a8e03a7d05147314925b96d036b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97c98c7014d39563d8e0f9b096863b50"><td class="memItemLeft" align="right" valign="top"><a id="a97c98c7014d39563d8e0f9b096863b50"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;src)</td></tr>
+<tr class="separator:a97c98c7014d39563d8e0f9b096863b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab61be551eff4e34f70c8269c00ac27c"><td class="memItemLeft" align="right" valign="top"><a id="aab61be551eff4e34f70c8269c00ac27c"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (LPCTSTR pstr)</td></tr>
+<tr class="separator:aab61be551eff4e34f70c8269c00ac27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a986fad6ff4bfe80a4830e99348e8a087"><td class="memItemLeft" align="right" valign="top"><a id="a986fad6ff4bfe80a4830e99348e8a087"></a>
+const <a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const TCHAR ch)</td></tr>
+<tr class="separator:a986fad6ff4bfe80a4830e99348e8a087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e5e49ae67f23582f4d89379abe15c90"><td class="memItemLeft" align="right" valign="top"><a id="a9e5e49ae67f23582f4d89379abe15c90"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (LPCTSTR str) const</td></tr>
+<tr class="separator:a9e5e49ae67f23582f4d89379abe15c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4273e199b45f624efe393d55ecaed475"><td class="memItemLeft" align="right" valign="top"><a id="a4273e199b45f624efe393d55ecaed475"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator !=</b> (LPCTSTR str) const</td></tr>
+<tr class="separator:a4273e199b45f624efe393d55ecaed475"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a051645b788190e19982f97dfbfe48355"><td class="memItemLeft" align="right" valign="top"><a id="a051645b788190e19982f97dfbfe48355"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (LPCTSTR str) const</td></tr>
+<tr class="separator:a051645b788190e19982f97dfbfe48355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67c58c24c22a59be50418917836fa39f"><td class="memItemLeft" align="right" valign="top"><a id="a67c58c24c22a59be50418917836fa39f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (LPCTSTR str) const</td></tr>
+<tr class="separator:a67c58c24c22a59be50418917836fa39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab259ce614f9ff1dcc69ad5bee602875e"><td class="memItemLeft" align="right" valign="top"><a id="ab259ce614f9ff1dcc69ad5bee602875e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator &gt;=</b> (LPCTSTR str) const</td></tr>
+<tr class="separator:ab259ce614f9ff1dcc69ad5bee602875e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade61122646766a24806906de6afa0e6b"><td class="memItemLeft" align="right" valign="top"><a id="ade61122646766a24806906de6afa0e6b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator &gt;</b> (LPCTSTR str) const</td></tr>
+<tr class="separator:ade61122646766a24806906de6afa0e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8b8e405e15829cc03f51b2645978056"><td class="memItemLeft" align="right" valign="top"><a id="af8b8e405e15829cc03f51b2645978056"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Compare</b> (LPCTSTR pstr) const</td></tr>
+<tr class="separator:af8b8e405e15829cc03f51b2645978056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310e2b8a6f710711523ac8795c4b351e"><td class="memItemLeft" align="right" valign="top"><a id="a310e2b8a6f710711523ac8795c4b351e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>CompareNoCase</b> (LPCTSTR pstr) const</td></tr>
+<tr class="separator:a310e2b8a6f710711523ac8795c4b351e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1291801a03830e46a1a37d363e81a0f"><td class="memItemLeft" align="right" valign="top"><a id="ab1291801a03830e46a1a37d363e81a0f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeUpper</b> ()</td></tr>
+<tr class="separator:ab1291801a03830e46a1a37d363e81a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43e30ff715f9127c01b5008d07a5c2be"><td class="memItemLeft" align="right" valign="top"><a id="a43e30ff715f9127c01b5008d07a5c2be"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeLower</b> ()</td></tr>
+<tr class="separator:a43e30ff715f9127c01b5008d07a5c2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89530de8fae2a42600a912b5e7edef29"><td class="memItemLeft" align="right" valign="top"><a id="a89530de8fae2a42600a912b5e7edef29"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Left</b> (int nLength) const</td></tr>
+<tr class="separator:a89530de8fae2a42600a912b5e7edef29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9f69af0439db49a779c50f9a435fa9"><td class="memItemLeft" align="right" valign="top"><a id="a9c9f69af0439db49a779c50f9a435fa9"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Mid</b> (int iPos, int nLength=-1) const</td></tr>
+<tr class="separator:a9c9f69af0439db49a779c50f9a435fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1618549efbbad36e2f78930d0399849a"><td class="memItemLeft" align="right" valign="top"><a id="a1618549efbbad36e2f78930d0399849a"></a>
+<a class="el" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Right</b> (int nLength) const</td></tr>
+<tr class="separator:a1618549efbbad36e2f78930d0399849a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4b44e9fe7afe1e47fe6ac75b08e0f2f"><td class="memItemLeft" align="right" valign="top"><a id="ac4b44e9fe7afe1e47fe6ac75b08e0f2f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (TCHAR ch, int iPos=0) const</td></tr>
+<tr class="separator:ac4b44e9fe7afe1e47fe6ac75b08e0f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac39732bff812245c75b2b3cc796025a1"><td class="memItemLeft" align="right" valign="top"><a id="ac39732bff812245c75b2b3cc796025a1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (LPCTSTR pstr, int iPos=0) const</td></tr>
+<tr class="separator:ac39732bff812245c75b2b3cc796025a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54da6984444f47134fc3f68338c15d8f"><td class="memItemLeft" align="right" valign="top"><a id="a54da6984444f47134fc3f68338c15d8f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ReverseFind</b> (TCHAR ch) const</td></tr>
+<tr class="separator:a54da6984444f47134fc3f68338c15d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a050a7aed43ede508b70c88065a235bc5"><td class="memItemLeft" align="right" valign="top"><a id="a050a7aed43ede508b70c88065a235bc5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Replace</b> (LPCTSTR pstrFrom, LPCTSTR pstrTo)</td></tr>
+<tr class="separator:a050a7aed43ede508b70c88065a235bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36b2b1c1b97f12d6aa8e83cc6cf68edc"><td class="memItemLeft" align="right" valign="top"><a id="a36b2b1c1b97f12d6aa8e83cc6cf68edc"></a>
+int __cdecl&#160;</td><td class="memItemRight" valign="bottom"><b>Format</b> (LPCTSTR pstrFormat,...)</td></tr>
+<tr class="separator:a36b2b1c1b97f12d6aa8e83cc6cf68edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d80016dd3dcc11424529cfe7d0a4c1b"><td class="memItemLeft" align="right" valign="top"><a id="a0d80016dd3dcc11424529cfe7d0a4c1b"></a>
+int __cdecl&#160;</td><td class="memItemRight" valign="bottom"><b>SmallFormat</b> (LPCTSTR pstrFormat,...)</td></tr>
+<tr class="separator:a0d80016dd3dcc11424529cfe7d0a4c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a29fd11cbd7d8ea36be2ef586f9ebed7b"><td class="memItemLeft" align="right" valign="top"><a id="a29fd11cbd7d8ea36be2ef586f9ebed7b"></a>
+LPTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>m_pstr</b></td></tr>
+<tr class="separator:a29fd11cbd7d8ea36be2ef586f9ebed7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd61f57c9d38f8ab2612c7c1977ac86"><td class="memItemLeft" align="right" valign="top"><a id="a9cd61f57c9d38f8ab2612c7c1977ac86"></a>
+TCHAR&#160;</td><td class="memItemRight" valign="bottom"><b>m_szBuffer</b> [MAX_LOCAL_STRING_LEN+1]</td></tr>
+<tr class="separator:a9cd61f57c9d38f8ab2612c7c1977ac86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>duilib/Utils/<a class="el" href="_utils_8h_source.html">Utils.h</a></li>
+<li>duilib/Utils/Utils.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>

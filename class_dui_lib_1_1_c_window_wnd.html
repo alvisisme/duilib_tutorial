@@ -1,0 +1,779 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>duilib自学教程: DuiLib::CWindowWnd类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">duilib自学教程
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_dui_lib.html">DuiLib</a></li><li class="navelem"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html">CWindowWnd</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="class_dui_lib_1_1_c_window_wnd-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">DuiLib::CWindowWnd类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>窗口基类  
+ <a href="class_dui_lib_1_1_c_window_wnd.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_u_i_base_8h_source.html">UIBase.h</a>&gt;</code></p>
+<div class="dynheader">
+类 DuiLib::CWindowWnd 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_dui_lib_1_1_c_window_wnd.png" usemap="#DuiLib::CWindowWnd_map" alt=""/>
+  <map id="DuiLib::CWindowWnd_map" name="DuiLib::CWindowWnd_map">
+<area href="class_dui_lib_1_1_c_active_x_wnd.html" alt="DuiLib::CActiveXWnd" shape="rect" coords="0,56,148,80"/>
+<area href="class_dui_lib_1_1_c_combo_wnd.html" alt="DuiLib::CComboWnd" shape="rect" coords="158,56,306,80"/>
+<area href="class_dui_lib_1_1_c_date_time_wnd.html" alt="DuiLib::CDateTimeWnd" shape="rect" coords="316,56,464,80"/>
+<area href="class_dui_lib_1_1_c_edit_wnd.html" alt="DuiLib::CEditWnd" shape="rect" coords="474,56,622,80"/>
+<area href="class_dui_lib_1_1_window_impl_base.html" title="基础窗口类" alt="DuiLib::WindowImplBase" shape="rect" coords="632,56,780,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a24815254c530b24d0c271f2ac02a7de3"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a24815254c530b24d0c271f2ac02a7de3">GetHWND</a> () const</td></tr>
+<tr class="memdesc:a24815254c530b24d0c271f2ac02a7de3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获得当前窗口句柄  <a href="#a24815254c530b24d0c271f2ac02a7de3">更多...</a><br /></td></tr>
+<tr class="separator:a24815254c530b24d0c271f2ac02a7de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a33905a142d91c08f2b0cf588dcbf07"><td class="memItemLeft" align="right" valign="top"><a id="a8a33905a142d91c08f2b0cf588dcbf07"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>operator HWND</b> () const</td></tr>
+<tr class="separator:a8a33905a142d91c08f2b0cf588dcbf07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2956804ea9f68d75e807d6c33d45e0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#ad2956804ea9f68d75e807d6c33d45e0d">RegisterWindowClass</a> ()</td></tr>
+<tr class="memdesc:ad2956804ea9f68d75e807d6c33d45e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">窗口类注册  <a href="#ad2956804ea9f68d75e807d6c33d45e0d">更多...</a><br /></td></tr>
+<tr class="separator:ad2956804ea9f68d75e807d6c33d45e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d55f927c3da403dacb3de73bcb717ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a3d55f927c3da403dacb3de73bcb717ae">RegisterSuperclass</a> ()</td></tr>
+<tr class="memdesc:a3d55f927c3da403dacb3de73bcb717ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">父类窗口注册  <a href="#a3d55f927c3da403dacb3de73bcb717ae">更多...</a><br /></td></tr>
+<tr class="separator:a3d55f927c3da403dacb3de73bcb717ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba89aefac97d8d8c7f95c3784e283ab7"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#aba89aefac97d8d8c7f95c3784e283ab7">Create</a> (HWND hwndParent, LPCTSTR pstrName, DWORD dwStyle, DWORD dwExStyle, const RECT rc, HMENU hMenu=NULL)</td></tr>
+<tr class="memdesc:aba89aefac97d8d8c7f95c3784e283ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个窗口  <a href="#aba89aefac97d8d8c7f95c3784e283ab7">更多...</a><br /></td></tr>
+<tr class="separator:aba89aefac97d8d8c7f95c3784e283ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92bfac63797a6313d32c257a620ef9cd"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a92bfac63797a6313d32c257a620ef9cd">Create</a> (HWND hwndParent, LPCTSTR pstrName, DWORD dwStyle, DWORD dwExStyle, int x=CW_USEDEFAULT, int y=CW_USEDEFAULT, int cx=CW_USEDEFAULT, int cy=CW_USEDEFAULT, HMENU hMenu=NULL)</td></tr>
+<tr class="memdesc:a92bfac63797a6313d32c257a620ef9cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个窗口  <a href="#a92bfac63797a6313d32c257a620ef9cd">更多...</a><br /></td></tr>
+<tr class="separator:a92bfac63797a6313d32c257a620ef9cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b0d63e9c167211510552e5f1b460d24"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a0b0d63e9c167211510552e5f1b460d24">CreateDuiWindow</a> (HWND hwndParent, LPCTSTR pstrWindowName, DWORD dwStyle=0, DWORD dwExStyle=0)</td></tr>
+<tr class="memdesc:a0b0d63e9c167211510552e5f1b460d24"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个DUI窗口  <a href="#a0b0d63e9c167211510552e5f1b460d24">更多...</a><br /></td></tr>
+<tr class="separator:a0b0d63e9c167211510552e5f1b460d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b45bec1440997c38275ec426a71be1f"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a7b45bec1440997c38275ec426a71be1f">Subclass</a> (HWND hWnd)</td></tr>
+<tr class="memdesc:a7b45bec1440997c38275ec426a71be1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">子类化  <a href="#a7b45bec1440997c38275ec426a71be1f">更多...</a><br /></td></tr>
+<tr class="separator:a7b45bec1440997c38275ec426a71be1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a017760c9e65c5a5b32fd87c67817ce36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a017760c9e65c5a5b32fd87c67817ce36">Unsubclass</a> ()</td></tr>
+<tr class="memdesc:a017760c9e65c5a5b32fd87c67817ce36"><td class="mdescLeft">&#160;</td><td class="mdescRight">取消子类化  <a href="#a017760c9e65c5a5b32fd87c67817ce36">更多...</a><br /></td></tr>
+<tr class="separator:a017760c9e65c5a5b32fd87c67817ce36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a759925fa1a6e29ef3fca3691ff68aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a9a759925fa1a6e29ef3fca3691ff68aa">ShowWindow</a> (bool bShow=true, bool bTakeFocus=true)</td></tr>
+<tr class="memdesc:a9a759925fa1a6e29ef3fca3691ff68aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示当前窗口  <a href="#a9a759925fa1a6e29ef3fca3691ff68aa">更多...</a><br /></td></tr>
+<tr class="separator:a9a759925fa1a6e29ef3fca3691ff68aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760b8a45c21527de6d75e8e966c8054e"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a760b8a45c21527de6d75e8e966c8054e">ShowModal</a> ()</td></tr>
+<tr class="memdesc:a760b8a45c21527de6d75e8e966c8054e"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示模态框  <a href="#a760b8a45c21527de6d75e8e966c8054e">更多...</a><br /></td></tr>
+<tr class="separator:a760b8a45c21527de6d75e8e966c8054e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fdefc2e2b9d2d995016801af32e3309"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a9fdefc2e2b9d2d995016801af32e3309">Close</a> (UINT nRet=IDOK)</td></tr>
+<tr class="memdesc:a9fdefc2e2b9d2d995016801af32e3309"><td class="mdescLeft">&#160;</td><td class="mdescRight">关闭当前窗口  <a href="#a9fdefc2e2b9d2d995016801af32e3309">更多...</a><br /></td></tr>
+<tr class="separator:a9fdefc2e2b9d2d995016801af32e3309"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca64ecb7222dd2fa4d816030104f987d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#aca64ecb7222dd2fa4d816030104f987d">CenterWindow</a> ()</td></tr>
+<tr class="memdesc:aca64ecb7222dd2fa4d816030104f987d"><td class="mdescLeft">&#160;</td><td class="mdescRight">居中当前窗口，支持扩展屏幕  <a href="#aca64ecb7222dd2fa4d816030104f987d">更多...</a><br /></td></tr>
+<tr class="separator:aca64ecb7222dd2fa4d816030104f987d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4567e9eed0ddbd5484e51f12e4e9a3e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a4567e9eed0ddbd5484e51f12e4e9a3e8">SetIcon</a> (UINT nRes)</td></tr>
+<tr class="memdesc:a4567e9eed0ddbd5484e51f12e4e9a3e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置窗口图标  <a href="#a4567e9eed0ddbd5484e51f12e4e9a3e8">更多...</a><br /></td></tr>
+<tr class="separator:a4567e9eed0ddbd5484e51f12e4e9a3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf75960bb6faea13c6baeefe40ae6c8f"><td class="memItemLeft" align="right" valign="top">LRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#acf75960bb6faea13c6baeefe40ae6c8f">SendMessage</a> (UINT uMsg, WPARAM wParam=0, LPARAM lParam=0L)</td></tr>
+<tr class="memdesc:acf75960bb6faea13c6baeefe40ae6c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送指定消息到当前窗口  <a href="#acf75960bb6faea13c6baeefe40ae6c8f">更多...</a><br /></td></tr>
+<tr class="separator:acf75960bb6faea13c6baeefe40ae6c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5baa431a847541536fcabc0e32c8dddb"><td class="memItemLeft" align="right" valign="top">LRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#a5baa431a847541536fcabc0e32c8dddb">PostMessage</a> (UINT uMsg, WPARAM wParam=0, LPARAM lParam=0L)</td></tr>
+<tr class="memdesc:a5baa431a847541536fcabc0e32c8dddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送指定消息到当前窗口  <a href="#a5baa431a847541536fcabc0e32c8dddb">更多...</a><br /></td></tr>
+<tr class="separator:a5baa431a847541536fcabc0e32c8dddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa98822d4225e10ff56a4e1cf9508f566"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_c_window_wnd.html#aa98822d4225e10ff56a4e1cf9508f566">ResizeClient</a> (int cx=-1, int cy=-1)</td></tr>
+<tr class="memdesc:aa98822d4225e10ff56a4e1cf9508f566"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置当前窗口大小  <a href="#aa98822d4225e10ff56a4e1cf9508f566">更多...</a><br /></td></tr>
+<tr class="separator:aa98822d4225e10ff56a4e1cf9508f566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:ae48ada896c07d7ff0ce5c24db44cd3c3"><td class="memItemLeft" align="right" valign="top"><a id="ae48ada896c07d7ff0ce5c24db44cd3c3"></a>
+virtual LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetWindowClassName</b> () const =0</td></tr>
+<tr class="separator:ae48ada896c07d7ff0ce5c24db44cd3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e8f57bfddd0ebef607b822ec9a1cd4b"><td class="memItemLeft" align="right" valign="top"><a id="a1e8f57bfddd0ebef607b822ec9a1cd4b"></a>
+virtual LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>GetSuperClassName</b> () const</td></tr>
+<tr class="separator:a1e8f57bfddd0ebef607b822ec9a1cd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eb46be6a421e10150c0e0dbf2c210f5"><td class="memItemLeft" align="right" valign="top"><a id="a3eb46be6a421e10150c0e0dbf2c210f5"></a>
+virtual UINT&#160;</td><td class="memItemRight" valign="bottom"><b>GetClassStyle</b> () const</td></tr>
+<tr class="separator:a3eb46be6a421e10150c0e0dbf2c210f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5b9dc788367282daf1302afdb6b1b47"><td class="memItemLeft" align="right" valign="top"><a id="aa5b9dc788367282daf1302afdb6b1b47"></a>
+virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>HandleMessage</b> (UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+<tr class="separator:aa5b9dc788367282daf1302afdb6b1b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b77907d52dc2a0005b68b467e98932a"><td class="memItemLeft" align="right" valign="top"><a id="a7b77907d52dc2a0005b68b467e98932a"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnFinalMessage</b> (HWND hWnd)</td></tr>
+<tr class="separator:a7b77907d52dc2a0005b68b467e98932a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:aa0304ff1399c7548c97d546fb337c01c"><td class="memItemLeft" align="right" valign="top"><a id="aa0304ff1399c7548c97d546fb337c01c"></a>
+static LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><b>__WndProc</b> (HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+<tr class="separator:aa0304ff1399c7548c97d546fb337c01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa05cb72f01a5dcd4b54604b7969f2f2a"><td class="memItemLeft" align="right" valign="top"><a id="aa05cb72f01a5dcd4b54604b7969f2f2a"></a>
+static LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><b>__ControlProc</b> (HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+<tr class="separator:aa05cb72f01a5dcd4b54604b7969f2f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a6d95cebca5bfc641bee712f722b343e9"><td class="memItemLeft" align="right" valign="top"><a id="a6d95cebca5bfc641bee712f722b343e9"></a>
+HWND&#160;</td><td class="memItemRight" valign="bottom"><b>m_hWnd</b></td></tr>
+<tr class="separator:a6d95cebca5bfc641bee712f722b343e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa532ff0a0df2f64f58d5d38e2343da47"><td class="memItemLeft" align="right" valign="top"><a id="aa532ff0a0df2f64f58d5d38e2343da47"></a>
+WNDPROC&#160;</td><td class="memItemRight" valign="bottom"><b>m_OldWndProc</b></td></tr>
+<tr class="separator:aa532ff0a0df2f64f58d5d38e2343da47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a787b283be9087d823b18b5cb298156e9"><td class="memItemLeft" align="right" valign="top"><a id="a787b283be9087d823b18b5cb298156e9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_bSubclassed</b></td></tr>
+<tr class="separator:a787b283be9087d823b18b5cb298156e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>窗口基类 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="aca64ecb7222dd2fa4d816030104f987d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca64ecb7222dd2fa4d816030104f987d">&#9670;&nbsp;</a></span>CenterWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DuiLib::CWindowWnd::CenterWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>居中当前窗口，支持扩展屏幕 </p>
+
+</div>
+</div>
+<a id="a9fdefc2e2b9d2d995016801af32e3309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fdefc2e2b9d2d995016801af32e3309">&#9670;&nbsp;</a></span>Close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DuiLib::CWindowWnd::Close </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>nRet</em> = <code>IDOK</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>关闭当前窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nRet</td><td>关闭的状态码 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aba89aefac97d8d8c7f95c3784e283ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba89aefac97d8d8c7f95c3784e283ab7">&#9670;&nbsp;</a></span>Create() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND DuiLib::CWindowWnd::Create </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hwndParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>pstrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>dwStyle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>dwExStyle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const RECT&#160;</td>
+          <td class="paramname"><em>rc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HMENU&#160;</td>
+          <td class="paramname"><em>hMenu</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建一个窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hwndParent</td><td>父窗口的句柄 </td></tr>
+    <tr><td class="paramname">pstrName</td><td>指向窗口名称的指针 </td></tr>
+    <tr><td class="paramname">dwStyle</td><td>窗口风格 </td></tr>
+    <tr><td class="paramname">dwExStyle</td><td>窗口的扩展风格 </td></tr>
+    <tr><td class="paramname">rc</td><td>窗口尺寸大小 </td></tr>
+    <tr><td class="paramname">hMenu</td><td>菜单的句柄或是子窗口的标识符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>HWND 创建的窗口句柄 </dd></dl>
+
+</div>
+</div>
+<a id="a92bfac63797a6313d32c257a620ef9cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92bfac63797a6313d32c257a620ef9cd">&#9670;&nbsp;</a></span>Create() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND DuiLib::CWindowWnd::Create </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hwndParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>pstrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>dwStyle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>dwExStyle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em> = <code>CW_USEDEFAULT</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em> = <code>CW_USEDEFAULT</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cx</em> = <code>CW_USEDEFAULT</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cy</em> = <code>CW_USEDEFAULT</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HMENU&#160;</td>
+          <td class="paramname"><em>hMenu</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建一个窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hwndParent</td><td>父窗口的句柄 </td></tr>
+    <tr><td class="paramname">pstrName</td><td>指向窗口名称的指针 </td></tr>
+    <tr><td class="paramname">dwStyle</td><td>窗口风格 </td></tr>
+    <tr><td class="paramname">dwExStyle</td><td>窗口的扩展风格 </td></tr>
+    <tr><td class="paramname">x</td><td>窗口的水平位置 </td></tr>
+    <tr><td class="paramname">y</td><td>窗口的垂直位置 </td></tr>
+    <tr><td class="paramname">cx</td><td>窗口的宽度 </td></tr>
+    <tr><td class="paramname">cy</td><td>窗口的高度 </td></tr>
+    <tr><td class="paramname">hMenu</td><td>菜单的句柄或是子窗口的标识符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>HWND 创建的窗口句柄 </dd></dl>
+
+</div>
+</div>
+<a id="a0b0d63e9c167211510552e5f1b460d24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b0d63e9c167211510552e5f1b460d24">&#9670;&nbsp;</a></span>CreateDuiWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND DuiLib::CWindowWnd::CreateDuiWindow </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hwndParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>pstrWindowName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>dwStyle</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname"><em>dwExStyle</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建一个DUI窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hwndParent</td><td>父窗口的句柄 </td></tr>
+    <tr><td class="paramname">pstrWindowName</td><td>窗口类名 </td></tr>
+    <tr><td class="paramname">dwStyle</td><td>窗口风格 </td></tr>
+    <tr><td class="paramname">dwExStyle</td><td>窗口的扩展风格 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>HWND 创建的窗口句柄 </dd></dl>
+
+</div>
+</div>
+<a id="a24815254c530b24d0c271f2ac02a7de3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24815254c530b24d0c271f2ac02a7de3">&#9670;&nbsp;</a></span>GetHWND()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND DuiLib::CWindowWnd::GetHWND </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获得当前窗口句柄 </p>
+<dl class="section return"><dt>返回</dt><dd>HWND 当前窗口句柄 </dd></dl>
+
+</div>
+</div>
+<a id="a5baa431a847541536fcabc0e32c8dddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5baa431a847541536fcabc0e32c8dddb">&#9670;&nbsp;</a></span>PostMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LRESULT DuiLib::CWindowWnd::PostMessage </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>uMsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WPARAM&#160;</td>
+          <td class="paramname"><em>wParam</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&#160;</td>
+          <td class="paramname"><em>lParam</em> = <code>0L</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>发送指定消息到当前窗口 </p>
+<p>PostMessage将一个消息放入与创建这个窗口的消息队列相关的线程中，并立刻返回不等待线程处理消息</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uMsg</td><td>需要发送的消息 </td></tr>
+    <tr><td class="paramname">wParam</td><td>额外的消息相关信息 </td></tr>
+    <tr><td class="paramname">lParam</td><td>外的消息相关信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>LRESULT 消息处理结果，视具体消息而定 </dd></dl>
+
+</div>
+</div>
+<a id="a3d55f927c3da403dacb3de73bcb717ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d55f927c3da403dacb3de73bcb717ae">&#9670;&nbsp;</a></span>RegisterSuperclass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DuiLib::CWindowWnd::RegisterSuperclass </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>父类窗口注册 </p>
+<dl class="section return"><dt>返回</dt><dd>true 注册成功 </dd>
+<dd>
+false 注册失败 </dd></dl>
+
+</div>
+</div>
+<a id="ad2956804ea9f68d75e807d6c33d45e0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2956804ea9f68d75e807d6c33d45e0d">&#9670;&nbsp;</a></span>RegisterWindowClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DuiLib::CWindowWnd::RegisterWindowClass </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>窗口类注册 </p>
+<dl class="section return"><dt>返回</dt><dd>true 注册成功 </dd>
+<dd>
+false 注册失败 </dd></dl>
+
+</div>
+</div>
+<a id="aa98822d4225e10ff56a4e1cf9508f566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa98822d4225e10ff56a4e1cf9508f566">&#9670;&nbsp;</a></span>ResizeClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DuiLib::CWindowWnd::ResizeClient </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cx</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cy</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重置当前窗口大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cx</td><td>以像素指定窗口的新的宽度 </td></tr>
+    <tr><td class="paramname">cy</td><td>以像素指定窗口的新的高度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acf75960bb6faea13c6baeefe40ae6c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf75960bb6faea13c6baeefe40ae6c8f">&#9670;&nbsp;</a></span>SendMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LRESULT DuiLib::CWindowWnd::SendMessage </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>uMsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WPARAM&#160;</td>
+          <td class="paramname"><em>wParam</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&#160;</td>
+          <td class="paramname"><em>lParam</em> = <code>0L</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>发送指定消息到当前窗口 </p>
+<p>SendMessage函数将指定的消息发到窗口。它调用特定窗口的窗口处理函数，并且不会立即返回，直到窗口处理函数处理了这个消息</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uMsg</td><td>需要发送的消息 </td></tr>
+    <tr><td class="paramname">wParam</td><td>额外的消息相关信息 </td></tr>
+    <tr><td class="paramname">lParam</td><td>额外的消息相关信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>LRESULT 消息处理结果，视具体消息而定 </dd></dl>
+
+</div>
+</div>
+<a id="a4567e9eed0ddbd5484e51f12e4e9a3e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4567e9eed0ddbd5484e51f12e4e9a3e8">&#9670;&nbsp;</a></span>SetIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DuiLib::CWindowWnd::SetIcon </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>nRes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置窗口图标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nRes</td><td>图标资源 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a760b8a45c21527de6d75e8e966c8054e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a760b8a45c21527de6d75e8e966c8054e">&#9670;&nbsp;</a></span>ShowModal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT DuiLib::CWindowWnd::ShowModal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>显示模态框 </p>
+<dl class="section return"><dt>返回</dt><dd>UINT 窗口的激活状态？</dd></dl>
+<p>WA_ACTIVE 被非鼠标点击激活的状态 WA_CLICKACTIVE 被鼠标点击激活的状态 WA_INACTIVE 非激活状态 </p>
+
+</div>
+</div>
+<a id="a9a759925fa1a6e29ef3fca3691ff68aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a759925fa1a6e29ef3fca3691ff68aa">&#9670;&nbsp;</a></span>ShowWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DuiLib::CWindowWnd::ShowWindow </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bShow</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bTakeFocus</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>显示当前窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bShow</td><td>是否显示当前窗口 </td></tr>
+    <tr><td class="paramname">bTakeFocus</td><td>是否激活当前窗口 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7b45bec1440997c38275ec426a71be1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b45bec1440997c38275ec426a71be1f">&#9670;&nbsp;</a></span>Subclass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND DuiLib::CWindowWnd::Subclass </td>
+          <td>(</td>
+          <td class="paramtype">HWND&#160;</td>
+          <td class="paramname"><em>hWnd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>子类化 </p>
+<p>子类化指改变一个已创建窗口的行为。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hWnd</td><td>需要子类化的窗口句柄 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>HWND </dd></dl>
+
+</div>
+</div>
+<a id="a017760c9e65c5a5b32fd87c67817ce36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017760c9e65c5a5b32fd87c67817ce36">&#9670;&nbsp;</a></span>Unsubclass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DuiLib::CWindowWnd::Unsubclass </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取消子类化 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>duilib/Core/<a class="el" href="_u_i_base_8h_source.html">UIBase.h</a></li>
+<li>duilib/Core/UIBase.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>duilib自学教程: DuiLib::CWebBrowserEventHandler类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">duilib自学教程
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_dui_lib.html">DuiLib</a></li><li class="navelem"><a class="el" href="class_dui_lib_1_1_c_web_browser_event_handler.html">CWebBrowserEventHandler</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="class_dui_lib_1_1_c_web_browser_event_handler-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">DuiLib::CWebBrowserEventHandler类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a30398ea72cd5ca65a7ccf588211b26d3"><td class="memItemLeft" align="right" valign="top"><a id="a30398ea72cd5ca65a7ccf588211b26d3"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>BeforeNavigate2</b> (IDispatch *pDisp, VARIANT *&amp;url, VARIANT *&amp;Flags, VARIANT *&amp;TargetFrameName, VARIANT *&amp;PostData, VARIANT *&amp;Headers, VARIANT_BOOL *&amp;Cancel)</td></tr>
+<tr class="separator:a30398ea72cd5ca65a7ccf588211b26d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bede8c1213f0bea2d2a3d614edc8601"><td class="memItemLeft" align="right" valign="top"><a id="a2bede8c1213f0bea2d2a3d614edc8601"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>NavigateError</b> (IDispatch *pDisp, VARIANT *&amp;url, VARIANT *&amp;TargetFrameName, VARIANT *&amp;StatusCode, VARIANT_BOOL *&amp;Cancel)</td></tr>
+<tr class="separator:a2bede8c1213f0bea2d2a3d614edc8601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8e9019dbc4dca57e20f3c31cb14236"><td class="memItemLeft" align="right" valign="top"><a id="afa8e9019dbc4dca57e20f3c31cb14236"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>NavigateComplete2</b> (IDispatch *pDisp, VARIANT *&amp;url)</td></tr>
+<tr class="separator:afa8e9019dbc4dca57e20f3c31cb14236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ce7e665e61a8a20af04143a482aff30"><td class="memItemLeft" align="right" valign="top"><a id="a1ce7e665e61a8a20af04143a482aff30"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>DocumentComplete</b> (IDispatch *pDisp, VARIANT *&amp;url)</td></tr>
+<tr class="separator:a1ce7e665e61a8a20af04143a482aff30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7094c33841e58009661b096d34fe145"><td class="memItemLeft" align="right" valign="top"><a id="ad7094c33841e58009661b096d34fe145"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ProgressChange</b> (LONG nProgress, LONG nProgressMax)</td></tr>
+<tr class="separator:ad7094c33841e58009661b096d34fe145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f278a313c37715ff3b99c2c2edccb62"><td class="memItemLeft" align="right" valign="top"><a id="a0f278a313c37715ff3b99c2c2edccb62"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>NewWindow3</b> (IDispatch **pDisp, VARIANT_BOOL *&amp;Cancel, DWORD dwFlags, BSTR bstrUrlContext, BSTR bstrUrl)</td></tr>
+<tr class="separator:a0f278a313c37715ff3b99c2c2edccb62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affd7926f09a2038bb8b554310cad6b07"><td class="memItemLeft" align="right" valign="top"><a id="affd7926f09a2038bb8b554310cad6b07"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>CommandStateChange</b> (long Command, VARIANT_BOOL Enable)</td></tr>
+<tr class="separator:affd7926f09a2038bb8b554310cad6b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15da9b0f86ec3156ad269a8a246d1a8d"><td class="memItemLeft" align="right" valign="top"><a id="a15da9b0f86ec3156ad269a8a246d1a8d"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ShowContextMenu</b> (DWORD dwID, POINT __RPC_FAR *ppt, IUnknown __RPC_FAR *pcmdtReserved, IDispatch __RPC_FAR *pdispReserved)</td></tr>
+<tr class="separator:a15da9b0f86ec3156ad269a8a246d1a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdac53f22a1b9dac4bbed501a55f82fc"><td class="memItemLeft" align="right" valign="top"><a id="abdac53f22a1b9dac4bbed501a55f82fc"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>GetHostInfo</b> (DOCHOSTUIINFO __RPC_FAR *pInfo)</td></tr>
+<tr class="separator:abdac53f22a1b9dac4bbed501a55f82fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b1fb9626b9d3193f1c9d2991adadc4e"><td class="memItemLeft" align="right" valign="top"><a id="a1b1fb9626b9d3193f1c9d2991adadc4e"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ShowUI</b> (DWORD dwID, IOleInPlaceActiveObject __RPC_FAR *pActiveObject, IOleCommandTarget __RPC_FAR *pCommandTarget, IOleInPlaceFrame __RPC_FAR *pFrame, IOleInPlaceUIWindow __RPC_FAR *pDoc)</td></tr>
+<tr class="separator:a1b1fb9626b9d3193f1c9d2991adadc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a476f578ec63d3e059fb5a54a6d482584"><td class="memItemLeft" align="right" valign="top"><a id="a476f578ec63d3e059fb5a54a6d482584"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>HideUI</b> (void)</td></tr>
+<tr class="separator:a476f578ec63d3e059fb5a54a6d482584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f7c0ec41548bfb9abedf12ae8f0161"><td class="memItemLeft" align="right" valign="top"><a id="ab9f7c0ec41548bfb9abedf12ae8f0161"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateUI</b> (void)</td></tr>
+<tr class="separator:ab9f7c0ec41548bfb9abedf12ae8f0161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a379ddf0cd6dbb54b2c6d30dc8f96d6cd"><td class="memItemLeft" align="right" valign="top"><a id="a379ddf0cd6dbb54b2c6d30dc8f96d6cd"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>EnableModeless</b> (BOOL fEnable)</td></tr>
+<tr class="separator:a379ddf0cd6dbb54b2c6d30dc8f96d6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c0be5d7440861f0be4ec7c1d525262"><td class="memItemLeft" align="right" valign="top"><a id="a91c0be5d7440861f0be4ec7c1d525262"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>OnDocWindowActivate</b> (BOOL fActivate)</td></tr>
+<tr class="separator:a91c0be5d7440861f0be4ec7c1d525262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2c0f731d41891bc781fd74a35e07cd6"><td class="memItemLeft" align="right" valign="top"><a id="af2c0f731d41891bc781fd74a35e07cd6"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>OnFrameWindowActivate</b> (BOOL fActivate)</td></tr>
+<tr class="separator:af2c0f731d41891bc781fd74a35e07cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31aa73a2a396e08c1af861d6cfdc1a72"><td class="memItemLeft" align="right" valign="top"><a id="a31aa73a2a396e08c1af861d6cfdc1a72"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>ResizeBorder</b> (LPCRECT prcBorder, IOleInPlaceUIWindow __RPC_FAR *pUIWindow, BOOL fRameWindow)</td></tr>
+<tr class="separator:a31aa73a2a396e08c1af861d6cfdc1a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bb16c0425ec3eee4964ab95d05ca6cc"><td class="memItemLeft" align="right" valign="top"><a id="a6bb16c0425ec3eee4964ab95d05ca6cc"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>TranslateAccelerator</b> (LPMSG lpMsg, const GUID __RPC_FAR *pguidCmdGroup, DWORD nCmdID)</td></tr>
+<tr class="separator:a6bb16c0425ec3eee4964ab95d05ca6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2dcf64f570c23bebca5bb74079c1194"><td class="memItemLeft" align="right" valign="top"><a id="ae2dcf64f570c23bebca5bb74079c1194"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>GetOptionKeyPath</b> (LPOLESTR __RPC_FAR *pchKey, DWORD dw)</td></tr>
+<tr class="separator:ae2dcf64f570c23bebca5bb74079c1194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a4c143a54983d95f04a203dc4caac3c"><td class="memItemLeft" align="right" valign="top"><a id="a1a4c143a54983d95f04a203dc4caac3c"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>GetDropTarget</b> (IDropTarget __RPC_FAR *pDropTarget, IDropTarget __RPC_FAR *__RPC_FAR *ppDropTarget)</td></tr>
+<tr class="separator:a1a4c143a54983d95f04a203dc4caac3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae854324e56854c7222b965e9e5533867"><td class="memItemLeft" align="right" valign="top"><a id="ae854324e56854c7222b965e9e5533867"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>GetExternal</b> (IDispatch __RPC_FAR *__RPC_FAR *ppDispatch)</td></tr>
+<tr class="separator:ae854324e56854c7222b965e9e5533867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e9485d824248d3c60a0694c09cdc09a"><td class="memItemLeft" align="right" valign="top"><a id="a6e9485d824248d3c60a0694c09cdc09a"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>TranslateUrl</b> (DWORD dwTranslate, OLECHAR __RPC_FAR *pchURLIn, OLECHAR __RPC_FAR *__RPC_FAR *ppchURLOut)</td></tr>
+<tr class="separator:a6e9485d824248d3c60a0694c09cdc09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdcb7c12fb00c5e9008d36a3ca6d5b7c"><td class="memItemLeft" align="right" valign="top"><a id="abdcb7c12fb00c5e9008d36a3ca6d5b7c"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>FilterDataObject</b> (IDataObject __RPC_FAR *pDO, IDataObject __RPC_FAR *__RPC_FAR *ppDORet)</td></tr>
+<tr class="separator:abdcb7c12fb00c5e9008d36a3ca6d5b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a044a9e70a0f7b61d0e0f7ac377b896b6"><td class="memItemLeft" align="right" valign="top"><a id="a044a9e70a0f7b61d0e0f7ac377b896b6"></a>
+virtual HRESULT STDMETHODCALLTYPE&#160;</td><td class="memItemRight" valign="bottom"><b>Download</b> (IMoniker *pmk, IBindCtx *pbc, DWORD dwBindVerb, LONG grfBINDF, BINDINFO *pBindInfo, LPCOLESTR pszHeaders, LPCOLESTR pszRedir, UINT uiCP)</td></tr>
+<tr class="separator:a044a9e70a0f7b61d0e0f7ac377b896b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>duilib/Utils/<a class="el" href="_web_browser_event_handler_8h_source.html">WebBrowserEventHandler.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>
