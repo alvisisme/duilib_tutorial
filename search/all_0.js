@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['duilib_20基础入门文档',['DuiLib 基础入门文档',['../index.html',1,'']]]
+  ['duilib_20基础入门文档',['Duilib 基础入门文档',['../md_doc_index.html',1,'']]]
 ];

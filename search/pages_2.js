@@ -5,5 +5,5 @@ var searchData=
   ['初探_20duilib_20ui_20组件结构',['初探 DuiLib UI 组件结构',['../md_doc_component_architectures.html',1,'']]],
   ['动态创建控件',['动态创建控件',['../md_doc_dynamic_control.html',1,'']]],
   ['引言',['引言',['../md_doc_introduction.html',1,'']]],
-  ['参考文献',['参考文献',['../md_doc_reference.html',1,'']]]
+  ['参考引用',['参考引用',['../md_doc_reference.html',1,'']]]
 ];
