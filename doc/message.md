@@ -16,7 +16,7 @@ void MainWndFrame::InitWindow()
 
 我们调用了 CButtonUI 的 SetVisible 方法，将最小化控件隐藏了。但实际这并没有什么作用，我们真正需要的是点击某个控件后执行某些操作。
 
-<img src="../images/2018-05-02_11-08-33.png" />
+<img src="2018-05-02_11-08-33.png" />
 
 ## 基本的消息响应处理
 
@@ -44,7 +44,7 @@ void MainWndFrame::Notify(TNotifyUI& msg)
 
 以上是一个基本的响应过程。另外还有一种类似 MFC 方式的响应方法，首先在 MainWndFrame.h 中添加一句 `DUI_DECLARE_MESSAGE_MAP()`
 
-<img src="../images/2018-05-02_11-47-46.png" />
+<img src="2018-05-02_11-47-46.png" />
 
 然后在 MainWndFrame.cpp 中添加如下代码
 
@@ -85,11 +85,11 @@ void WindowImplBase::OnClick(TNotifyUI& msg)
 ```
 可以看出，DuiLib 已经默认帮我们实现了几个按钮的鼠标点击功能。我们只需要根据它设定的名字修改一下我们控件的 name 属性就可以实现几个功能了。当然如果我们要添加其他控件的处理，是需要覆写这个 OnClick 函数的。
 
-<img src="../images/2018-05-02_11-35-59.png" />
+<img src="2018-05-02_11-35-59.png" />
 
 修改完成后最小化、最大化、还原三个按钮都可以正常工作了，但是关闭按钮点击后并不能完全退出程序，而仅仅是把程序隐藏了，这主要原因是当我们点击关闭按钮时调用的是父类的 Close 函数，该函数发送了退出消息后，窗口接收到该消息的处理函数 OnClose 未做任何措施，如下所示：
 
-<img src="../images/2018-05-02_12-11-39.png" />
+<img src="2018-05-02_12-11-39.png" />
 
 要解决这个问题很简单，我们只需要覆写一下这个 OnClose 方法，然后执行退出操作就可以了。
 
