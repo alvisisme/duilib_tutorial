@@ -1,22 +1,10 @@
 # 制作一个简单的界面
 
-在实现这个基本窗口之前，我们首先根据自己的习惯设置一下 DuiLib 编译后生成的文件路径和项目依赖的头文件目录。你不一定要按着我的修改，符合你自己的使用习惯即可。要修改的位置主要有一下几个。修改过程比较繁琐，主要还是因为 DuiLib 是从 VC6 升级上来的，很多属性需要删除和修改，也有些属性是 DuiLib 团队自己的目录结构风格，改与不改不影响使用。
+我们在这一章主要了解如何使用动态库或静态库来创建一个基于 duilib 的简单界面，然后再循序渐进的往深入去挖一挖。
 
- - 常规->输出路径
- - 常规->中间目录（DLL 和 LIB 不能有冲突）
- - 常规->输出文件名（32 位和 64 位不一样，Debug 和 Release 也不同）
- - C/C++->预编译头->预编译头输出文件
- - 连接器->常规 删除 DuiLib 项目原有的输出文件选项
- - 连接器->系统->子系统 设置子系统为窗口（负责构建过程中会有警告）
- - 连接器->高级->到入库 删除默认到入库
- - 常规->平台工具集 设置 EXE 的平台工具集与 DuiLib 一致为 VS2013（如果是 2017 需要改一些因新标准导致的编译错误）
- - VC++ 目录->包含目录 设置 EXE 依赖的头文件目录，如果使用静态库那么要设置附加库目录和附加库文件
- - C/C++->代码生成->运行库 设置 EXE 项目的C/C++代码生成->运行库为 /MTd 和 /MT 与 DuiLib 保持一致否则链接时报错
- - 连接器->输入 设置 EXE 项目依赖项
+Duilib 实现了一个窗口基类，我们自己的窗口只需要继承这个类，实现三个必须要实现的纯虚函数，然后设置一下窗口使用的配置文件、窗口配置文件的路径和窗口的名称就可以了。
 
-DuiLib 的具体结构这里我们先不说，目前我们仅需要了解，如何使用动态库或静态库来创建一个基于 DuiLib 的简单界面就可以了，然后再循序渐进的往深入去挖一挖。DuiLib 实现了一个窗口基类，我们自己的窗口只需要继承这个类，实现三个必须要实现的纯虚函数，然后设置一下窗口使用的配置文件、窗口配置文件的路径和窗口的名称就可以了。
-
- - 继承 WindowImplBase 类（DuiLib 窗口管理的一个基类）
+ - 继承 WindowImplBase 类（duilib 窗口管理的一个基类）
  - 实现 GetWindowClassName 接口（描述窗口唯一名称的方法）
  - 实现 GetSkinFile 接口（描述窗口样式的 xml 文件名称方法）
  - 实现 GetSkinFolder 接口（描述窗口样式文件路径的方法）
@@ -44,39 +32,39 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 }
 ```
 
-打开 `stdafx.h` 添加 ATL 依赖（创建项目时选择了 ATL 支持，但是没有导入 ATL 的库文件，可能是 VS2017 的 Bug），再添加上 DuiLib 的统一入口头文件和引入整个命名空间（因为是做示例，大型项目不建议引入整个命名空间）
+## 引入 duibli 头文件和命名空间
+
+我们在头文件 **framework.h** 中加入 duilib 库的头文件和命名空间
 
 ```
-// stdafx.h : 标准系统包含文件的包含文件，
-// 或是经常使用但不常更改的
-// 特定于项目的包含文件
+// header.h: 标准系统包含文件的包含文件，
+// 或特定于项目的包含文件
 //
 
 #pragma once
 
 #include "targetver.h"
-
-#define WIN32_LEAN_AND_MEAN             // 从 Windows 头中排除极少使用的资料
-// Windows 头文件: 
+#define WIN32_LEAN_AND_MEAN             // 从 Windows 头文件中排除极少使用的内容
+// Windows 头文件
 #include <windows.h>
-
 // C 运行时头文件
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
 
-// ATL
-#define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
-#include <atlbase.h>
-#include <atlstr.h>
-
-// TODO: 在此处引用程序需要的其他头文件
+// duilib 头文件
 #include "UIlib.h"
 using namespace DuiLib;
 ```
 
-然后我们在 duilib_tutoral.cpp 中创建一个自己的窗口，来继承 WindowImplBase，并实现 `GetSkinFolder` `GetSkinFile` `GetWindowClassName` 三个接口，代码如下：
+为了能够正确找到头文件，我们需要在工程属性页的 **配置属性** -> **C/C++** -> **常规** -> **附加包含目录** 选项加入 duilib 头文件所在目录。
+
+<img src="2019-07-31_14-35-13.png" />
+
+## 定义主窗口类
+
+在 **duilib_tutoral.cpp** 中创建一个自己的窗口，来继承 **WindowImplBase** ，并实现 **GetSkinFolder** **GetSkinFile** **GetWindowClassName** 三个接口，代码如下：
 
 ```
 class MainWndFrame : public WindowImplBase
@@ -114,7 +102,13 @@ const LPCTSTR MainWndFrame::kClassName = _T("main_wnd_frame");
 const LPCTSTR MainWndFrame::kMainWndFrame = _T("main_wnd_frame.xml");
 ```
 
-仔细分析代码，我们可以看到我们指定了这个窗口的皮肤路径是默认路径（取决于我们如何设置，稍后就能看到），并指定了这个窗口的皮肤文件 main_wnd_frame.xml，最后还指定了一下窗口的类名。这样这个窗口就创建好了，我们还需要在 mian 函数中把这个窗口 new 出来，其次还需要创建一个 xml 文件来描述一下这个窗口的样子。先来写 main 函数。
+仔细分析代码，我们可以看到我们指定了这个窗口的皮肤路径是默认路径（取决于我们如何设置，稍后就能看到），并指定了这个窗口的皮肤文件 **main_wnd_frame.xml** ，最后还指定了一下窗口的类名。
+
+## 新建主窗口
+
+这样这个窗口就创建好了，我们还需要在 main 函数中把这个窗口 new 出来，其次还需要创建一个 xml 文件来描述一下这个窗口的样子。
+
+先来写 main 函数。
 
 ```
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -122,64 +116,107 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
-	UNREFERENCED_PARAMETER(hPrevInstance);
-	UNREFERENCED_PARAMETER(lpCmdLine);
+    UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(lpCmdLine);
 
-	// 设置窗口关联的实例
-	CPaintManagerUI::SetInstance(hInstance);
+    // 设置窗口关联的实例
+    CPaintManagerUI::SetInstance(hInstance);
 
-	// 设置皮肤的默认路径
-	CPaintManagerUI::SetCurrentPath(CPaintManagerUI::GetInstancePath());
-	CPaintManagerUI::SetResourcePath(_T("theme"));
+    // 设置皮肤的默认路径
+    CPaintManagerUI::SetCurrentPath(CPaintManagerUI::GetInstancePath());
+    CPaintManagerUI::SetResourcePath(_T("theme"));
 
-	// 创建窗口
-	MainWndFrame* pMainWndFrame = new MainWndFrame;
-	pMainWndFrame->Create(nullptr, MainWndFrame::kClassName, UI_WNDSTYLE_DIALOG, 0);
-	pMainWndFrame->CenterWindow();
-	pMainWndFrame->ShowWindow();
+    // 创建窗口
+    MainWndFrame* pMainWndFrame = new MainWndFrame;
+    pMainWndFrame->Create(nullptr, MainWndFrame::kClassName, UI_WNDSTYLE_DIALOG, 0);
+    pMainWndFrame->CenterWindow();
+    pMainWndFrame->ShowWindow();
 
-	CPaintManagerUI::MessageLoop();
+    // 消息循环
+    CPaintManagerUI::MessageLoop();
 
-	if (nullptr != pMainWndFrame)
-	{
-		delete pMainWndFrame;
-	}
-
-	return 0;
+    if (nullptr != pMainWndFrame) {
+        delete pMainWndFrame;
+    }
+ 
+    return 0;
 }
 ```
 
-通过 `CPaintManagerUI` 的一些静态设置了当前关联的窗口实例、皮肤文件的路径，接下来 new 了一个我们继承 `WindowImplBase` 所产生的窗口。调用 `Create` 方法创建了窗口，使用 `CenterWindow` 让窗口居中显示，再调用 `ShowWindow` 显示窗口。最后我们使用了 `CPaintManagerUI` 的 `MessageLoop` 启动消息循环的监听，保证程序不被退出。并且在退出前我们要 delete 掉 new 出来的窗口。这样创建窗口的过程就完事儿了，但是现在还是不能运行的，我们还需要完善一下这个窗口的 xml 文件。
+通过 **CPaintManagerUI** 的一些静态设置了当前关联的窗口实例、皮肤文件的路径，接下来 new 了一个我们继承 **WindowImplBase** 所产生的窗口。调用 **Create** 方法创建了窗口，使用 **CenterWindow** 让窗口居中显示，再调用 **ShowWindow** 显示窗口。最后我们使用了 **CPaintManagerUI** 的 **MessageLoop** 启动消息循环的监听，保证程序不被退出。并且在退出前我们要 delete 掉 new 出来的窗口。这样创建窗口的过程就完事儿了，但是现在还是不能运行的，我们还需要完善一下这个窗口的 xml 文件。
 
-代码中设置了皮肤文件路径是 EXE 目录下的 theme 文件夹，所以要在 EXE 生成的文件夹创建一个 theme 文件夹，把 main_wnd_frame.xml 放到这个里面。
+## 编写页面布局文件xml
 
-<img src="2018-04-29_15-23-04.png" />
+代码中设置了皮肤文件路径是 EXE 目录下的 theme 文件夹，所以要在 EXE 生成的文件夹创建一个 theme 文件夹，把 **main_wnd_frame.xml** 放到这个里面。
+
+<img src="2019-07-31_14-22-14.png" />
 
 把如下代码添加到 xml 文件中（先暂时不需要关注 xml 的内容，后面会详细的讲解）
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <Window size="640,480" caption="0,0,0,35">
-	<VerticalLayout>
-		<HorizontalLayout bkcolor="#FFFFFFFF"/>
-		<HorizontalLayout bkcolor="#FFFFFFFF">
-			<Button text="Hello DuiLib" bkcolor="#FF1296DB"/>
-		</HorizontalLayout>
-		<HorizontalLayout bkcolor="#FFFFFFFF"/>
-	</VerticalLayout>
+    <HorizontalLayout bkcolor="#FFFFFFFF">
+        <Button text="Hello DuiLib" bkcolor="#FF1296DB"/>
+    </HorizontalLayout>
 </Window>
 ```
 
-所有准备工作就绪，我们编译一下程序，但你会发现报了一大堆的错误，如下所示
+## 解决 duilib 依赖
 
-<img src="2018-04-29_15-21-30.png" />
+所有准备工作就绪，我们编译一下程序，但你会发现报了一大堆的错误
 
-很明显，程序不知道到哪里去找我们用到的这些函数，换句话说还没告诉程序要用 DuiLib 的动态库还是静态库，这个好解决。如果你想使用动态库，那么首先保证 EXE 目录下有动态库的文件，其次在项目的 `属性->C/C++->预处理器` 中增加 `UILIB_EXPORTS` 的预定义宏，这是告诉 DuiLib 你需要把我们用到的接口按动态库的方式导出。其实搜索一下 `UILIB_EXPORTS` 就可以看到具体的定义了。
+<img src="2019-07-31_14-26-15.png" />
 
-<img src="2018-04-29_15-23-43.png" />
+很明显，程序不知道到哪里去找我们用到的这些函数，换句话说还没告诉程序要用 duilib 的动态库还是静态库。
 
-如果你想使用静态库，同样，定义一个 `UILIB_STATIC` 的预定义宏然后在项目 `属性->连接器->输入` 中，输入附加依赖库的 lib 文件名字就可以啦（在之前我们已经在项目`属性->VC++目录` 设置中添加了附加库的目录，所以直接添加附加库就可以了 ）。当你定义完预定义宏后再次编译就可以编译通过了，运行程序后窗口就显示出来了。如下所示
+如果你想使用动态库，那么在项目属性页的 **配置属性** -> **C/C++** -> **预处理器** 中增加 **UILIB_EXPORTS** 的预定义宏，这是告诉 duilib 你需要把我们用到的接口按动态库的方式导出。
 
-<img src="2018-04-29_15-24-36.png" />
+<img src="2019-07-31_14-40-39.png" />
 
-但看起来这个窗口有点简陋，只有中间一个蓝条，没有标题栏、没有状态栏，也不能关闭。先不着急，在接下来的教程中一点点循序渐进的往界面中添加内容。
+其实搜索一下 **UILIB_EXPORTS** 就可以看到具体的定义了。
+
+<img src="2019-07-31_14-42-10.png" />
+
+之后，根据我们在 duilib 工程中设置的目标文件生成路径，将其加入到 duilib_tutorial 工程的 **配置属性** -> **VC++目录** -> **库目录** 选项中
+
+<img src="2019-07-31_14-45-49.png" />
+
+我们还需要设置我们需要链接的动态库所在的目录，设置 **配置属性** -> **链接器** -> **常规** -> **附加库目录** 选项
+
+<img src="2019-07-31_14-55-36.png" />
+
+最后，在 **配置属性** -> **链接器** -> **输入** -> **附加依赖项** 里加入需要链接的库名
+
+<img src="2019-07-31_14-55-56.png" />
+
+注意，不同平台和配置下需要根据自身的配置填写，填入内容可能不同。
+
+虽然链接的是动态库，但是加入的库名是 **lib** 后缀，这个文件是对应动态链接库的导入库，实际的执行代码位于动态库中，导入库只包含了地址符号表等，确保程序找到对应函数的一些基本地址信息。
+
+如果你想使用静态库，同样，定义一个 **UILIB_STATIC** 的预定义宏
+
+<img src="2019-07-31_15-08-58.png" />
+
+在 **配置属性** -> **链接器** -> **常规** -> **附加库目录** 选项中设置静态库所在目录
+
+<img src="2019-07-31_15-10-35.png" />
+
+然后在项目 **配置属性** -> **连接器** -> **输入** 中，输入附加依赖库的 lib 文件名字就可以啦
+
+<img src="2019-07-31_15-11-55.png" />
+
+> 注意：静态库的 lib 文件和动态库 lib 文件不是同一个东西
+
+当你定义完预定义宏后再次编译就可以编译通过了，运行程序后窗口就显示出来了。
+
+如下所示
+
+<img src="2019-07-31_15-13-43.png" />
+
+> 运行时如果使用的是链接 duilib 动态库的方式，生成的 exe 可执行文件必须和 duilib 的 dll 动态库文件位于同一目录，否则会运行失败。
+> 可执行文件和布局文件夹 **theme** 也位于同一目录下。
+
+这个窗口看起来有点简陋，只有蓝色背景面板上显示几个单词。
+
+先不着急，在接下来的教程中一点点循序渐进的往界面中添加内容。
