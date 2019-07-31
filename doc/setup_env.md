@@ -1,4 +1,6 @@
-# 环境配置
+# 开发环境安装和配置
+
+## 安装IDE和SDk
 
 本教程在 windows 10 系统上进行开发，为了与时俱进，使用 Visual Studio Community 2019 作为开发IDE，请自行至[微软官网]( https://visualstudio.microsoft.com/zh-hans/downloads/)下载安装。
 

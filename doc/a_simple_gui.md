@@ -25,10 +25,10 @@ DuiLib 的具体结构这里我们先不说，目前我们仅需要了解，如�
 根据上面的方法，我们把向导自动生成的项目代码删一删，修改 duilib_tutoral.cpp 文件，仅留下一个 main 函数，如下所示：
 
 ```
-//duilib_tutorial.cpp: 定义应用程序的入口点。
+// duilib_tutorial.cpp : 定义应用程序的入口点。
 //
 
-#include "stdafx.h"
+#include "framework.h"
 #include "duilib_tutorial.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -39,6 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
+ 
     return 0;
 }
 ```
@@ -152,7 +153,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 代码中设置了皮肤文件路径是 EXE 目录下的 theme 文件夹，所以要在 EXE 生成的文件夹创建一个 theme 文件夹，把 main_wnd_frame.xml 放到这个里面。
 
-<img src="../images/2018-04-29_15-23-04.png" />
+<img src="2018-04-29_15-23-04.png" />
 
 把如下代码添加到 xml 文件中（先暂时不需要关注 xml 的内容，后面会详细的讲解）
 
@@ -171,14 +172,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 所有准备工作就绪，我们编译一下程序，但你会发现报了一大堆的错误，如下所示
 
-<img src="../images/2018-04-29_15-21-30.png" />
+<img src="2018-04-29_15-21-30.png" />
 
 很明显，程序不知道到哪里去找我们用到的这些函数，换句话说还没告诉程序要用 DuiLib 的动态库还是静态库，这个好解决。如果你想使用动态库，那么首先保证 EXE 目录下有动态库的文件，其次在项目的 `属性->C/C++->预处理器` 中增加 `UILIB_EXPORTS` 的预定义宏，这是告诉 DuiLib 你需要把我们用到的接口按动态库的方式导出。其实搜索一下 `UILIB_EXPORTS` 就可以看到具体的定义了。
 
-<img src="../images/2018-04-29_15-23-43.png" />
+<img src="2018-04-29_15-23-43.png" />
 
 如果你想使用静态库，同样，定义一个 `UILIB_STATIC` 的预定义宏然后在项目 `属性->连接器->输入` 中，输入附加依赖库的 lib 文件名字就可以啦（在之前我们已经在项目`属性->VC++目录` 设置中添加了附加库的目录，所以直接添加附加库就可以了 ）。当你定义完预定义宏后再次编译就可以编译通过了，运行程序后窗口就显示出来了。如下所示
 
-<img src="../images/2018-04-29_15-24-36.png" />
+<img src="2018-04-29_15-24-36.png" />
 
 但看起来这个窗口有点简陋，只有中间一个蓝条，没有标题栏、没有状态栏，也不能关闭。先不着急，在接下来的教程中一点点循序渐进的往界面中添加内容。
