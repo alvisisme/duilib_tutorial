@@ -103,7 +103,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>InitWindow</b
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnFinalMessage</b> (HWND hWnd)</td></tr>
 <tr class="separator:a19b47253d9d4f33144d8c85f862a5d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6f2a40a66891b1b8f5a1e383982b64b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_window_impl_base.html#af6f2a40a66891b1b8f5a1e383982b64b">Notify</a> (<a class="el" href="namespace_dui_lib.html#aee80a6687459a1ce1cadcfb168a6a2b5">TNotifyUI</a> &amp;msg)</td></tr>
-<tr class="memdesc:af6f2a40a66891b1b8f5a1e383982b64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">接收通知消息  <a href="#af6f2a40a66891b1b8f5a1e383982b64b">更多...</a><br /></td></tr>
+<tr class="memdesc:af6f2a40a66891b1b8f5a1e383982b64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">接收事件消息  <a href="#af6f2a40a66891b1b8f5a1e383982b64b">更多...</a><br /></td></tr>
 <tr class="separator:af6f2a40a66891b1b8f5a1e383982b64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a332660ba91cdbaa9bf820d687ca12502"><td class="memItemLeft" align="right" valign="top"><a id="a332660ba91cdbaa9bf820d687ca12502"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnClick</b> (<a class="el" href="namespace_dui_lib.html#aee80a6687459a1ce1cadcfb168a6a2b5">TNotifyUI</a> &amp;msg)</td></tr>
@@ -126,6 +126,9 @@ virtual <a class="el" href="class_dui_lib_1_1_c_control_u_i.html">CControlUI</a>
 <tr class="memitem:a22ec67e7af7c2d24a2b3eb6d67ee28a1"><td class="memItemLeft" align="right" valign="top"><a id="a22ec67e7af7c2d24a2b3eb6d67ee28a1"></a>
 virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>MessageHandler</b> (UINT uMsg, WPARAM wParam, LPARAM, bool &amp;)</td></tr>
 <tr class="separator:a22ec67e7af7c2d24a2b3eb6d67ee28a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a660c9cd6bd15650e6b02bfe2f054451c"><td class="memItemLeft" align="right" valign="top"><a id="a660c9cd6bd15650e6b02bfe2f054451c"></a>
+virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnCreate</b> (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &amp;bHandled)</td></tr>
+<tr class="separator:a660c9cd6bd15650e6b02bfe2f054451c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6325fb1d2f9dafca1e9b5221597a855"><td class="memItemLeft" align="right" valign="top"><a id="ad6325fb1d2f9dafca1e9b5221597a855"></a>
 virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnClose</b> (UINT, WPARAM, LPARAM, BOOL &amp;bHandled)</td></tr>
 <tr class="separator:ad6325fb1d2f9dafca1e9b5221597a855"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,9 +144,6 @@ virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnChar</b>
 <tr class="memitem:afe38d097c637357a2f8eb4fc1430a45d"><td class="memItemLeft" align="right" valign="top"><a id="afe38d097c637357a2f8eb4fc1430a45d"></a>
 virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnSysCommand</b> (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &amp;bHandled)</td></tr>
 <tr class="separator:afe38d097c637357a2f8eb4fc1430a45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a660c9cd6bd15650e6b02bfe2f054451c"><td class="memItemLeft" align="right" valign="top"><a id="a660c9cd6bd15650e6b02bfe2f054451c"></a>
-virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnCreate</b> (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &amp;bHandled)</td></tr>
-<tr class="separator:a660c9cd6bd15650e6b02bfe2f054451c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7be985c9265835f521b97e3de5498a31"><td class="memItemLeft" align="right" valign="top"><a id="a7be985c9265835f521b97e3de5498a31"></a>
 virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnKeyDown</b> (UINT, WPARAM, LPARAM, BOOL &amp;bHandled)</td></tr>
 <tr class="separator:a7be985c9265835f521b97e3de5498a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,8 +162,8 @@ virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnLButtonU
 <tr class="memitem:a290985966bc2752da7267eb66ac41e39"><td class="memItemLeft" align="right" valign="top"><a id="a290985966bc2752da7267eb66ac41e39"></a>
 virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>OnMouseMove</b> (UINT, WPARAM, LPARAM, BOOL &amp;bHandled)</td></tr>
 <tr class="separator:a290985966bc2752da7267eb66ac41e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac583139a8789fb8ea98c0b469a60da40"><td class="memItemLeft" align="right" valign="top"><a id="ac583139a8789fb8ea98c0b469a60da40"></a>
-virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>HandleMessage</b> (UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+<tr class="memitem:ac583139a8789fb8ea98c0b469a60da40"><td class="memItemLeft" align="right" valign="top">virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dui_lib_1_1_window_impl_base.html#ac583139a8789fb8ea98c0b469a60da40">HandleMessage</a> (UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+<tr class="memdesc:ac583139a8789fb8ea98c0b469a60da40"><td class="mdescLeft">&#160;</td><td class="mdescRight">捕获或者拦截原生的系统消息，比如我们希望监听剪切板的消息时可以覆写该函数  <a href="#ac583139a8789fb8ea98c0b469a60da40">更多...</a><br /></td></tr>
 <tr class="separator:ac583139a8789fb8ea98c0b469a60da40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc0dee75156b303fb989afca799cf3ab"><td class="memItemLeft" align="right" valign="top"><a id="afc0dee75156b303fb989afca799cf3ab"></a>
 virtual LRESULT&#160;</td><td class="memItemRight" valign="bottom"><b>HandleCustomMessage</b> (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &amp;bHandled)</td></tr>
@@ -287,6 +287,61 @@ static LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><b>__
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>基础窗口类 </p>
 </div><h2 class="groupheader">成员函数说明</h2>
+<a id="ac583139a8789fb8ea98c0b469a60da40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac583139a8789fb8ea98c0b469a60da40">&#9670;&nbsp;</a></span>HandleMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LRESULT DuiLib::WindowImplBase::HandleMessage </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>uMsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WPARAM&#160;</td>
+          <td class="paramname"><em>wParam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&#160;</td>
+          <td class="paramname"><em>lParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>捕获或者拦截原生的系统消息，比如我们希望监听剪切板的消息时可以覆写该函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uMsg</td><td>消息类型 </td></tr>
+    <tr><td class="paramname">wParam</td><td>消息参数 </td></tr>
+    <tr><td class="paramname">lParam</td><td>消息参数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>LRESULT 消息处理结果 </dd></dl>
+
+<p>重载 <a class="el" href="class_dui_lib_1_1_c_window_wnd.html">DuiLib::CWindowWnd</a> .</p>
+
+</div>
+</div>
 <a id="af6f2a40a66891b1b8f5a1e383982b64b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6f2a40a66891b1b8f5a1e383982b64b">&#9670;&nbsp;</a></span>Notify()</h2>
 
@@ -311,10 +366,10 @@ static LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><b>__
 </table>
 </div><div class="memdoc">
 
-<p>接收通知消息 </p>
+<p>接收事件消息 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>接收到的通知消息 </td></tr>
+    <tr><td class="paramname">msg</td><td>接收到的消息，如点击事件等 </td></tr>
   </table>
   </dd>
 </dl>

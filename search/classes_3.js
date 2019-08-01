@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hwndshadow',['HWNDSHADOW',['../struct_h_w_n_d_s_h_a_d_o_w.html',1,'']]]
+  ['stringorid',['STRINGorID',['../class_dui_lib_1_1_s_t_r_i_n_gor_i_d.html',1,'DuiLib']]]
 ];

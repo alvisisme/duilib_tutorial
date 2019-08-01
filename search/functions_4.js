@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loopdispatch',['LoopDispatch',['../class_dui_lib_1_1_c_notify_pump.html#a7b182a03a165d45bf9b7d968fe5fc440',1,'DuiLib::CNotifyPump']]]
+  ['handlemessage',['HandleMessage',['../class_dui_lib_1_1_window_impl_base.html#ac583139a8789fb8ea98c0b469a60da40',1,'DuiLib::WindowImplBase']]]
 ];

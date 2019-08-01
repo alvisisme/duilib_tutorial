@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['pfn',['pfn',['../struct_dui_lib_1_1_d_u_i___m_s_g_m_a_p___e_n_t_r_y.html#a4d8217132626b667f01e3e82ddfae8fd',1,'DuiLib::DUI_MSGMAP_ENTRY']]],
-  ['postmessage',['PostMessage',['../class_dui_lib_1_1_c_window_wnd.html#a5baa431a847541536fcabc0e32c8dddb',1,'DuiLib::CWindowWnd']]]
+  ['registersuperclass',['RegisterSuperclass',['../class_dui_lib_1_1_c_window_wnd.html#a3d55f927c3da403dacb3de73bcb717ae',1,'DuiLib::CWindowWnd']]],
+  ['registerwindowclass',['RegisterWindowClass',['../class_dui_lib_1_1_c_window_wnd.html#ad2956804ea9f68d75e807d6c33d45e0d',1,'DuiLib::CWindowWnd']]],
+  ['removevirtualwnd',['RemoveVirtualWnd',['../class_dui_lib_1_1_c_notify_pump.html#accd6195c8ec61dbf5d738b5c84ffe44e',1,'DuiLib::CNotifyPump']]],
+  ['resizeclient',['ResizeClient',['../class_dui_lib_1_1_c_window_wnd.html#aa98822d4225e10ff56a4e1cf9508f566',1,'DuiLib::CWindowWnd']]]
 ];
