@@ -66,5 +66,6 @@ var searchData=
   ['cwaitcursor',['CWaitCursor',['../class_dui_lib_1_1_c_wait_cursor.html',1,'DuiLib']]],
   ['cwebbrowsereventhandler',['CWebBrowserEventHandler',['../class_dui_lib_1_1_c_web_browser_event_handler.html',1,'DuiLib']]],
   ['cwebbrowserui',['CWebBrowserUI',['../class_dui_lib_1_1_c_web_browser_u_i.html',1,'DuiLib']]],
-  ['cwindowwnd',['CWindowWnd',['../class_dui_lib_1_1_c_window_wnd.html',1,'DuiLib']]]
+  ['cwindowwnd',['CWindowWnd',['../class_dui_lib_1_1_c_window_wnd.html',1,'DuiLib']]],
+  ['cwndshadow',['CWndShadow',['../class_c_wnd_shadow.html',1,'']]]
 ];
