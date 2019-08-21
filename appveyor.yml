@@ -25,4 +25,4 @@ build:
   verbosity: minimal
 
 test_script:
-  - ps: .\test\$CONFIGURATION\$PLATFORM\bin\test.exe
+  - ps: test\$(configuration)\$(platform)\bin\test.exe
