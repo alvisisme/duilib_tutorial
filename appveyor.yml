@@ -6,6 +6,8 @@ branches:
 
 image: Visual Studio 2019
 
+clone_depth: 1
+
 platform:
   - x86
   - x64
@@ -13,7 +15,10 @@ platform:
 configuration:
   - Debug
   - Release
-  
+
+before_build:
+  - nuget restore
+
 build:
   parallel: true
   project: duilib_tutorial.sln
