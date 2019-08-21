@@ -25,4 +25,5 @@ build:
   verbosity: minimal
 
 after_build:
-  - ps: test\$(configuration)\$(platform)\bin\test.exe
+  - dir
+  - test\$(configuration)\$(platform)\bin\test.exe
