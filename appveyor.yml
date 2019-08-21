@@ -23,3 +23,6 @@ build:
   parallel: true
   project: duilib_tutorial.sln
   verbosity: minimal
+
+test_script:
+  - ./test/$CONFIGURATION/$PLATFORM/bin/test.exe
