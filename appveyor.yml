@@ -24,6 +24,3 @@ build:
   project: duilib_tutorial.sln
   verbosity: minimal
 
-after_build:
-  - dir
-  - test\$(configuration)\$(platform)\bin\test.exe
