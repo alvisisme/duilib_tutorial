@@ -3,10 +3,6 @@
 
 set -e
 
-DOXYGEN_VER=doxygen-1.8.15
-DOXYGEN_TAR=${DOXYGEN_VER}.linux.bin.tar.gz
-DOXYGEN_URL="http://doxygen.nl/files/${DOXYGEN_TAR}"
-
 : ${GITHUB_REPO:="alvisisme/tutorial-duilib"}
 GITHUB_HOST="github.com"
 GITHUB_CLONE="git://${GITHUB_HOST}/${GITHUB_REPO}"
@@ -43,12 +39,10 @@ abort() {
 # [ "${TRAVIS_JOB_NUMBER}" = "${TRAVIS_BUILD_NUMBER}.1" ] || \
 # 	skip "Running Doxygen only on first job of build ${TRAVIS_BUILD_NUMBER} (current: ${TRAVIS_JOB_NUMBER})."
 
-# install doxygen binary distribution
-doxygen_install()
+# check doxygen version
+doxygen_version()
 {
-	wget -O - "${DOXYGEN_URL}" | \
-		tar xz -C ${TMPDIR-/tmp} ${DOXYGEN_VER}/bin/doxygen
-    export PATH="${TMPDIR-/tmp}/${DOXYGEN_VER}/bin:$PATH"
+	doxygen -v
 }
 
 doxygen_run()
@@ -101,7 +95,7 @@ gh_pages_push() {
 	git push origin gh-pages
 }
 
-doxygen_install
+doxygen_version
 gh_pages_prepare
 doxygen_run
 gh_pages_commit
