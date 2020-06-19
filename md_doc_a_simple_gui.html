@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>duilib自学教程: 制作一个简单的界面</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -29,7 +29,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.8.15 -->
+<!-- 制作者 Doxygen 1.8.18 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'搜索');
@@ -75,61 +75,166 @@ $(function() {
 <li>创建一个窗口描述配置文件（描述窗口的 xml 样式文件）</li>
 </ul>
 <p>根据上面的方法，我们把向导自动生成的项目代码删一删，修改 duilib_tutoral.cpp 文件，仅留下一个 main 函数，如下所示：</p>
-<div class="fragment"><div class="line">// duilib_tutorial.cpp : 定义应用程序的入口点。</div><div class="line">//</div><div class="line"></div><div class="line">#include &quot;framework.h&quot;</div><div class="line">#include &quot;duilib_tutorial.h&quot;</div><div class="line"></div><div class="line">int APIENTRY wWinMain(_In_ HINSTANCE hInstance,</div><div class="line">                     _In_opt_ HINSTANCE hPrevInstance,</div><div class="line">                     _In_ LPWSTR    lpCmdLine,</div><div class="line">                     _In_ int       nCmdShow)</div><div class="line">{</div><div class="line">    UNREFERENCED_PARAMETER(hPrevInstance);</div><div class="line">    UNREFERENCED_PARAMETER(lpCmdLine);</div><div class="line"></div><div class="line"> </div><div class="line">    return 0;</div><div class="line">}</div></div><!-- fragment --><h2>引入 duibli 头文件和命名空间</h2>
+<div class="fragment"><div class="line">// duilib_tutorial.cpp : 定义应用程序的入口点。</div>
+<div class="line">//</div>
+<div class="line"> </div>
+<div class="line">#include &quot;framework.h&quot;</div>
+<div class="line">#include &quot;duilib_tutorial.h&quot;</div>
+<div class="line"> </div>
+<div class="line">int APIENTRY wWinMain(_In_ HINSTANCE hInstance,</div>
+<div class="line">                     _In_opt_ HINSTANCE hPrevInstance,</div>
+<div class="line">                     _In_ LPWSTR    lpCmdLine,</div>
+<div class="line">                     _In_ int       nCmdShow)</div>
+<div class="line">{</div>
+<div class="line">    UNREFERENCED_PARAMETER(hPrevInstance);</div>
+<div class="line">    UNREFERENCED_PARAMETER(lpCmdLine);</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    return 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1>引入 duibli 头文件和命名空间</h1>
 <p>我们在头文件 <b>framework.h</b> 中加入 duilib 库的头文件和命名空间</p>
-<div class="fragment"><div class="line">// header.h: 标准系统包含文件的包含文件，</div><div class="line">// 或特定于项目的包含文件</div><div class="line">//</div><div class="line"></div><div class="line">#pragma once</div><div class="line"></div><div class="line">#include &quot;targetver.h&quot;</div><div class="line">#define WIN32_LEAN_AND_MEAN             // 从 Windows 头文件中排除极少使用的内容</div><div class="line">// Windows 头文件</div><div class="line">#include &lt;windows.h&gt;</div><div class="line">// C 运行时头文件</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;malloc.h&gt;</div><div class="line">#include &lt;memory.h&gt;</div><div class="line">#include &lt;tchar.h&gt;</div><div class="line"></div><div class="line">// duilib 头文件</div><div class="line">#include &quot;UIlib.h&quot;</div><div class="line">using namespace DuiLib;</div></div><!-- fragment --><p>为了能够正确找到头文件，我们需要在工程属性页的 <b>配置属性</b> -&gt; <b>C/C++</b> -&gt; <b>常规</b> -&gt; <b>附加包含目录</b> 选项加入 duilib 头文件所在目录。</p>
-<img src="2019-07-31_14-35-13.png" alt="" class="inline"/>
-<h2>定义主窗口类</h2>
+<div class="fragment"><div class="line">// header.h: 标准系统包含文件的包含文件，</div>
+<div class="line">// 或特定于项目的包含文件</div>
+<div class="line">//</div>
+<div class="line"> </div>
+<div class="line">#pragma once</div>
+<div class="line"> </div>
+<div class="line">#include &quot;targetver.h&quot;</div>
+<div class="line">#define WIN32_LEAN_AND_MEAN             // 从 Windows 头文件中排除极少使用的内容</div>
+<div class="line">// Windows 头文件</div>
+<div class="line">#include &lt;windows.h&gt;</div>
+<div class="line">// C 运行时头文件</div>
+<div class="line">#include &lt;stdlib.h&gt;</div>
+<div class="line">#include &lt;malloc.h&gt;</div>
+<div class="line">#include &lt;memory.h&gt;</div>
+<div class="line">#include &lt;tchar.h&gt;</div>
+<div class="line"> </div>
+<div class="line">// duilib 头文件</div>
+<div class="line">#include &quot;UIlib.h&quot;</div>
+<div class="line">using namespace DuiLib;</div>
+</div><!-- fragment --><p>为了能够正确找到头文件，我们需要在工程属性页的 <b>配置属性</b> -&gt; <b>C/C++</b> -&gt; <b>常规</b> -&gt; <b>附加包含目录</b> 选项加入 duilib 头文件所在目录。</p>
+<p><img src="2019-07-31_14-35-13.png" alt="" class="inline"/></p>
+<h1>定义主窗口类</h1>
 <p>在 <b>duilib_tutoral.cpp</b> 中创建一个自己的窗口，来继承 <b>WindowImplBase</b> ，并实现 <b>GetSkinFolder</b> <b>GetSkinFile</b> <b>GetWindowClassName</b> 三个接口，代码如下：</p>
-<div class="fragment"><div class="line">class MainWndFrame : public WindowImplBase</div><div class="line">{</div><div class="line">protected:</div><div class="line">    virtual CDuiString GetSkinFolder() override;                            // 获取皮肤文件的目录，如果有多层目录这里可以设置</div><div class="line">    virtual CDuiString GetSkinFile() override;                              // 设置皮肤文件名字</div><div class="line">    virtual LPCTSTR GetWindowClassName(void) const override;    // 设置当前窗口的 class name</div><div class="line"></div><div class="line">public:</div><div class="line">    static const LPCTSTR kClassName;</div><div class="line">    static const LPCTSTR kMainWndFrame;</div><div class="line">};</div><div class="line"></div><div class="line">DuiLib::CDuiString MainWndFrame::GetSkinFolder()</div><div class="line">{</div><div class="line">    // GetInstancePath 接口返回默认的皮肤文件位置</div><div class="line">    // 在 main 函数中我们可以通过 SetResourcePath 来设置路径</div><div class="line">    return m_PaintManager.GetInstancePath();</div><div class="line">}</div><div class="line"></div><div class="line">DuiLib::CDuiString MainWndFrame::GetSkinFile()</div><div class="line">{</div><div class="line">    // 成员变量定义的皮肤文件名</div><div class="line">    return kMainWndFrame;</div><div class="line">}</div><div class="line"></div><div class="line">LPCTSTR MainWndFrame::GetWindowClassName(void) const</div><div class="line">{</div><div class="line">    // 成员变量定义的窗口 class name</div><div class="line">    return kClassName;</div><div class="line">}</div><div class="line"></div><div class="line">const LPCTSTR MainWndFrame::kClassName = _T(&quot;main_wnd_frame&quot;);</div><div class="line">const LPCTSTR MainWndFrame::kMainWndFrame = _T(&quot;main_wnd_frame.xml&quot;);</div></div><!-- fragment --><p>仔细分析代码，我们可以看到我们指定了这个窗口的皮肤路径是默认路径（取决于我们如何设置，稍后就能看到），并指定了这个窗口的皮肤文件 <b>main_wnd_frame.xml</b> ，最后还指定了一下窗口的类名。</p>
-<h2>新建主窗口</h2>
+<div class="fragment"><div class="line">class MainWndFrame : public WindowImplBase</div>
+<div class="line">{</div>
+<div class="line">protected:</div>
+<div class="line">    virtual CDuiString GetSkinFolder() override;                            // 获取皮肤文件的目录，如果有多层目录这里可以设置</div>
+<div class="line">    virtual CDuiString GetSkinFile() override;                              // 设置皮肤文件名字</div>
+<div class="line">    virtual LPCTSTR GetWindowClassName(void) const override;    // 设置当前窗口的 class name</div>
+<div class="line"> </div>
+<div class="line">public:</div>
+<div class="line">    static const LPCTSTR kClassName;</div>
+<div class="line">    static const LPCTSTR kMainWndFrame;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">DuiLib::CDuiString MainWndFrame::GetSkinFolder()</div>
+<div class="line">{</div>
+<div class="line">    // GetInstancePath 接口返回默认的皮肤文件位置</div>
+<div class="line">    // 在 main 函数中我们可以通过 SetResourcePath 来设置路径</div>
+<div class="line">    return m_PaintManager.GetInstancePath();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">DuiLib::CDuiString MainWndFrame::GetSkinFile()</div>
+<div class="line">{</div>
+<div class="line">    // 成员变量定义的皮肤文件名</div>
+<div class="line">    return kMainWndFrame;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">LPCTSTR MainWndFrame::GetWindowClassName(void) const</div>
+<div class="line">{</div>
+<div class="line">    // 成员变量定义的窗口 class name</div>
+<div class="line">    return kClassName;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">const LPCTSTR MainWndFrame::kClassName = _T(&quot;main_wnd_frame&quot;);</div>
+<div class="line">const LPCTSTR MainWndFrame::kMainWndFrame = _T(&quot;main_wnd_frame.xml&quot;);</div>
+</div><!-- fragment --><p>仔细分析代码，我们可以看到我们指定了这个窗口的皮肤路径是默认路径（取决于我们如何设置，稍后就能看到），并指定了这个窗口的皮肤文件 <b>main_wnd_frame.xml</b> ，最后还指定了一下窗口的类名。</p>
+<h1>新建主窗口</h1>
 <p>这样这个窗口就创建好了，我们还需要在 main 函数中把这个窗口 new 出来，其次还需要创建一个 xml 文件来描述一下这个窗口的样子。</p>
 <p>先来写 main 函数。</p>
-<div class="fragment"><div class="line">int APIENTRY wWinMain(_In_ HINSTANCE hInstance,</div><div class="line">                     _In_opt_ HINSTANCE hPrevInstance,</div><div class="line">                     _In_ LPWSTR    lpCmdLine,</div><div class="line">                     _In_ int       nCmdShow)</div><div class="line">{</div><div class="line">    UNREFERENCED_PARAMETER(hPrevInstance);</div><div class="line">    UNREFERENCED_PARAMETER(lpCmdLine);</div><div class="line"></div><div class="line">    // 设置窗口关联的实例</div><div class="line">    CPaintManagerUI::SetInstance(hInstance);</div><div class="line"></div><div class="line">    // 设置皮肤的默认路径</div><div class="line">    CPaintManagerUI::SetCurrentPath(CPaintManagerUI::GetInstancePath());</div><div class="line">    CPaintManagerUI::SetResourcePath(_T(&quot;theme&quot;));</div><div class="line"></div><div class="line">    // 创建窗口</div><div class="line">    MainWndFrame* pMainWndFrame = new MainWndFrame;</div><div class="line">    pMainWndFrame-&gt;Create(nullptr, MainWndFrame::kClassName, UI_WNDSTYLE_DIALOG, 0);</div><div class="line">    pMainWndFrame-&gt;CenterWindow();</div><div class="line">    pMainWndFrame-&gt;ShowWindow();</div><div class="line"></div><div class="line">    // 消息循环</div><div class="line">    CPaintManagerUI::MessageLoop();</div><div class="line"></div><div class="line">    if (nullptr != pMainWndFrame) {</div><div class="line">        delete pMainWndFrame;</div><div class="line">    }</div><div class="line"> </div><div class="line">    return 0;</div><div class="line">}</div></div><!-- fragment --><p>通过 <b>CPaintManagerUI</b> 的一些静态设置了当前关联的窗口实例、皮肤文件的路径，接下来 new 了一个我们继承 <b>WindowImplBase</b> 所产生的窗口。调用 <b>Create</b> 方法创建了窗口，使用 <b>CenterWindow</b> 让窗口居中显示，再调用 <b>ShowWindow</b> 显示窗口。最后我们使用了 <b>CPaintManagerUI</b> 的 <b>MessageLoop</b> 启动消息循环的监听，保证程序不被退出。并且在退出前我们要 delete 掉 new 出来的窗口。这样创建窗口的过程就完事儿了，但是现在还是不能运行的，我们还需要完善一下这个窗口的 xml 文件。</p>
-<h2>编写页面布局文件xml</h2>
+<div class="fragment"><div class="line">int APIENTRY wWinMain(_In_ HINSTANCE hInstance,</div>
+<div class="line">                     _In_opt_ HINSTANCE hPrevInstance,</div>
+<div class="line">                     _In_ LPWSTR    lpCmdLine,</div>
+<div class="line">                     _In_ int       nCmdShow)</div>
+<div class="line">{</div>
+<div class="line">    UNREFERENCED_PARAMETER(hPrevInstance);</div>
+<div class="line">    UNREFERENCED_PARAMETER(lpCmdLine);</div>
+<div class="line"> </div>
+<div class="line">    // 设置窗口关联的实例</div>
+<div class="line">    CPaintManagerUI::SetInstance(hInstance);</div>
+<div class="line"> </div>
+<div class="line">    // 设置皮肤的默认路径</div>
+<div class="line">    CPaintManagerUI::SetCurrentPath(CPaintManagerUI::GetInstancePath());</div>
+<div class="line">    CPaintManagerUI::SetResourcePath(_T(&quot;theme&quot;));</div>
+<div class="line"> </div>
+<div class="line">    // 创建窗口</div>
+<div class="line">    MainWndFrame* pMainWndFrame = new MainWndFrame;</div>
+<div class="line">    pMainWndFrame-&gt;Create(nullptr, MainWndFrame::kClassName, UI_WNDSTYLE_DIALOG, 0);</div>
+<div class="line">    pMainWndFrame-&gt;CenterWindow();</div>
+<div class="line">    pMainWndFrame-&gt;ShowWindow();</div>
+<div class="line"> </div>
+<div class="line">    // 消息循环</div>
+<div class="line">    CPaintManagerUI::MessageLoop();</div>
+<div class="line"> </div>
+<div class="line">    if (nullptr != pMainWndFrame) {</div>
+<div class="line">        delete pMainWndFrame;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    return 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>通过 <b>CPaintManagerUI</b> 的一些静态设置了当前关联的窗口实例、皮肤文件的路径，接下来 new 了一个我们继承 <b>WindowImplBase</b> 所产生的窗口。调用 <b>Create</b> 方法创建了窗口，使用 <b>CenterWindow</b> 让窗口居中显示，再调用 <b>ShowWindow</b> 显示窗口。最后我们使用了 <b>CPaintManagerUI</b> 的 <b>MessageLoop</b> 启动消息循环的监听，保证程序不被退出。并且在退出前我们要 delete 掉 new 出来的窗口。这样创建窗口的过程就完事儿了，但是现在还是不能运行的，我们还需要完善一下这个窗口的 xml 文件。</p>
+<h1>编写页面布局文件xml</h1>
 <p>代码中设置了皮肤文件路径是 EXE 目录下的 theme 文件夹，所以要在 EXE 生成的文件夹创建一个 theme 文件夹，把 <b>main_wnd_frame.xml</b> 放到这个里面。</p>
-<img src="2019-07-31_14-22-14.png" alt="" class="inline"/>
+<p><img src="2019-07-31_14-22-14.png" alt="" class="inline"/></p>
 <p>把如下代码添加到 xml 文件中（先暂时不需要关注 xml 的内容，后面会详细的讲解）</p>
-<div class="fragment"><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;Window size=&quot;640,480&quot; caption=&quot;0,0,0,35&quot;&gt;</div><div class="line">    &lt;HorizontalLayout bkcolor=&quot;#FFFFFFFF&quot;&gt;</div><div class="line">        &lt;Button text=&quot;Hello DuiLib&quot; bkcolor=&quot;#FF1296DB&quot;/&gt;</div><div class="line">    &lt;/HorizontalLayout&gt;</div><div class="line">&lt;/Window&gt;</div></div><!-- fragment --><h2>解决 duilib 依赖</h2>
+<div class="fragment"><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div>
+<div class="line">&lt;Window size=&quot;640,480&quot; caption=&quot;0,0,0,35&quot;&gt;</div>
+<div class="line">    &lt;HorizontalLayout bkcolor=&quot;#FFFFFFFF&quot;&gt;</div>
+<div class="line">        &lt;Button text=&quot;Hello DuiLib&quot; bkcolor=&quot;#FF1296DB&quot;/&gt;</div>
+<div class="line">    &lt;/HorizontalLayout&gt;</div>
+<div class="line">&lt;/Window&gt;</div>
+</div><!-- fragment --><h1>解决 duilib 依赖</h1>
 <p>所有准备工作就绪，我们编译一下程序，但你会发现报了一大堆的错误</p>
-<img src="2019-07-31_14-26-15.png" alt="" class="inline"/>
+<p><img src="2019-07-31_14-26-15.png" alt="" class="inline"/></p>
 <p>很明显，程序不知道到哪里去找我们用到的这些函数，换句话说还没告诉程序要用 duilib 的动态库还是静态库。</p>
 <p>如果你想使用动态库，那么在项目属性页的 <b>配置属性</b> -&gt; <b>C/C++</b> -&gt; <b>预处理器</b> 中增加 <b>UILIB_EXPORTS</b> 的预定义宏，这是告诉 duilib 你需要把我们用到的接口按动态库的方式导出。</p>
-<img src="2019-07-31_14-40-39.png" alt="" class="inline"/>
+<p><img src="2019-07-31_14-40-39.png" alt="" class="inline"/></p>
 <p>其实搜索一下 <b>UILIB_EXPORTS</b> 就可以看到具体的定义了。</p>
-<img src="2019-07-31_14-42-10.png" alt="" class="inline"/>
+<p><img src="2019-07-31_14-42-10.png" alt="" class="inline"/></p>
 <p>之后，根据我们在 duilib 工程中设置的目标文件生成路径，将其加入到 duilib_tutorial 工程的 <b>配置属性</b> -&gt; <b>VC++目录</b> -&gt; <b>库目录</b> 选项中</p>
-<img src="2019-07-31_14-45-49.png" alt="" class="inline"/>
+<p><img src="2019-07-31_14-45-49.png" alt="" class="inline"/></p>
 <p>我们还需要设置我们需要链接的动态库所在的目录，设置 <b>配置属性</b> -&gt; <b>链接器</b> -&gt; <b>常规</b> -&gt; <b>附加库目录</b> 选项</p>
-<img src="2019-07-31_14-55-36.png" alt="" class="inline"/>
+<p><img src="2019-07-31_14-55-36.png" alt="" class="inline"/></p>
 <p>最后，在 <b>配置属性</b> -&gt; <b>链接器</b> -&gt; <b>输入</b> -&gt; <b>附加依赖项</b> 里加入需要链接的库名</p>
-<img src="2019-07-31_14-55-56.png" alt="" class="inline"/>
+<p><img src="2019-07-31_14-55-56.png" alt="" class="inline"/></p>
 <p>注意，不同平台和配置下需要根据自身的配置填写，填入内容可能不同。</p>
 <p>虽然链接的是动态库，但是加入的库名是 <b>lib</b> 后缀，这个文件是对应动态链接库的导入库，实际的执行代码位于动态库中，导入库只包含了地址符号表等，确保程序找到对应函数的一些基本地址信息。</p>
 <p>如果你想使用静态库，同样，定义一个 <b>UILIB_STATIC</b> 的预定义宏</p>
-<img src="2019-07-31_15-08-58.png" alt="" class="inline"/>
+<p><img src="2019-07-31_15-08-58.png" alt="" class="inline"/></p>
 <p>在 <b>配置属性</b> -&gt; <b>链接器</b> -&gt; <b>常规</b> -&gt; <b>附加库目录</b> 选项中设置静态库所在目录</p>
-<img src="2019-07-31_15-10-35.png" alt="" class="inline"/>
+<p><img src="2019-07-31_15-10-35.png" alt="" class="inline"/></p>
 <p>然后在项目 <b>配置属性</b> -&gt; <b>连接器</b> -&gt; <b>输入</b> 中，输入附加依赖库的 lib 文件名字就可以啦</p>
-<img src="2019-07-31_15-11-55.png" alt="" class="inline"/>
+<p><img src="2019-07-31_15-11-55.png" alt="" class="inline"/></p>
 <blockquote class="doxtable">
 <p>注意：静态库的 lib 文件和动态库 lib 文件不是同一个东西 </p>
 </blockquote>
 <p>当你定义完预定义宏后再次编译就可以编译通过了，运行程序后窗口就显示出来了。</p>
 <p>如下所示</p>
-<img src="2019-07-31_15-13-43.png" alt="" class="inline"/>
+<p><img src="2019-07-31_15-13-43.png" alt="" class="inline"/></p>
 <blockquote class="doxtable">
 <p>运行时如果使用的是链接 duilib 动态库的方式，生成的 exe 可执行文件必须和 duilib 的 dll 动态库文件位于同一目录，否则会运行失败。 可执行文件和布局文件夹 <b>theme</b> 也位于同一目录下。 </p>
 </blockquote>
 <p>这个窗口看起来有点简陋，只有蓝色背景面板上显示几个单词。</p>
 <p>先不着急，在接下来的教程中一点点循序渐进的往界面中添加内容。 </p>
-</div></div><!-- PageDoc -->
-</div><!-- contents -->
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
+</a> 1.8.18
 </small></address>
 </body>
 </html>

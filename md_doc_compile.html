@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>duilib自学教程: 编译 duilib</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -29,7 +29,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.8.15 -->
+<!-- 制作者 Doxygen 1.8.18 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'搜索');
@@ -65,60 +65,61 @@ $(function() {
 <div class="title">编译 duilib </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>创建新项目</h2>
+<div class="textblock"><h1>创建新项目</h1>
 <p>我们准备新建一个项目，制作一个最简单的界面。</p>
 <p>打开我们安装好的 Visual Studio Community 2019， 选择 <b>创建新项目</b> ，</p>
-<img src="2019-07-30_22-44-52.png" alt="" class="inline"/>
+<p><img src="2019-07-30_22-44-52.png" alt="" class="inline"/></p>
 <p>在弹出的对话框中，选择 <b>Windows桌面应用程序</b> ，</p>
-<img src="2019-07-30_22-46-03.png" alt="" class="inline"/>
+<p><img src="2019-07-30_22-46-03.png" alt="" class="inline"/></p>
 <p>点击 <b>下一步</b> ，输入新建的项目名称和存储位置，</p>
-<img src="2019-07-30_22-49-08.png" alt="" class="inline"/>
+<p><img src="2019-07-30_22-49-08.png" alt="" class="inline"/></p>
 <p>确认后点击 <b>创建</b> ，完成新项目创建。</p>
-<h2>导入 duilib 工程</h2>
+<h1>导入 duilib 工程</h1>
 <p>我们下载 duilib 库工程，命令行中执行如下命令，如果你没有安装 git 客户端，请先<a href="https://git-scm.com/">安装 git</a></p>
-<div class="fragment"><div class="line">git clone https://github.com/alvisisme/tutorial-duilib</div></div><!-- fragment --><blockquote class="doxtable">
+<div class="fragment"><div class="line">git clone https://github.com/alvisisme/tutorial-duilib</div>
+</div><!-- fragment --><blockquote class="doxtable">
 <p>该工程是根据官方仓库修改过的，非官方原生工程。 </p>
 </blockquote>
 <p>我们复制工程下的 <code>duilib</code> 文件夹、<code>directui license.txt</code>、<code>duilib license.txt</code>和<code>properties.xml</code>文件到我们刚刚新建的项目目录下，</p>
-<img src="2019-07-30_23-11-31.png" alt="" class="inline"/>
+<p><img src="2019-07-30_23-11-31.png" alt="" class="inline"/></p>
 <p>其中，</p>
 <p><b>duilib</b> 文件夹用于编译我们的 duilib 库，</p>
 <p><b>directui license.txt</b> 和 <b>duilib license.txt</b> 是使用duilib库需要附带的授权文件，</p>
 <p><b>properties.xml</b> 是 duilib 控件的属性列表，方便开发时查找。</p>
-<h2>编译 duilib 动态库</h2>
+<h1>编译 duilib 动态库</h1>
 <p>准备工作都做完了，下面我们正式开始编译 duilib，在我们刚才创建的项目中，将 duilib 工程导入。</p>
 <p>选中新建的 <b>duilib_tutorial</b> 项目解决方案，右键弹出菜单选择 <b>添加</b> -&gt; <b>现有项目</b> ，选择我们刚刚复制到本项目目录的 <b>duilib/duilib.vcxproj</b> 工程文件。</p>
-<img src="2019-07-30_23-22-19.png" alt="" class="inline"/>
+<p><img src="2019-07-30_23-22-19.png" alt="" class="inline"/></p>
 <p>导入成功后，可以看到我们新增的工程</p>
-<img src="2019-07-30_23-24-26.png" alt="" class="inline"/>
+<p><img src="2019-07-30_23-24-26.png" alt="" class="inline"/></p>
 <p>选中新增的工程右键，点击 <b>属性</b> 选项</p>
-<img src="2019-07-30_23-26-39.png" alt="" class="inline"/>
+<p><img src="2019-07-30_23-26-39.png" alt="" class="inline"/></p>
 <p>查看工程的详细属性</p>
-<img src="2019-07-30_23-28-03.png" alt="" class="inline"/>
+<p><img src="2019-07-30_23-28-03.png" alt="" class="inline"/></p>
 <p>属性页上方根据 <b>配置</b> 项和 <b>平台</b> 项的不同，会有不同的属性组合，</p>
 <p><b>配置</b> 项有 <b>Debug</b> 和 <b>Release</b> 两个值, 和环境变量 <b>Configuration</b> 对应， <b>平台</b> 项有 <b>Win32</b> 和 <b>x64</b> 两个值 ，和环境变量 <b>Platform</b> 对应，</p>
 <p>在 <b>Debug</b> 和 <b>Win32</b> 组合下，</p>
 <p>可以看到，该工程的配置类型为 <b>动态库(.dll)</b> ， 目标文件为 <b>duilib_x86_d</b> ，表明最后生成的动态库文件为 <b>duilib_x86_d.dll</b> 。</p>
 <p>编译 duilib 动态库时选择的平台工具集为 <b>Visual Studio 2019 (v142)</b> , Windows SDK 版本为 <b>10.0.18362.0</b> 。</p>
 <p>在 <b>配置属性</b> -&gt; <b>高级</b> 中，字符集被设置为 <b>使用Unicode字符集</b> ，</p>
-<img src="2019-07-31_08-45-17.png" alt="" class="inline"/>
+<p><img src="2019-07-31_08-45-17.png" alt="" class="inline"/></p>
 <p>确保项目下的不同工程中平台工具集、Windows SDK 版本和字符集属性保持一致。</p>
 <p>我们选中导入的 duilib 工程，右键点击 <b>生成</b> 即可完成动态库编译。</p>
-<img src="2019-07-31_08-53-01.png" alt="" class="inline"/>
-<h2>编译 duilib 静态库</h2>
+<p><img src="2019-07-31_08-53-01.png" alt="" class="inline"/></p>
+<h1>编译 duilib 静态库</h1>
 <p>导入静态库的方法和动态库基本一致，我们选中新建的 <b>duilib_tutorial</b> 项目解决方案，右键弹出菜单选择 <b>添加</b> -&gt; <b>现有项目</b> ，选择我们刚刚复制到本项目目录的 <b>duilib/duilib_static.vcxproj</b> 工程文件。</p>
 <p>查看工程属性，可以看到和动态库的属性区别主要是 <b>配置类型</b> 属性不同。</p>
-<img src="2019-07-31_08-57-28.png" alt="" class="inline"/>
+<p><img src="2019-07-31_08-57-28.png" alt="" class="inline"/></p>
 <p>如果需要同时编译静态库和动态库的多个不同版本（即不同的配置属性和平台属性），那么最好给不同的组合配置独立的 <b>输出目录</b> 和 <b>中间目录</b> ，这样可以有效的防止冲突。</p>
 <p>我们选中导入的 duilib 工程，右键点击 <b>生成</b> 即可完成静态库编译。</p>
 <p>这样整个项目的解决方案配置就基本完成了，接下来我们赶紧用编译好的动态库和静态库创建一个界面吧。 </p>
-</div></div><!-- PageDoc -->
-</div><!-- contents -->
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
+</a> 1.8.18
 </small></address>
 </body>
 </html>

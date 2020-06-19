@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>duilib自学教程: duilib/Layout/UIChildLayout.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -29,7 +29,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.8.15 -->
+<!-- 制作者 Doxygen 1.8.18 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'搜索');
@@ -69,16 +69,40 @@ $(function() {
 <div class="title">UIChildLayout.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __UICHILDLAYOUT_H__</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __UICHILDLAYOUT_H__</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_dui_lib.html">DuiLib</a></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_dui_lib_1_1_c_child_layout_u_i.html">    8</a></span>&#160;    <span class="keyword">class </span>DUILIB_API <a class="code" href="class_dui_lib_1_1_c_child_layout_u_i.html">CChildLayoutUI</a> : <span class="keyword">public</span> <a class="code" href="class_dui_lib_1_1_c_container_u_i.html">CContainerUI</a></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_dui_lib_1_1_c_child_layout_u_i.html">CChildLayoutUI</a>();</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> Init();</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue);</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> SetChildLayoutXML(<a class="code" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> pXML);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> GetChildLayoutXML();</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">virtual</span> LPVOID GetInterface(LPCTSTR pstrName);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">virtual</span> LPCTSTR GetClass() <span class="keyword">const</span>;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> m_pstrXMLFile;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <span class="comment">// namespace DuiLib</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif // __UICHILDLAYOUT_H__</span></div><div class="ttc" id="class_dui_lib_1_1_c_dui_string_html"><div class="ttname"><a href="class_dui_lib_1_1_c_dui_string.html">DuiLib::CDuiString</a></div><div class="ttdef"><b>Definition:</b> Utils.h:76</div></div>
-<div class="ttc" id="class_dui_lib_1_1_c_child_layout_u_i_html"><div class="ttname"><a href="class_dui_lib_1_1_c_child_layout_u_i.html">DuiLib::CChildLayoutUI</a></div><div class="ttdef"><b>Definition:</b> UIChildLayout.h:8</div></div>
-<div class="ttc" id="class_dui_lib_1_1_c_container_u_i_html"><div class="ttname"><a href="class_dui_lib_1_1_c_container_u_i.html">DuiLib::CContainerUI</a></div><div class="ttdef"><b>Definition:</b> UIContainer.h:30</div></div>
-<div class="ttc" id="namespace_dui_lib_html"><div class="ttname"><a href="namespace_dui_lib.html">DuiLib</a></div><div class="ttdef"><b>Definition:</b> UIActiveX.cpp:3</div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __UICHILDLAYOUT_H__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __UICHILDLAYOUT_H__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_dui_lib.html">DuiLib</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_dui_lib_1_1_c_child_layout_u_i.html">    8</a></span>&#160;    <span class="keyword">class </span>DUILIB_API <a class="code" href="class_dui_lib_1_1_c_child_layout_u_i.html">CChildLayoutUI</a> : <span class="keyword">public</span> <a class="code" href="class_dui_lib_1_1_c_container_u_i.html">CContainerUI</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_dui_lib_1_1_c_child_layout_u_i.html">CChildLayoutUI</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> Init();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> SetChildLayoutXML(<a class="code" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> pXML);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> GetChildLayoutXML();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">virtual</span> LPVOID GetInterface(LPCTSTR pstrName);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">virtual</span> LPCTSTR GetClass() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_dui_lib_1_1_c_dui_string.html">CDuiString</a> m_pstrXMLFile;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <span class="comment">// namespace DuiLib</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif // __UICHILDLAYOUT_H__</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_dui_lib_1_1_c_dui_string_html"><div class="ttname"><a href="class_dui_lib_1_1_c_dui_string.html">DuiLib::CDuiString</a></div><div class="ttdef"><b>Definition:</b> Utils.h:77</div></div>
+<div class="ttc" id="aclass_dui_lib_1_1_c_child_layout_u_i_html"><div class="ttname"><a href="class_dui_lib_1_1_c_child_layout_u_i.html">DuiLib::CChildLayoutUI</a></div><div class="ttdef"><b>Definition:</b> UIChildLayout.h:9</div></div>
+<div class="ttc" id="aclass_dui_lib_1_1_c_container_u_i_html"><div class="ttname"><a href="class_dui_lib_1_1_c_container_u_i.html">DuiLib::CContainerUI</a></div><div class="ttdef"><b>Definition:</b> UIContainer.h:31</div></div>
+<div class="ttc" id="anamespace_dui_lib_html"><div class="ttname"><a href="namespace_dui_lib.html">DuiLib</a></div><div class="ttdef"><b>Definition:</b> UIActiveX.cpp:3</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
+</a> 1.8.18
 </small></address>
 </body>
 </html>
