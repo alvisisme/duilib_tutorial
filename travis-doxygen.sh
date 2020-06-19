@@ -6,7 +6,7 @@ set -e
 : ${GITHUB_REPO:="alvisisme/tutorial-duilib"}
 GITHUB_HOST="github.com"
 GITHUB_CLONE="git://${GITHUB_HOST}/${GITHUB_REPO}"
-GITHUB_URL="https://${GITHUB_HOST}/${GITHUB_PUSH-${GITHUB_REPO}}"
+GITHUB_URL="https://${GITHUB_HOST}/${GITHUB_REPO}"
 
 # if not set, ignore password
 #GIT_ASKPASS="${TRAVIS_BUILD_DIR}/gh_ignore_askpass.sh"
