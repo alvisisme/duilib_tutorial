@@ -1,6 +1,4 @@
 dist: xenial
-before_install:
-  - sudo apt-get -y install doxygen
 script:
   - bash travis-doxygen.sh
 branches:

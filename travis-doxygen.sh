@@ -42,6 +42,10 @@ abort() {
 # check doxygen version
 doxygen_version()
 {
+	wget http://doxygen.nl/files/doxygen-1.8.18.linux.bin.tar.gz
+	tar xzf doxygen-1.8.18.linux.bin.tar.gz
+	sudo cp -r doxygen-1.8.18/bin/doxygen /usr/bin/doxygen
+	rm -f doxygen-1.8.18.linux.bin.tar.gz
 	doxygen -v
 }
 
