@@ -96,7 +96,7 @@ gh_pages_push() {
 			( echo "https://${GH_TOKEN}:@${GITHUB_HOST}" > ${HOME}/.git-credentials ; \
 			 chmod go-rw ${HOME}/.git-credentials ) )
 	# push to GitHub
-	git push origin gh-pages
+	git push -f origin gh-pages
 }
 
 doxygen_version
